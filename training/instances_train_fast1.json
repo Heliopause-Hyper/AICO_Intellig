@@ -1,0 +1,49 @@
+{
+  "budget": {
+    "max_iterations": 15,
+    "time_limit_s": 60
+  },
+  "seeds": [0, 1],
+  "candidates": [
+    {"optimizer": "SciPy", "method": "Powell"},
+    {"optimizer": "SciPy", "method": "DE"},
+    {"optimizer": "Optuna", "method": "TPE"},
+    {"optimizer": "Hyperopt", "method": "TPE"},
+    {"optimizer": "Nevergrad", "method": "NGOpt"}
+  ],
+  "instances": [
+    {"problem_type": "thmf", "opt_params": ["k1", "Bi"], "objective_expression": "-result.get('efficiency', -1e10)"},
+    {"problem_type": "thmf", "opt_params": ["k2", "k5"], "objective_expression": "result.get('maxtemp', 1e10)"},
+    {"problem_type": "thmf", "opt_params": ["Bi", "k3", "k4"], "objective_expression": "abs(result.get('tempuniformity', 1e10))"},
+    {"problem_type": "thmf", "opt_params": ["k1", "k2", "k3"], "objective_expression": "-result.get('totalheatflux', -1e10)"},
+    {"problem_type": "thmf", "opt_params": ["k4", "k5"], "objective_expression": "result.get('meantemp', 1e10)"},
+    {"problem_type": "thmf", "opt_params": ["Bi"], "objective_expression": "abs(result.get('tempuniformity', 1e10))"},
+    {"problem_type": "thmf", "opt_params": ["k1", "k5", "Bi"], "objective_expression": "result.get('maxtemp', 1e10) - result.get('meantemp', 0.0)"},
+    {"problem_type": "thmf", "opt_params": ["k2", "k3", "k4"], "objective_expression": "-result.get('efficiency', -1e10) + 0.1*result.get('maxtemp', 0.0)"},
+
+    {"problem_type": "sns", "opt_params": ["uMax", "Mu"], "objective_expression": "result.get('pressuredrop', 1e10)"},
+    {"problem_type": "sns", "opt_params": ["uMax", "R"], "objective_expression": "result.get('avgpressure', 1e10)"},
+    {"problem_type": "sns", "opt_params": ["Mu", "L", "D"], "objective_expression": "abs(result.get('pressuredrop', 1e10) - 500.0)"},
+    {"problem_type": "sns", "opt_params": ["nn", "R"], "objective_expression": "result.get('pressuredrop', 1e10)"},
+    {"problem_type": "sns", "opt_params": ["L", "D"], "objective_expression": "result.get('pressuredrop', 1e10) + 0.01*result.get('avgpressure', 0.0)"},
+    {"problem_type": "sns", "opt_params": ["Mu"], "objective_expression": "result.get('pressuredrop', 1e10)"},
+    {"problem_type": "sns", "opt_params": ["uMax", "nn"], "objective_expression": "abs(result.get('pressuredrop', 1e10) - 800.0)"},
+    {"problem_type": "sns", "opt_params": ["R", "D"], "objective_expression": "result.get('avgpressure', 1e10)"},
+
+    {"problem_type": "ex_heat_time", "opt_params": ["dt", "kf"], "objective_expression": "result.get('cpu', 1e10)"},
+    {"problem_type": "ex_heat_time", "opt_params": ["kf", "ue"], "objective_expression": "abs(result.get('u_mean', 1e10) - 12.0)"},
+    {"problem_type": "ex_heat_time", "opt_params": ["k_hi", "k_lo"], "objective_expression": "abs(result.get('u_min', 1e10) - 5.0)"},
+    {"problem_type": "ex_heat_time", "opt_params": ["dt", "T"], "objective_expression": "result.get('cpu', 1e10) + 0.001*abs(result.get('u_mean', 0.0) - 12.0)"},
+    {"problem_type": "ex_heat_time", "opt_params": ["ue", "T"], "objective_expression": "abs(result.get('u_max', 1e10) - 20.0)"},
+    {"problem_type": "ex_heat_time", "opt_params": ["kf"], "objective_expression": "abs(result.get('u_mean', 1e10) - 10.0)"},
+    {"problem_type": "ex_heat_time", "opt_params": ["dt"], "objective_expression": "result.get('cpu', 1e10)"},
+    {"problem_type": "ex_heat_time", "opt_params": ["k_hi", "kf", "k_lo"], "objective_expression": "abs(result.get('u_mean', 1e10) - 12.0)"},
+
+    {"problem_type": "ex_vi_obstacle", "opt_params": ["gmax"], "objective_expression": "result.get('active_frac', 1e10)"},
+    {"problem_type": "ex_vi_obstacle", "opt_params": ["c"], "objective_expression": "result.get('iters', 1e10)"},
+    {"problem_type": "ex_vi_obstacle", "opt_params": ["gmax", "c"], "objective_expression": "result.get('active_frac', 1e10) + 0.1*result.get('iters', 0.0)"},
+    {"problem_type": "ex_vi_obstacle", "opt_params": ["f"], "objective_expression": "result.get('u_mean', 1e10)"},
+    {"problem_type": "ex_vi_obstacle", "opt_params": ["gmax", "f"], "objective_expression": "result.get('u_mean', 1e10)"},
+    {"problem_type": "ex_vi_obstacle", "opt_params": ["gmax", "eps"], "objective_expression": "result.get('iters', 1e10)"}
+  ]
+}

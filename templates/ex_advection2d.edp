@@ -1,0 +1,58 @@
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "ex_advection2d_input.txt");
+string outputFilePath = getARGV("-output", "ex_advection2d_output.txt");
+
+func real readParam(string paramName, real defaultVal) {
+    ifstream file(inputFilePath);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        if (line.find(paramName + "=") == 0) {
+            int startPos = paramName.length + 1;
+            string valueStr = line(startPos : line.length - 1);
+            real value = atof(valueStr);
+            return value;
+        }
+    }
+    return defaultVal;
+}
+
+real L = readParam("L", 1.0);
+real a = readParam("a", 1.0);
+real b = readParam("b", 0.3);
+real T = readParam("T", 1.0);
+real dt = readParam("dt", 0.01);
+int nx = int(readParam("nx", 80.0));
+int ny = int(readParam("ny", 80.0));
+
+real x0 = readParam("x0", 0.25);
+real y0 = readParam("y0", 0.25);
+real sigma = readParam("sigma", 0.05);
+real amp = readParam("amp", 1.0);
+
+mesh Th = square(nx, ny, [L*x, L*y]);
+fespace Vh(Th, P1);
+Vh u, uold;
+
+u = amp * exp(-((x-x0)^2 + (y-y0)^2) / (2.0*sigma^2));
+uold = u;
+
+real cpu0 = clock();
+for (real t = 0.0; t < T; t += dt) {
+    u = convect([a, b], dt, uold);
+    uold = u;
+}
+real cpuUsed = clock() - cpu0;
+
+real area = int2d(Th)(1.0);
+real uMean = int2d(Th)(u) / area;
+real uMax = u[].max;
+real uMin = u[].min;
+
+ofstream out(outputFilePath);
+out << "cpu=" << cpuUsed << endl;
+out << "u_mean=" << uMean << endl;
+out << "u_max=" << uMax << endl;
+out << "u_min=" << uMin << endl;
+

@@ -1,0 +1,12 @@
+{
+  "counts": {
+    "checkpoints": 2214709,
+    "experiments": 18,
+    "instances": 2614,
+    "run_summaries": 116420,
+    "runs_light": 116526
+  },
+  "duplicates_filtered_tables": true,
+  "generated_at": "2026-09-05T07:42:47+00:00",
+  "universe": "paper"
+}

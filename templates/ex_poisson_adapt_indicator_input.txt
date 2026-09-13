@@ -1,0 +1,4 @@
+n0=6
+nIter=4
+err0=0.01
+anisomax=1

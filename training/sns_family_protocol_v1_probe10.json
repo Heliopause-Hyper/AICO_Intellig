@@ -1,0 +1,19 @@
+{
+  "auto": false,
+  "resume": false,
+  "stable_instance_ids": true,
+  "validate_instances": true,
+  "sns_family_probe_endpoints": true,
+  "instances_from_dataset_path": "results/sns_family_protocol_v1_smoke/dataset.jsonl",
+  "instances_sample_seed": 0,
+  "instances_sample_clean": 7,
+  "instances_sample_hard": 3,
+  "budget": {"max_iterations": 15, "time_limit_s": 30},
+  "seeds": [0, 1],
+  "candidates": [
+    {"optimizer": "SciPy", "method": "Powell"},
+    {"optimizer": "SciPy", "method": "Nelder-Mead"},
+    {"optimizer": "Optuna", "method": "TPE"},
+    {"optimizer": "Hyperopt", "method": "TPE"}
+  ]
+}

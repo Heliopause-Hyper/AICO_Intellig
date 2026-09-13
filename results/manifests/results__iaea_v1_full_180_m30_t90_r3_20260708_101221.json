@@ -1,0 +1,87 @@
+{
+  "canonical_paths": {
+    "bucket_summary.json": [],
+    "config_used.json": [],
+    "dataset.jsonl": [],
+    "filter_summary.json": [],
+    "full_sweep_config.json": [],
+    "invalid_instances.jsonl": [],
+    "iteration_event.jsonl": [],
+    "merge_summary.json": [],
+    "optimization_history.db": [
+      "results/iaea_v1_full_180_m30_t90_r3_20260708_101221/shard_00/optimization_history.db",
+      "results/iaea_v1_full_180_m30_t90_r3_20260708_101221/shard_01/optimization_history.db",
+      "results/iaea_v1_full_180_m30_t90_r3_20260708_101221/shard_02/optimization_history.db",
+      "results/iaea_v1_full_180_m30_t90_r3_20260708_101221/shard_03/optimization_history.db"
+    ],
+    "optimizer_run.jsonl": [],
+    "problem_instance.jsonl": [],
+    "run_checkpoint.jsonl": [],
+    "run_summary.json": [],
+    "run_summary.jsonl": [],
+    "runs.jsonl": [],
+    "stats.json": []
+  },
+  "canonical_sources": {
+    "bucket_summary.json": "missing",
+    "config_used.json": "missing",
+    "dataset.jsonl": "missing",
+    "filter_summary.json": "missing",
+    "full_sweep_config.json": "missing",
+    "invalid_instances.jsonl": "missing",
+    "iteration_event.jsonl": "missing",
+    "merge_summary.json": "missing",
+    "optimization_history.db": "shard_aggregate",
+    "optimizer_run.jsonl": "missing",
+    "problem_instance.jsonl": "missing",
+    "run_checkpoint.jsonl": "missing",
+    "run_summary.json": "missing",
+    "run_summary.jsonl": "missing",
+    "runs.jsonl": "missing",
+    "stats.json": "missing"
+  },
+  "canonical_strategy": "shard_only",
+  "classification": "sharded_experiment",
+  "config": {
+    "max_iterations": null,
+    "optimizer_total_config": null,
+    "seed_count": null,
+    "source_path": null,
+    "source_script": null,
+    "time_limit_s": null
+  },
+  "generated_at": "2026-09-05T07:30:54+00:00",
+  "is_sharded": true,
+  "manifest_version": 1,
+  "name": "iaea_v1_full_180_m30_t90_r3_20260708_101221",
+  "notes": [
+    "No canonical run_summary.jsonl is available at root or across all shards."
+  ],
+  "path": "results/iaea_v1_full_180_m30_t90_r3_20260708_101221",
+  "record_counts": {
+    "bucket_summary.json": 0,
+    "config_used.json": 0,
+    "dataset.jsonl": 0,
+    "filter_summary.json": 0,
+    "full_sweep_config.json": 0,
+    "invalid_instances.jsonl": 0,
+    "iteration_event.jsonl": 0,
+    "merge_summary.json": 0,
+    "optimization_history.db": 4,
+    "optimizer_run.jsonl": 0,
+    "problem_instance.jsonl": 0,
+    "run_checkpoint.jsonl": 0,
+    "run_summary.json": 0,
+    "run_summary.jsonl": 0,
+    "runs.jsonl": 0,
+    "stats.json": 0
+  },
+  "root_files": [],
+  "shard_count": 4,
+  "shard_dirs": [
+    "shard_00",
+    "shard_01",
+    "shard_02",
+    "shard_03"
+  ]
+}

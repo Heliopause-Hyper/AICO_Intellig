@@ -1,0 +1,109 @@
+{
+  "canonical_paths": {
+    "bucket_summary.json": [],
+    "config_used.json": [
+      "results/sns_v1_full18_i150_r2/config_used.json"
+    ],
+    "dataset.jsonl": [
+      "results/sns_v1_full18_i150_r2/dataset.jsonl"
+    ],
+    "filter_summary.json": [],
+    "full_sweep_config.json": [],
+    "invalid_instances.jsonl": [
+      "results/sns_v1_full18_i150_r2/invalid_instances.jsonl"
+    ],
+    "iteration_event.jsonl": [
+      "results/sns_v1_full18_i150_r2/iteration_event.jsonl"
+    ],
+    "merge_summary.json": [],
+    "optimization_history.db": [
+      "results/sns_v1_full18_i150_r2/optimization_history.db"
+    ],
+    "optimizer_run.jsonl": [
+      "results/sns_v1_full18_i150_r2/optimizer_run.jsonl"
+    ],
+    "problem_instance.jsonl": [
+      "results/sns_v1_full18_i150_r2/problem_instance.jsonl"
+    ],
+    "run_checkpoint.jsonl": [
+      "results/sns_v1_full18_i150_r2/run_checkpoint.jsonl"
+    ],
+    "run_summary.json": [],
+    "run_summary.jsonl": [
+      "results/sns_v1_full18_i150_r2/run_summary.jsonl"
+    ],
+    "runs.jsonl": [
+      "results/sns_v1_full18_i150_r2/runs.jsonl"
+    ],
+    "stats.json": []
+  },
+  "canonical_sources": {
+    "bucket_summary.json": "missing",
+    "config_used.json": "root",
+    "dataset.jsonl": "root",
+    "filter_summary.json": "missing",
+    "full_sweep_config.json": "missing",
+    "invalid_instances.jsonl": "root",
+    "iteration_event.jsonl": "root",
+    "merge_summary.json": "missing",
+    "optimization_history.db": "root",
+    "optimizer_run.jsonl": "root",
+    "problem_instance.jsonl": "root",
+    "run_checkpoint.jsonl": "root",
+    "run_summary.json": "missing",
+    "run_summary.jsonl": "root",
+    "runs.jsonl": "root",
+    "stats.json": "missing"
+  },
+  "canonical_strategy": "single_dir",
+  "classification": "raw_experiment",
+  "config": {
+    "max_iterations": 15,
+    "optimizer_total_config": null,
+    "seed_count": null,
+    "source_path": "results/sns_v1_full18_i150_r2/config_used.json",
+    "source_script": null,
+    "time_limit_s": 60
+  },
+  "generated_at": "2026-09-05T07:30:54+00:00",
+  "is_sharded": false,
+  "manifest_version": 1,
+  "name": "sns_v1_full18_i150_r2",
+  "notes": [
+    "SQLite history is preserved alongside JSONL views."
+  ],
+  "path": "results/sns_v1_full18_i150_r2",
+  "record_counts": {
+    "bucket_summary.json": 0,
+    "config_used.json": 1,
+    "dataset.jsonl": 45,
+    "filter_summary.json": 0,
+    "full_sweep_config.json": 0,
+    "invalid_instances.jsonl": 0,
+    "iteration_event.jsonl": 30763,
+    "merge_summary.json": 0,
+    "optimization_history.db": 1,
+    "optimizer_run.jsonl": 1636,
+    "problem_instance.jsonl": 42,
+    "run_checkpoint.jsonl": 31416,
+    "run_summary.json": 0,
+    "run_summary.jsonl": 1612,
+    "runs.jsonl": 1652,
+    "stats.json": 0
+  },
+  "root_files": [
+    "config_used.json",
+    "dataset.jsonl",
+    "invalid_instances.jsonl",
+    "iteration_event.jsonl",
+    "optimization_history.db",
+    "optimizer_run.jsonl",
+    "problem_instance.jsonl",
+    "run.log",
+    "run_checkpoint.jsonl",
+    "run_summary.jsonl",
+    "runs.jsonl"
+  ],
+  "shard_count": 0,
+  "shard_dirs": []
+}

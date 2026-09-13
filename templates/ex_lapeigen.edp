@@ -1,0 +1,50 @@
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "ex_lapeigen_input.txt");
+string outputFilePath = getARGV("-output", "ex_lapeigen_output.txt");
+
+func real readParam(string paramName, real defaultVal) {
+    ifstream file(inputFilePath);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        if (line.find(paramName + "=") == 0) {
+            int startPos = paramName.length + 1;
+            string valueStr = line(startPos : line.length - 1);
+            real value = atof(valueStr);
+            return value;
+        }
+    }
+    return defaultVal;
+}
+
+int n = int(readParam("n", 20.0));
+real sigma = readParam("sigma", 0.0);
+int nev = int(readParam("nev", 6.0));
+nev = max(1, nev);
+
+mesh Th = square(n, n, [pi*y, pi*x]);
+fespace Vh(Th, P2);
+Vh u1, u2;
+
+varf a(u1,u2) = int2d(Th)(dx(u1)*dx(u2) + dy(u1)*dy(u2) - sigma*u1*u2) + on(1,2,3,4,u1=0);
+varf b([u1],[u2]) = int2d(Th)(u1*u2);
+
+matrix A = a(Vh,Vh,solver=sparsesolver);
+matrix B = b(Vh,Vh,solver=CG,eps=1e-20);
+
+real[int] ev(nev);
+Vh[int] eV(nev);
+
+int k = EigenValue(A,B,sym=true,sigma=sigma,value=ev,vector=eV,tol=1e-10,maxit=0,ncv=0,which="LM");
+k = min(k, nev);
+
+real ev0 = (k > 0) ? ev[0] : 1e30;
+real ev1 = (k > 1) ? ev[1] : 1e30;
+real ev2 = (k > 2) ? ev[2] : 1e30;
+
+ofstream out(outputFilePath);
+out << "k=" << k << endl;
+out << "ev0=" << ev0 << endl;
+out << "ev1=" << ev1 << endl;
+out << "ev2=" << ev2 << endl;

@@ -1,0 +1,48 @@
+{
+  "budget": {
+    "max_iterations": 12,
+    "time_limit_s": 45
+  },
+  "seeds": [0, 1, 2],
+  "candidates": [
+    {"optimizer": "SciPy", "method": "Powell"},
+    {"optimizer": "Optuna", "method": "TPE"},
+    {"optimizer": "Hyperopt", "method": "TPE"}
+  ],
+  "instances": [
+    {"problem_type": "thmf", "opt_params": ["k1", "Bi"], "objective_expression": "-result.get('efficiency', -1e10)"},
+    {"problem_type": "thmf", "opt_params": ["k2", "k5"], "objective_expression": "result.get('maxtemp', 1e10)"},
+    {"problem_type": "thmf", "opt_params": ["Bi", "k3", "k4"], "objective_expression": "abs(result.get('tempuniformity', 1e10))"},
+    {"problem_type": "thmf", "opt_params": ["k1", "k2", "k3"], "objective_expression": "-result.get('totalheatflux', -1e10)"},
+
+    {"problem_type": "sns", "opt_params": ["uMax", "Mu"], "objective_expression": "result.get('pressuredrop', 1e10)"},
+    {"problem_type": "sns", "opt_params": ["uMax", "R"], "objective_expression": "result.get('avgpressure', 1e10)"},
+    {"problem_type": "sns", "opt_params": ["Mu", "L", "D"], "objective_expression": "abs(result.get('pressuredrop', 1e10) - 500.0)"},
+    {"problem_type": "sns", "opt_params": ["nn", "R"], "objective_expression": "result.get('pressuredrop', 1e10)"},
+
+    {"problem_type": "ex_heat_time", "opt_params": ["dt", "kf"], "objective_expression": "result.get('cpu', 1e10)"},
+    {"problem_type": "ex_heat_time", "opt_params": ["kf", "ue"], "objective_expression": "abs(result.get('u_mean', 1e10) - 12.0)"},
+    {"problem_type": "ex_heat_time", "opt_params": ["k_hi", "k_lo"], "objective_expression": "abs(result.get('u_min', 1e10) - 5.0)"},
+    {"problem_type": "ex_heat_time", "opt_params": ["dt", "T"], "objective_expression": "result.get('cpu', 1e10) + 0.001*abs(result.get('u_mean', 0.0) - 12.0)"},
+
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["sigma1", "sigma2"], "objective_expression": "-result.get('u_mean', -1e10)"},
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["rho", "r"], "objective_expression": "result.get('u_max', 1e10)"},
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["rho"], "objective_expression": "abs(result.get('u_min', 1e10))"},
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["r", "sigma1"], "objective_expression": "-result.get('u_mean', -1e10)"},
+
+    {"problem_type": "ex_lapeigen", "opt_params": ["n"], "objective_expression": "abs(result.get('ev0', 1e10) - 2.0)"},
+    {"problem_type": "ex_lapeigen", "opt_params": ["sigma"], "objective_expression": "abs(result.get('ev1', 1e10) - 5.0)"},
+    {"problem_type": "ex_lapeigen", "opt_params": ["n", "sigma"], "objective_expression": "abs(result.get('ev0', 1e10) - 2.0) + abs(result.get('ev1', 1e10) - 5.0)"},
+    {"problem_type": "ex_lapeigen", "opt_params": ["nev"], "objective_expression": "abs(result.get('ev2', 1e10) - 5.0)"},
+
+    {"problem_type": "ex_optimcontrol_inverse", "opt_params": ["z0", "z1", "z2"], "objective_expression": "result.get('J', 1e10)"},
+    {"problem_type": "ex_optimcontrol_inverse", "opt_params": ["z0"], "objective_expression": "result.get('J', 1e10)"},
+    {"problem_type": "ex_optimcontrol_inverse", "opt_params": ["z1", "z2"], "objective_expression": "result.get('J', 1e10) + 1e-3*result.get('u_l2', 0.0)"},
+    {"problem_type": "ex_optimcontrol_inverse", "opt_params": ["z2"], "objective_expression": "result.get('u_l2', 1e10)"},
+
+    {"problem_type": "ex_vi_obstacle", "opt_params": ["gmax"], "objective_expression": "result.get('active_frac', 1e10)"},
+    {"problem_type": "ex_vi_obstacle", "opt_params": ["c"], "objective_expression": "result.get('iters', 1e10)"},
+    {"problem_type": "ex_vi_obstacle", "opt_params": ["gmax", "c"], "objective_expression": "result.get('active_frac', 1e10) + 0.1*result.get('iters', 0.0)"},
+    {"problem_type": "ex_vi_obstacle", "opt_params": ["f"], "objective_expression": "result.get('u_mean', 1e10)"}
+  ]
+}

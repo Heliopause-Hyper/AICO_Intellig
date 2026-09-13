@@ -1,0 +1,303 @@
+load "UMFPACK64";
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "/Users/harperye/Desktop/AICO/templates/sns_input.txt");
+string outputFilePath = getARGV("-output", "/Users/harperye/Desktop/AICO/templates/sns_output.txt");
+string figPrefix = getARGV("-figprefix", "");
+string figMode = getARGV("-figmode", "full");
+real pZmin = getARGV("-pZmin", -1.0);
+real pZmax = getARGV("-pZmax", -1.0);
+real vZmin = getARGV("-vZmin", -1.0);
+real vZmax = getARGV("-vZmax", -1.0);
+
+// Declare inputFile globally
+ifstream inputFile(inputFilePath);
+
+// Function to read parameters from file
+func real readParam(string paramName, real defaultValue) {
+    inputFile.seekg(0); // Reset file pointer to the beginning of the file
+    string line;
+    real value = defaultValue;
+    bool found = false;
+    // Read the first line
+    getline(inputFile, line);
+    while (inputFile.good()) { // Check if the stream is still good after reading
+        if (line.find(paramName + "=") == 0) {
+            int eqPos = line.find("=");
+            string valStr = line(eqPos + 1 : line.length - 1);
+            // Check if the value string contains 'Bg' or 'bou'
+            if (valStr.find("Bg") != -1 || valStr.find("bou") != -1) {
+                // If 'Bg' or 'bou' is present, try to extract the numerical value before it
+                int nonNumericPos = min(valStr.find("Bg"), valStr.find("bou"));
+                if (nonNumericPos != -1) {
+                    valStr = valStr(0 : nonNumericPos - 1);
+                }
+            }
+            // Attempt to convert the string to a real number
+            if (valStr.length > 0) {
+                value = strtod(valStr);
+                found = true;
+                break; // Found the parameter, no need to continue searching
+            }
+        }
+        // Read the next line
+        getline(inputFile, line);
+    }
+    return value;
+}
+
+// Parameters - 修改为可接受命令行参数
+real uMax = readParam("uMax", 10.);  // 默认值10，可通过-uMax参数修改
+real Mu = readParam("Mu", 0.1);      // 默认值0.1，可通过-Mu参数修改
+
+// Mesh parameters - 同样支持命令行参数
+int nn = readParam("nn", 10);        // 网格质量
+real L = readParam("L", 5.);         // 管道长度
+real D = readParam("D", 1.);         // 管道高度
+real R = readParam("R", 0.2);        // 障碍物半径
+
+int Wall = 1;   //Pipe wall label
+int Inlet = 2;  //Pipe inlet label
+int Outlet = 3; //Pipe outlet label
+
+border b1(t=0., 1.){x=L*t; y=0.; label=Wall;};
+border b2(t=0., 1.){x=L; y=D*t; label=Outlet;};
+border b3(t=0., 1.){x=L-L*t; y=D; label=Wall;};
+border b4(t=0., 1.){x=0.; y=D-D*t; label=Inlet;};
+border b5(t=1., 0.){x=L/2+2*R*cos(2*pi*t); y=D/2+R*sin(2*pi*t); label=Wall;}; //Empty ellipse : obstacle
+
+int nnL = max(2., L*nn);
+int nnD = max(2., D*nn);
+int nnDisk = max(2., floor(1.5*2*pi*R*nn));
+
+mesh Th = buildmesh(b1(nnL) + b2(nnD) + b3(nnL) + b4(nnD)+b5(nnDisk));
+
+// Fespace
+fespace Uh(Th, [P2, P2]);
+Uh [ux, uy], [vx, vy], [ux1, uy1], [dux, duy];
+
+fespace Ph(Th, P1);
+Ph p, q, dp;
+
+// Macro
+macro Gradient(u) [dx(u), dy(u)] //
+macro Divergence(ux, uy) (dx(ux) + dy(uy)) //
+macro UgradV(ux,uy,vx,vy) [ [ux,uy]'*[dx(vx),dy(vx)] , [ux,uy]'*[dx(vy),dy(vy)] ] //
+
+real arrns = 1e-9;
+
+macro ns() {
+  int n;
+  real err=0;
+  S;
+ /* Newton Loop  */
+  for(n=0; n< 15; n++) {
+    LinNS;
+    p[] = p[] + dp[];
+    dux[] = ux1[] - ux[];
+    duy[] = uy1[] - uy[];
+    err = sqrt(int2d(Th)(Gradient(dux)'*Gradient(dux)+Gradient(duy)'*Gradient(duy))) /
+      sqrt(int2d(Th)(Gradient(ux)'*Gradient(ux) + Gradient(uy)'*Gradient(uy)));
+    ux[] = ux1[];
+    uy[] = uy1[];
+    cout << err << " / " << arrns << endl;
+    cout.flush;
+    if(err < arrns) break;
+  }
+  /* Newton loop has not converged */
+  if(err > arrns) {
+    cout << "NS Warning : non convergence : err = " << err << " / eps = " << arrns << endl;
+  }
+} //EOF
+
+// Function
+func uIn = uMax * (1.-(y-D/2.)^2/(D/2.)^2);
+
+// Problem
+problem S ([ux, uy, p],[vx, vy, q])
+        = int2d(Th)(Mu * (Gradient(ux)' * Gradient(vx)
+                + Gradient(uy)' * Gradient(vy) )
+                - p * Divergence(vx, vy)
+                - Divergence(ux, uy) * q)
+        + on(Inlet, ux=uIn, uy=0.)
+        + on(Wall, ux=0., uy=0.)
+        + on(Outlet, p=0); // MODIFIED: Added pressure BC
+
+problem LinNS([ux1,uy1,dp],[vx,vy,q]) =
+     int2d(Th)(Mu*(Gradient(ux1)'*Gradient(vx)
+               +   Gradient(uy1)'*Gradient(vy) )
+               + UgradV(ux1,uy1, ux, uy)'*[vx,vy]
+               + UgradV(ux,uy,ux1,uy1)'*[vx,vy]
+               - Divergence(ux1,uy1)*q - Divergence(vx,vy)*dp)
+     -int2d(Th)(UgradV(ux,uy, ux, uy)'*[vx,vy])
+     +on(Inlet, ux1=uIn, uy1=0.)
+     +on(Wall, ux1=0.,uy1=0.)
+     +on(Outlet, dp=0); // MODIFIED: Added pressure update BC
+
+// ADDED: Run solver and print result
+ns; // Call the solver
+
+// 计算真正的压力降：入口平均压力 - 出口平均压力
+real inletPressure = int1d(Th, Inlet)(p)/int1d(Th, Inlet)(1.0);
+real outletPressure = int1d(Th, Outlet)(p)/int1d(Th, Outlet)(1.0);
+real pressureDrop = inletPressure - outletPressure;
+real avgPressure = int2d(Th)(p) / Th.area;
+real pmin = p[].min;
+real pmax = p[].max;
+Ph velocitymagnitude = sqrt(ux^2 + uy^2);
+real velmagmin = velocitymagnitude[].min;
+real velmagmax = velocitymagnitude[].max;
+
+    ofstream output(outputFilePath);
+    output << "pressuredrop=" << pressureDrop << endl;
+    output << "avgpressure=" << avgPressure << endl;
+    output << "inletpressure=" << inletPressure << endl;
+    output << "outletpressure=" << outletPressure << endl;
+    output << "pmin=" << pmin << endl;
+    output << "pmax=" << pmax << endl;
+    output << "velmagmin=" << velmagmin << endl;
+    output << "velmagmax=" << velmagmax << endl;
+//    output.close(); // This line should be removed
+
+
+// // 1. 压力场分布 - 平面版
+// plot(p, 
+//      fill=true, 
+//      value=true, 
+//      nbiso=20,
+//      wait=true,
+//      aspectratio=1,            // 保持纵横比
+//      bb=[[0,5],[0,1]],        // 边界框，给图例留出空间
+//      cmm="Pressure Field (Pa) - uMax=" + uMax + ", Mu=" + Mu,
+//      ps="snspressure.eps");
+
+// // 2. 速度矢量场 - 平面版
+// plot([ux, uy], 
+//      coef=0.08,               // 调整箭头大小
+//      wait=true,
+//      aspectratio=1,
+//      bb=[[0,5],[0,1]],
+//      cmm="Velocity Field (m/s) - uMax=" + uMax + ", Mu=" + Mu,
+//      ps="snsvelocity.eps");
+
+// // 3. 速度大小分布 - 平面版
+// Ph velocitymagnitude = sqrt(ux^2 + uy^2);
+// plot(velocitymagnitude, 
+//      fill=true, 
+//      value=true, 
+//      nbiso=20,
+//      wait=true,
+//      aspectratio=1,
+//      bb=[[0,5],[0,1]],
+//      cmm="Velocity Magnitude (m/s) - uMax=" + uMax + ", Mu=" + Mu,
+//      ps="snsvelocitymagnitude.eps");
+
+// // 4. 计算网格 - 平面版
+// plot(Th, 
+//      wait=true,
+//      aspectratio=1,
+//      bb=[[0,5],[0,1]],
+//      cmm="Computational Mesh - Elements: " + Th.nt + ", Vertices: " + Th.nv,
+//      ps="snsmesh.eps");
+
+// 5. 流线图 - 平面版
+// 计算流函数用于绘制流线
+fespace Psih(Th, P2);
+Psih psi, v;
+solve StreamFunction(psi, v) = 
+    int2d(Th)(dx(psi)*dx(v) + dy(psi)*dy(v))
+    + int2d(Th)(uy*dx(v) - ux*dy(v))
+    + on(Wall, Inlet, Outlet, psi=0);
+
+if (figPrefix != "") {
+    real vmax = velmagmax;
+    real arrowcoef = (vmax > 1e-10) ? min(1.0, max(0.05, 0.3/vmax)) : 0.3;
+    if (pZmax > pZmin) {
+        real[int] pViso(21);
+        for (int i = 0; i < pViso.n; i++) {
+            pViso[i] = pZmin + (pZmax - pZmin) * i / (pViso.n - 1);
+        }
+        plot(p,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             viso=pViso,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_pressure.eps",
+             cmm="");
+    } else {
+        plot(p,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_pressure.eps",
+             cmm="");
+    }
+    if (vZmax > vZmin) {
+        real[int] vViso(21);
+        for (int i = 0; i < vViso.n; i++) {
+            vViso[i] = vZmin + (vZmax - vZmin) * i / (vViso.n - 1);
+        }
+        plot(velocitymagnitude,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             viso=vViso,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_velmag.eps",
+             cmm="");
+    } else {
+        plot(velocitymagnitude,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_velmag.eps",
+             cmm="");
+    }
+    if (figMode == "full") {
+        plot([ux, uy],
+             wait=false,
+             coef=arrowcoef,
+             value=false,
+             ps=figPrefix + "_velocity.eps",
+             cmm="Velocity field - uMax=" + uMax + ", Mu=" + Mu);
+        plot(psi,
+             wait=false,
+             nbiso=15,
+             ps=figPrefix + "_streamlines.eps",
+             cmm="Streamlines - uMax=" + uMax + ", Mu=" + Mu);
+    }
+}
+
+load "iovtk"
+// 绘制与导出 SNS 几何
+// plot([ux, uy],
+//      coef=arrowcoef,
+//      value=false,
+//      wait=true,
+//      ps="sns_velocity.eps",
+//      cmm="Velocity field (coef=" + arrowcoef + ") - uMax=" + uMax + ", Mu=" + Mu);
+
+// plot(Th, wait=true, fill=false, cmm="SNS duct geometry");
+// plot(Th, ps="sns_geometry.eps", fill=true);
+// savevtk("sns_geometry.vtu", Th);
+
+// 新增第二张速度矢量图（更密、更大箭头，单独文件）

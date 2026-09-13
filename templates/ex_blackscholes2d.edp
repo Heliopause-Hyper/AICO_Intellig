@@ -1,0 +1,64 @@
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "ex_blackscholes2d_input.txt");
+string outputFilePath = getARGV("-output", "ex_blackscholes2d_output.txt");
+
+func real readParam(string paramName, real defaultVal) {
+    ifstream file(inputFilePath);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        if (line.find(paramName + "=") == 0) {
+            int startPos = paramName.length + 1;
+            string valueStr = line(startPos : line.length - 1);
+            real value = atof(valueStr);
+            return value;
+        }
+    }
+    return defaultVal;
+}
+
+real sigma1 = readParam("sigma1", 0.3);
+real sigma2 = readParam("sigma2", 0.3);
+real rho = readParam("rho", 0.3);
+real r = readParam("r", 0.05);
+real K = readParam("K", 40.0);
+int m = int(readParam("m", 30.0));
+real L = readParam("L", 80.0);
+real LL = readParam("LL", 80.0);
+real dt = readParam("dt", 0.01);
+real T = readParam("T", 1.0);
+int j = 0;
+
+mesh th = square(m, m, [L*x, LL*y]);
+fespace Vh(th, P1);
+Vh u = max(K - max(x, y), 0.);
+Vh xveloc, yveloc, v, uold;
+
+for (int n = 0; n*dt <= T; n++) {
+    xveloc = -x*r + x*sigma1^2 + x*rho*sigma1*sigma2/2;
+    yveloc = -y*r + y*sigma2^2 + y*rho*sigma1*sigma2/2;
+    uold = u;
+    solve eq1(u, v, init=j, solver=LU)
+        = int2d(th)(
+              u*v*(r + 1/dt)
+            + dx(u)*dx(v)*(x*sigma1)^2/2
+            + dy(u)*dy(v)*(y*sigma2)^2/2
+            + dy(u)*dx(v)*rho*sigma1*sigma2*x*y/2
+            + dx(u)*dy(v)*rho*sigma1*sigma2*x*y/2
+        )
+        + int2d(th)(
+            - v*convect([xveloc, yveloc], dt, uold)/dt
+        )
+        + on(2,3,u=0);
+}
+
+real area = int2d(th)(1.0);
+real uMean = int2d(th)(u) / area;
+real uMax = u[].max;
+real uMin = u[].min;
+
+ofstream out(outputFilePath);
+out << "u_mean=" << uMean << endl;
+out << "u_max=" << uMax << endl;
+out << "u_min=" << uMin << endl;

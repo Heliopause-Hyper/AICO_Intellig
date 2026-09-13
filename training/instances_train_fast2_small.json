@@ -1,0 +1,34 @@
+{
+  "budget": {
+    "max_iterations": 15,
+    "time_limit_s": 60
+  },
+  "seeds": [0, 1],
+  "candidates": [
+    {"optimizer": "SciPy", "method": "Powell"},
+    {"optimizer": "SciPy", "method": "DE"},
+    {"optimizer": "Optuna", "method": "TPE"},
+    {"optimizer": "Hyperopt", "method": "TPE"},
+    {"optimizer": "Nevergrad", "method": "NGOpt"}
+  ],
+  "instances": [
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["sigma1", "sigma2"], "objective_expression": "-result.get('u_mean', -1e10)"},
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["rho", "r"], "objective_expression": "result.get('u_max', 1e10)"},
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["rho"], "objective_expression": "abs(result.get('u_min', 1e10))"},
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["r", "sigma1"], "objective_expression": "-result.get('u_mean', -1e10)"},
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["dt", "T"], "objective_expression": "result.get('u_max', 1e10)"},
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["K", "r"], "objective_expression": "-result.get('u_mean', -1e10)"},
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["sigma2", "rho"], "objective_expression": "abs(result.get('u_min', 1e10))"},
+    {"problem_type": "ex_blackscholes2d", "opt_params": ["sigma1"], "objective_expression": "result.get('u_max', 1e10)"},
+
+    {"problem_type": "ex_lapeigen", "opt_params": ["n"], "objective_expression": "abs(result.get('ev0', 1e10) - 2.0)"},
+    {"problem_type": "ex_lapeigen", "opt_params": ["sigma"], "objective_expression": "abs(result.get('ev1', 1e10) - 5.0)"},
+    {"problem_type": "ex_lapeigen", "opt_params": ["n", "sigma"], "objective_expression": "abs(result.get('ev0', 1e10) - 2.0) + abs(result.get('ev1', 1e10) - 5.0)"},
+    {"problem_type": "ex_lapeigen", "opt_params": ["nev"], "objective_expression": "abs(result.get('ev2', 1e10) - 5.0)"},
+
+    {"problem_type": "ex_poisson_adapt_indicator", "opt_params": ["err0"], "objective_expression": "result.get('nv', 1e10)"},
+    {"problem_type": "ex_poisson_adapt_indicator", "opt_params": ["nIter"], "objective_expression": "result.get('cpu', 1e10)"},
+    {"problem_type": "ex_poisson_adapt_indicator", "opt_params": ["err0", "anisomax"], "objective_expression": "result.get('nv', 1e10) + 1000.0*result.get('rho_mean', 0.0)"},
+    {"problem_type": "ex_poisson_adapt_indicator", "opt_params": ["n0"], "objective_expression": "result.get('rho_mean', 1e10)"}
+  ]
+}

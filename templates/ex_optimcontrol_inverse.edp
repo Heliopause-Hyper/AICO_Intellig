@@ -1,0 +1,52 @@
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "ex_optimcontrol_inverse_input.txt");
+string outputFilePath = getARGV("-output", "ex_optimcontrol_inverse_output.txt");
+
+func real readParam(string paramName, real defaultVal) {
+    ifstream file(inputFilePath);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        if (line.find(paramName + "=") == 0) {
+            int startPos = paramName.length + 1;
+            string valueStr = line(startPos : line.length - 1);
+            real value = atof(valueStr);
+            return value;
+        }
+    }
+    return defaultVal;
+}
+
+border aa(t=0, 2*pi) {x = 5*cos(t); y = 5*sin(t);}
+border bb(t=0, 2*pi) {x = cos(t); y = sin(t);}
+border cc(t=0, 2*pi) {x = -3+cos(t); y = sin(t);}
+border dd(t=0, 2*pi) {x = cos(t); y = -3+sin(t);}
+mesh th = buildmesh(aa(50) + bb(25) + cc(25) + dd(25));
+
+fespace Vh(th, P1);
+Vh Ib = ((x^2+y^2)<1.0001), Ic = (((x+3)^2+ y^2)<1.0001), Id = ((x^2+(y+3)^2)<1.0001), Ie = (((x-1)^2+ y^2)<=4);
+Vh u, uh, ud;
+
+real[int] z(3);
+problem A(u, uh)
+  = int2d(th)(
+    (1 + z[0]*Ib + z[1]*Ic + z[2]*Id)*(dx(u)*dx(uh) + dy(u)*dy(uh))
+  )
+  + on(aa, u=x^3-y^3);
+
+z[0] = 2.0; z[1] = 3.0; z[2] = 4.0;
+A;
+ud = u;
+
+z[0] = readParam("z0", 1.0);
+z[1] = readParam("z1", 1.0);
+z[2] = readParam("z2", 1.0);
+A;
+
+real J = int2d(th)(Ie*(u-ud)^2);
+real uL2 = sqrt(int2d(th)(u*u));
+
+ofstream out(outputFilePath);
+out << "J=" << J << endl;
+out << "u_l2=" << uL2 << endl;

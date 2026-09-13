@@ -1,0 +1,23 @@
+{
+  "auto": true,
+  "auto_mode": "iaea_family_v1",
+  "stable_instance_ids": true,
+  "resume": false,
+  "generate_only": true,
+  "validate_instances": true,
+  "sns_family_probe_endpoints": true,
+  "iaea_family_seed": 37,
+  "iaea_family_count": 180,
+  "iaea_family_problem_type": "neutron_diffusion_family_v1",
+  "iaea_family_width_frac_range": [0.35, 1.0],
+  "iaea_family_target_bucket_ratios": {
+    "mid": 0.55,
+    "edge": 0.25,
+    "outside": 0.20
+  },
+  "budget": {
+    "max_iterations": 18,
+    "time_limit_s": 60
+  },
+  "seeds": [0]
+}

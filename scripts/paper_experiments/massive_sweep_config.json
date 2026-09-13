@@ -1,0 +1,16 @@
+{
+  "auto": true,
+  "auto_mode": "auto",
+  "auto_max_total_instances": 10000,
+  "auto_per_problem_instances": 500,
+  "auto_include_corca": false,
+  "stable_instance_ids": true,
+  "resume": true,
+  "budget": {
+    "max_iterations": 50,
+    "time_limit_s": 120
+  },
+  "seeds": [0, 1, 2],
+  "instances_sample_clean": 0,
+  "instances_sample_hard": 0
+}

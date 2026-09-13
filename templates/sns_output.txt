@@ -1,0 +1,4 @@
+pressuredrop=914.235
+avgpressure=438.647
+inletpressure=914.235
+outletpressure=1.88939e-34

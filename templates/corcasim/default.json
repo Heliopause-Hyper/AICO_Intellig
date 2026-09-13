@@ -1,0 +1,33 @@
+{
+  "state_input_defaults": {
+    "Pp:": 15.5,
+    "Prk:": 50,
+    "Xe:": "\"EQUI\"",
+    "Tin:": 292.1,
+    "Databank:": "\"Yes\"",
+    "Reconstruction:": "\"Yes\"",
+    "pos1: R, K 04 ": 225,
+    "pos2: R, F 04 ": 225,
+    "pos3: R, M 06 ": 225,
+    "pos4: R, J 06 ": 225,
+    "pos5: R, G 06 ": 225,
+    "pos6: R, D 06 ": 225,
+    "pos7: R, K 07 ": 225,
+    "pos8: R, F 07 ": 225,
+    "pos9: R, K 09 ": 225,
+    "pos10: R, F 09 ": 225,
+    "pos11: R, M 10 ": 225,
+    "pos12: R, J 10 ": 225,
+    "pos13: R, G 10 ": 225,
+    "pos14: R, D 10 ": 225,
+    "pos15: R, K 12 ": 225,
+    "pos16: R, F 12 ": 225,
+    "End": "\"stop\""
+  },
+  "rodposition_defaults": {
+    "enable_critical_bore_search": true,
+    "bore_ppm": -1
+  },
+  "outputs": ["keff", "FQ", "FDH", "AO", "deltai", "bore", "burnup"]
+}
+

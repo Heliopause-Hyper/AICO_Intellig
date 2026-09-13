@@ -1,0 +1,30 @@
+{
+  "budget": {
+    "max_iterations": 15,
+    "time_limit_s": 60
+  },
+  "candidates": [
+    {"optimizer": "SciPy", "method": "Powell"},
+    {"optimizer": "SciPy", "method": "Nelder-Mead"},
+    {"optimizer": "Optuna", "method": "Random"},
+    {"optimizer": "Hyperopt", "method": "Random"},
+    {"optimizer": "Nevergrad", "method": "NGOpt"}
+  ],
+  "instances": [
+    {
+      "problem_type": "ex_heat_time",
+      "opt_params": ["dt", "kf"],
+      "objective_expression": "result.get('cpu', 1e10)"
+    },
+    {
+      "problem_type": "ex_lapeigen",
+      "opt_params": ["n"],
+      "objective_expression": "abs(result.get('ev0', 1e10) - 2.0)"
+    },
+    {
+      "problem_type": "ex_vi_obstacle",
+      "opt_params": ["gmax"],
+      "objective_expression": "result.get('active_frac', 1e10)"
+    }
+  ]
+}

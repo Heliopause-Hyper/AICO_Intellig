@@ -1,0 +1,23 @@
+{
+  "aggregate_jsonl_counts": {
+    "dataset.jsonl": 7872,
+    "invalid_instances.jsonl": 0,
+    "iteration_event.jsonl": 6265280,
+    "optimizer_run.jsonl": 123574,
+    "problem_instance.jsonl": 7342,
+    "run_checkpoint.jsonl": 4327644,
+    "run_summary.jsonl": 123419,
+    "runs.jsonl": 258552
+  },
+  "classes": {
+    "derived_view": 4,
+    "lightweight_dataset": 3,
+    "raw_experiment": 26,
+    "sharded_experiment": 18
+  },
+  "generated_at": "2026-09-05T07:31:03+00:00",
+  "index_csv_path": "results/curated_datasets/index.csv",
+  "index_jsonl_path": "results/curated_datasets/index.jsonl",
+  "inventory_path": "docs/DATASET_INVENTORY.md",
+  "manifest_count": 51
+}

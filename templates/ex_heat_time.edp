@@ -1,0 +1,64 @@
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "ex_heat_time_input.txt");
+string outputFilePath = getARGV("-output", "ex_heat_time_output.txt");
+
+func real readParam(string paramName, real defaultVal) {
+    ifstream file(inputFilePath);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        if (line.find(paramName + "=") == 0) {
+            int startPos = paramName.length + 1;
+            string valueStr = line(startPos : line.length - 1);
+            real value = atof(valueStr);
+            return value;
+        }
+    }
+    return defaultVal;
+}
+
+real kHi = readParam("k_hi", 1.8);
+real kLo = readParam("k_lo", 0.2);
+real kf = readParam("kf", 1.0);
+real ue = readParam("ue", 20.0);
+real T = readParam("T", 5.0);
+real dt = readParam("dt", 0.1);
+int nx = int(readParam("nx", 60.0));
+int ny = int(readParam("ny", 20.0));
+
+func k = kHi*(y < 0.5) + kLo;
+
+mesh Th = square(nx, ny, [3*x, y]);
+fespace Vh(Th, P1);
+Vh u, uold, v;
+int kk = 0;
+problem Heat(u, v, init=kk)
+  = int2d(Th)(
+      u*v/dt
+    + k*(dx(u)*dx(v) + dy(u)*dy(v))
+  )
+  + int1d(Th, 1, 3)(kf*v*u)
+  - int1d(Th, 1, 3)(kf*v*ue)
+  - int2d(Th)(uold*v/dt)
+  + on(2, 4, u=30);
+
+real cpu0 = clock();
+u = 0;
+for (real t = 0; t < T; t += dt) {
+  uold = u;
+  Heat;
+  kk++;
+}
+real cpuUsed = clock() - cpu0;
+
+real area = int2d(Th)(1.0);
+real uMean = int2d(Th)(u) / area;
+real uMax = u[].max;
+real uMin = u[].min;
+
+ofstream out(outputFilePath);
+out << "cpu=" << cpuUsed << endl;
+out << "u_mean=" << uMean << endl;
+out << "u_max=" << uMax << endl;
+out << "u_min=" << uMin << endl;

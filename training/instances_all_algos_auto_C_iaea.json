@@ -1,0 +1,17 @@
+{
+  "auto": true,
+  "budget": {
+    "max_iterations": 8,
+    "time_limit_s": 60
+  },
+  "seeds": [0, 1],
+  "auto_seed": 2,
+  "auto_instances_per_problem": 6,
+  "auto_opt_param_sizes": [1, 2, 3],
+  "auto_targets": {
+    "keff": 1.02
+  },
+  "auto_include_problem_types": [
+    "neutron_diffusion"
+  ]
+}

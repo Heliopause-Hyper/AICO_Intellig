@@ -1,0 +1,111 @@
+{
+  "canonical_paths": {
+    "bucket_summary.json": [],
+    "config_used.json": [
+      "results/sns_family_protocol_v3_instances160/config_used.json"
+    ],
+    "dataset.jsonl": [
+      "results/sns_family_protocol_v3_instances160/dataset.jsonl"
+    ],
+    "filter_summary.json": [],
+    "full_sweep_config.json": [],
+    "invalid_instances.jsonl": [
+      "results/sns_family_protocol_v3_instances160/invalid_instances.jsonl"
+    ],
+    "iteration_event.jsonl": [
+      "results/sns_family_protocol_v3_instances160/iteration_event.jsonl"
+    ],
+    "merge_summary.json": [],
+    "optimization_history.db": [
+      "results/sns_family_protocol_v3_instances160/optimization_history.db"
+    ],
+    "optimizer_run.jsonl": [
+      "results/sns_family_protocol_v3_instances160/optimizer_run.jsonl"
+    ],
+    "problem_instance.jsonl": [
+      "results/sns_family_protocol_v3_instances160/problem_instance.jsonl"
+    ],
+    "run_checkpoint.jsonl": [
+      "results/sns_family_protocol_v3_instances160/run_checkpoint.jsonl"
+    ],
+    "run_summary.json": [],
+    "run_summary.jsonl": [
+      "results/sns_family_protocol_v3_instances160/run_summary.jsonl"
+    ],
+    "runs.jsonl": [
+      "results/sns_family_protocol_v3_instances160/runs.jsonl"
+    ],
+    "stats.json": [
+      "results/sns_family_protocol_v3_instances160/stats.json"
+    ]
+  },
+  "canonical_sources": {
+    "bucket_summary.json": "missing",
+    "config_used.json": "root",
+    "dataset.jsonl": "root",
+    "filter_summary.json": "missing",
+    "full_sweep_config.json": "missing",
+    "invalid_instances.jsonl": "root",
+    "iteration_event.jsonl": "root",
+    "merge_summary.json": "missing",
+    "optimization_history.db": "root",
+    "optimizer_run.jsonl": "root",
+    "problem_instance.jsonl": "root",
+    "run_checkpoint.jsonl": "root",
+    "run_summary.json": "missing",
+    "run_summary.jsonl": "root",
+    "runs.jsonl": "root",
+    "stats.json": "root"
+  },
+  "canonical_strategy": "single_dir",
+  "classification": "raw_experiment",
+  "config": {
+    "max_iterations": 24,
+    "optimizer_total_config": null,
+    "seed_count": 1,
+    "source_path": "results/sns_family_protocol_v3_instances160/config_used.json",
+    "source_script": null,
+    "time_limit_s": 70
+  },
+  "generated_at": "2026-09-05T07:30:54+00:00",
+  "is_sharded": false,
+  "manifest_version": 1,
+  "name": "sns_family_protocol_v3_instances160",
+  "notes": [
+    "SQLite history is preserved alongside JSONL views."
+  ],
+  "path": "results/sns_family_protocol_v3_instances160",
+  "record_counts": {
+    "bucket_summary.json": 0,
+    "config_used.json": 1,
+    "dataset.jsonl": 160,
+    "filter_summary.json": 0,
+    "full_sweep_config.json": 0,
+    "invalid_instances.jsonl": 0,
+    "iteration_event.jsonl": 0,
+    "merge_summary.json": 0,
+    "optimization_history.db": 1,
+    "optimizer_run.jsonl": 0,
+    "problem_instance.jsonl": 160,
+    "run_checkpoint.jsonl": 0,
+    "run_summary.json": 0,
+    "run_summary.jsonl": 0,
+    "runs.jsonl": 0,
+    "stats.json": 1
+  },
+  "root_files": [
+    "config_used.json",
+    "dataset.jsonl",
+    "invalid_instances.jsonl",
+    "iteration_event.jsonl",
+    "optimization_history.db",
+    "optimizer_run.jsonl",
+    "problem_instance.jsonl",
+    "run_checkpoint.jsonl",
+    "run_summary.jsonl",
+    "runs.jsonl",
+    "stats.json"
+  ],
+  "shard_count": 0,
+  "shard_dirs": []
+}

@@ -1,0 +1,443 @@
+load "UMFPACK64";
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "thmf_input.txt");
+string outputFilePath = getARGV("-output", "thmf_output.txt");
+string figPrefix = getARGV("-figprefix", "");
+real tZmin = getARGV("-tZmin", -1.0);
+real tZmax = getARGV("-tZmax", -1.0);
+real qZmin = getARGV("-qZmin", -1.0);
+real qZmax = getARGV("-qZmax", -1.0);
+
+// Function to read parameters from file
+func real readParam(string paramName, real defaultVal) {
+    ifstream file(inputFilePath);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        if (line.find(paramName) == 0) {
+            int startPos = paramName.length + 1;
+            string valueStr = line(startPos : line.length - 1);
+            real value = atof(valueStr);
+            return value;
+        }
+    }
+    return defaultVal;
+}
+
+// Parameters
+real k1 = readParam("k1", 1.0);
+real k2 = readParam("k2", 1.0);
+real k3 = readParam("k3", 1.0);
+real k4 = readParam("k4", 1.0);
+real k5 = readParam("k5", 1.0);
+real Bi = readParam("Bi", 0.1);
+
+// Domain size
+real L  = 1.0;
+real H  = 1.0;
+
+// Boundary labels
+int labelBase = 1;     // base bottom (Dirichlet)
+int labelFin = 2;      // convective external surfaces
+int labelSymmetry = 3; // reserved
+
+// Geometry parameters: central vertical spine + left/right horizontal fins
+real ws = 0.10;   // spine width
+real tf = 0.06;   // fin thickness (vertical)
+real xc = L/2.0;
+real xl = xc - ws/2.0;   // spine left face x
+real xr = xc + ws/2.0;   // spine right face x
+
+// Fins reach side walls so their outer edges are on boundary
+real xLeftTip  = 0.0;
+real xRightTip = L;
+
+// Fin y-levels (ensure yLk+tf <= H)
+real yL1 = 0.16;
+real yL2 = 0.32;
+real yL3 = 0.48;
+real yL4 = 0.64;
+real yL5 = 0.80;
+
+// Closed outer boundary (counter-clockwise) - 脊柱基座为矩形
+// Bottom edge (分三段：左侧鳍片区域 + 脊柱基座 + 右侧鳍片区域)
+border BottomLeft(t = 0, xl)  { x = t; y = 0;          label = labelFin; }
+border BottomSpine(t = xl, xr){ x = t; y = 0;          label = labelBase; }
+border BottomRight(t = xr, L) { x = t; y = 0;          label = labelFin; }
+
+// Right side upward with serrations (fins protruding to x = L)
+border RightGap0(t = 0,    yL1)   { x = xr; y = t;         label = labelFin; }
+border R1Bot(t = xr, xRightTip)   { x = t; y = yL1;        label = labelFin; }
+border R1Tip(t = yL1, yL1+tf)     { x = xRightTip; y = t;  label = labelFin; }
+border R1Top(t = xRightTip, xr)   { x = t; y = yL1+tf;     label = labelFin; }
+
+border RightGap1(t = yL1+tf, yL2) { x = xr; y = t;         label = labelFin; }
+border R2Bot(t = xr, xRightTip)   { x = t; y = yL2;        label = labelFin; }
+border R2Tip(t = yL2, yL2+tf)     { x = xRightTip; y = t;  label = labelFin; }
+border R2Top(t = xRightTip, xr)   { x = t; y = yL2+tf;     label = labelFin; }
+
+border RightGap2(t = yL2+tf, yL3) { x = xr; y = t;         label = labelFin; }
+border R3Bot(t = xr, xRightTip)   { x = t; y = yL3;        label = labelFin; }
+border R3Tip(t = yL3, yL3+tf)     { x = xRightTip; y = t;  label = labelFin; }
+border R3Top(t = xRightTip, xr)   { x = t; y = yL3+tf;     label = labelFin; }
+
+border RightGap3(t = yL3+tf, yL4) { x = xr; y = t;         label = labelFin; }
+border R4Bot(t = xr, xRightTip)   { x = t; y = yL4;        label = labelFin; }
+border R4Tip(t = yL4, yL4+tf)     { x = xRightTip; y = t;  label = labelFin; }
+border R4Top(t = xRightTip, xr)   { x = t; y = yL4+tf;     label = labelFin; }
+
+border RightGap4(t = yL4+tf, yL5) { x = xr; y = t;         label = labelFin; }
+border R5Bot(t = xr, xRightTip)   { x = t; y = yL5;        label = labelFin; }
+border R5Tip(t = yL5, yL5+tf)     { x = xRightTip; y = t;  label = labelFin; }
+border R5Top(t = xRightTip, xr)   { x = t; y = yL5+tf;     label = labelFin; }
+
+// 顶部脊柱外轮廓（并集顶部）
+border SpineRightTop(t = yL5+tf, H) { x = xr; y = t;  label = labelFin; }
+border SpineTop(t = xr, xl)         { x = t; y = H;   label = labelFin; }
+border SpineLeftTop(t = H, yL5+tf)  { x = xl; y = t;  label = labelFin; }
+border L5Top(t = xl, xLeftTip)  { x = t; y = yL5+tf;      label = labelFin; }
+border L5Tip(t = yL5+tf, yL5)   { x = xLeftTip; y = t;    label = labelFin; }
+border L5Bot(t = xLeftTip, xl)  { x = t; y = yL5;         label = labelFin; }
+
+border LeftGap4(t = yL5, yL4+tf){ x = xl; y = t;          label = labelFin; }
+border L4Top(t = xl, xLeftTip)  { x = t; y = yL4+tf;      label = labelFin; }
+border L4Tip(t = yL4+tf, yL4)   { x = xLeftTip; y = t;    label = labelFin; }
+border L4Bot(t = xLeftTip, xl)  { x = t; y = yL4;         label = labelFin; }
+
+border LeftGap3(t = yL4, yL3+tf){ x = xl; y = t;          label = labelFin; }
+border L3Top(t = xl, xLeftTip)  { x = t; y = yL3+tf;      label = labelFin; }
+border L3Tip(t = yL3+tf, yL3)   { x = xLeftTip; y = t;    label = labelFin; }
+border L3Bot(t = xLeftTip, xl)  { x = t; y = yL3;         label = labelFin; }
+
+border LeftGap2(t = yL3, yL2+tf){ x = xl; y = t;          label = labelFin; }
+border L2Top(t = xl, xLeftTip)  { x = t; y = yL2+tf;      label = labelFin; }
+border L2Tip(t = yL2+tf, yL2)   { x = xLeftTip; y = t;    label = labelFin; }
+border L2Bot(t = xLeftTip, xl)  { x = t; y = yL2;         label = labelFin; }
+
+border LeftGap1(t = yL2, yL1+tf){ x = xl; y = t;          label = labelFin; }
+border L1Top(t = xl, xLeftTip)  { x = t; y = yL1+tf;      label = labelFin; }
+border L1Tip(t = yL1+tf, yL1)   { x = xLeftTip; y = t;    label = labelFin; }
+border L1Bot(t = xLeftTip, xl)  { x = t; y = yL1;         label = labelFin; }
+
+border LeftBottom(t = yL1, 0)   { x = xl; y = t;          label = labelFin; }
+real xlJoin = xl;
+real xrJoin = xr;
+
+border SpineBottomRect(t = 0, 1) { x = xl + (xr - xl)*t; y = 0;   label = labelBase; }
+border SpineTopRect(t    = 0, 1) { x = xr + (xl - xr)*t; y = H;   label = labelFin;  }
+border SpineRight0(t = 0, 1)  { x = xr; y = yL1*t; label = labelFin; }
+border SpineRight1(t = 0, 1)  { x = xr; y = yL1 + tf*t; label = labelFin; }
+border SpineRight2(t = 0, 1)  { x = xr; y = (yL1+tf) + (yL2-(yL1+tf))*t; label = labelFin; }
+border SpineRight3(t = 0, 1)  { x = xr; y = yL2 + tf*t; label = labelFin; }
+border SpineRight4(t = 0, 1)  { x = xr; y = (yL2+tf) + (yL3-(yL2+tf))*t; label = labelFin; }
+border SpineRight5(t = 0, 1)  { x = xr; y = yL3 + tf*t; label = labelFin; }
+border SpineRight6(t = 0, 1)  { x = xr; y = (yL3+tf) + (yL4-(yL3+tf))*t; label = labelFin; }
+border SpineRight7(t = 0, 1)  { x = xr; y = yL4 + tf*t; label = labelFin; }
+border SpineRight8(t = 0, 1)  { x = xr; y = (yL4+tf) + (yL5-(yL4+tf))*t; label = labelFin; }
+border SpineRight9(t = 0, 1)  { x = xr; y = yL5 + tf*t; label = labelFin; }
+border SpineRight10(t = 0, 1) { x = xr; y = (yL5+tf) + (H-(yL5+tf))*t; label = labelFin; }
+
+border SpineLeft10(t = 0, 1) { x = xl; y = H + ((yL5+tf)-H)*t; label = labelFin; }
+border SpineLeft9(t = 0, 1)  { x = xl; y = (yL5+tf) + (yL5-(yL5+tf))*t; label = labelFin; }
+border SpineLeft8(t = 0, 1)  { x = xl; y = yL5 + ((yL4+tf)-yL5)*t; label = labelFin; }
+border SpineLeft7(t = 0, 1)  { x = xl; y = (yL4+tf) + (yL4-(yL4+tf))*t; label = labelFin; }
+border SpineLeft6(t = 0, 1)  { x = xl; y = yL4 + ((yL3+tf)-yL4)*t; label = labelFin; }
+border SpineLeft5(t = 0, 1)  { x = xl; y = (yL3+tf) + (yL3-(yL3+tf))*t; label = labelFin; }
+border SpineLeft4(t = 0, 1)  { x = xl; y = yL3 + ((yL2+tf)-yL3)*t; label = labelFin; }
+border SpineLeft3(t = 0, 1)  { x = xl; y = (yL2+tf) + (yL2-(yL2+tf))*t; label = labelFin; }
+border SpineLeft2(t = 0, 1)  { x = xl; y = yL2 + ((yL1+tf)-yL2)*t; label = labelFin; }
+border SpineLeft1(t = 0, 1)  { x = xl; y = (yL1+tf) + (yL1-(yL1+tf))*t; label = labelFin; }
+border SpineLeft0(t = 0, 1)  { x = xl; y = yL1 + (0-yL1)*t; label = labelFin; }
+
+border R1BottomRect(t = 0, 1) { x = xrJoin + (xRightTip - xrJoin)*t; y = yL1;          label = labelFin; }
+border R1RightRect(t  = 0, 1) { x = xRightTip;                         y = yL1 + tf*t;   label = labelFin; }
+border R1TopRect(t    = 0, 1) { x = xRightTip + (xrJoin - xRightTip)*t; y = yL1+tf;      label = labelFin; }
+border R1LeftRect(t   = 0, 1) { x = xrJoin;                             y = yL1 + tf*(1 - t); label = labelFin; }
+
+border R2BottomRect(t = 0, 1) { x = xrJoin + (xRightTip - xrJoin)*t; y = yL2;          label = labelFin; }
+border R2RightRect(t  = 0, 1) { x = xRightTip;                         y = yL2 + tf*t;   label = labelFin; }
+border R2TopRect(t    = 0, 1) { x = xRightTip + (xrJoin - xRightTip)*t; y = yL2+tf;      label = labelFin; }
+border R2LeftRect(t   = 0, 1) { x = xrJoin;                             y = yL2 + tf*(1 - t); label = labelFin; }
+
+border R3BottomRect(t = 0, 1) { x = xrJoin + (xRightTip - xrJoin)*t; y = yL3;          label = labelFin; }
+border R3RightRect(t  = 0, 1) { x = xRightTip;                         y = yL3 + tf*t;   label = labelFin; }
+border R3TopRect(t    = 0, 1) { x = xRightTip + (xrJoin - xRightTip)*t; y = yL3+tf;      label = labelFin; }
+border R3LeftRect(t   = 0, 1) { x = xrJoin;                             y = yL3 + tf*(1 - t); label = labelFin; }
+
+border R4BottomRect(t = 0, 1) { x = xrJoin + (xRightTip - xrJoin)*t; y = yL4;          label = labelFin; }
+border R4RightRect(t  = 0, 1) { x = xRightTip;                         y = yL4 + tf*t;   label = labelFin; }
+border R4TopRect(t    = 0, 1) { x = xRightTip + (xrJoin - xRightTip)*t; y = yL4+tf;      label = labelFin; }
+border R4LeftRect(t   = 0, 1) { x = xrJoin;                             y = yL4 + tf*(1 - t); label = labelFin; }
+
+border R5BottomRect(t = 0, 1) { x = xrJoin + (xRightTip - xrJoin)*t; y = yL5;          label = labelFin; }
+border R5RightRect(t  = 0, 1) { x = xRightTip;                         y = yL5 + tf*t;   label = labelFin; }
+border R5TopRect(t    = 0, 1) { x = xRightTip + (xrJoin - xRightTip)*t; y = yL5+tf;      label = labelFin; }
+border R5LeftRect(t   = 0, 1) { x = xrJoin;                             y = yL5 + tf*(1 - t); label = labelFin; }
+
+border L1BottomRect(t = 0, 1) { x = xLeftTip + (xlJoin - xLeftTip)*t; y = yL1;          label = labelFin; }
+border L1RightRect(t  = 0, 1) { x = xlJoin;                              y = yL1 + tf*t;   label = labelFin; }
+border L1TopRect(t    = 0, 1) { x = xlJoin + (xLeftTip - xlJoin)*t;       y = yL1+tf;      label = labelFin; }
+border L1LeftRect(t   = 0, 1) { x = xLeftTip;                            y = yL1 + tf*(1 - t); label = labelFin; }
+
+border L2BottomRect(t = 0, 1) { x = xLeftTip + (xlJoin - xLeftTip)*t; y = yL2;          label = labelFin; }
+border L2RightRect(t  = 0, 1) { x = xlJoin;                              y = yL2 + tf*t;   label = labelFin; }
+border L2TopRect(t    = 0, 1) { x = xlJoin + (xLeftTip - xlJoin)*t;       y = yL2+tf;      label = labelFin; }
+border L2LeftRect(t   = 0, 1) { x = xLeftTip;                            y = yL2 + tf*(1 - t); label = labelFin; }
+
+border L3BottomRect(t = 0, 1) { x = xLeftTip + (xlJoin - xLeftTip)*t; y = yL3;          label = labelFin; }
+border L3RightRect(t  = 0, 1) { x = xlJoin;                              y = yL3 + tf*t;   label = labelFin; }
+border L3TopRect(t    = 0, 1) { x = xlJoin + (xLeftTip - xlJoin)*t;       y = yL3+tf;      label = labelFin; }
+border L3LeftRect(t   = 0, 1) { x = xLeftTip;                            y = yL3 + tf*(1 - t); label = labelFin; }
+
+border L4BottomRect(t = 0, 1) { x = xLeftTip + (xlJoin - xLeftTip)*t; y = yL4;          label = labelFin; }
+border L4RightRect(t  = 0, 1) { x = xlJoin;                              y = yL4 + tf*t;   label = labelFin; }
+border L4TopRect(t    = 0, 1) { x = xlJoin + (xLeftTip - xlJoin)*t;       y = yL4+tf;      label = labelFin; }
+border L4LeftRect(t   = 0, 1) { x = xLeftTip;                            y = yL4 + tf*(1 - t); label = labelFin; }
+
+border L5BottomRect(t = 0, 1) { x = xLeftTip + (xlJoin - xLeftTip)*t; y = yL5;          label = labelFin; }
+border L5RightRect(t  = 0, 1) { x = xlJoin;                              y = yL5 + tf*t;   label = labelFin; }
+border L5TopRect(t    = 0, 1) { x = xlJoin + (xLeftTip - xlJoin)*t;       y = yL5+tf;      label = labelFin; }
+border L5LeftRect(t   = 0, 1) { x = xLeftTip;                            y = yL5 + tf*(1 - t); label = labelFin; }
+
+mesh Th = buildmesh(
+    BottomSpine(18)
+    + RightGap0(20) + R1Bot(28) + R1Tip(16) + R1Top(28)
+    + RightGap1(20) + R2Bot(28) + R2Tip(16) + R2Top(28)
+    + RightGap2(20) + R3Bot(28) + R3Tip(16) + R3Top(28)
+    + RightGap3(20) + R4Bot(28) + R4Tip(16) + R4Top(28)
+    + RightGap4(20) + R5Bot(28) + R5Tip(16) + R5Top(28)
+    + SpineRightTop(24) + SpineTop(40) + SpineLeftTop(24)
+    + L5Top(28) + L5Tip(16) + L5Bot(28)
+    + LeftGap4(20) + L4Top(28) + L4Tip(16) + L4Bot(28)
+    + LeftGap3(20) + L3Top(28) + L3Tip(16) + L3Bot(28)
+    + LeftGap2(20) + L2Top(28) + L2Tip(16) + L2Bot(28)
+    + LeftGap1(20) + L1Top(28) + L1Tip(16) + L1Bot(28)
+    + LeftBottom(20)
+);
+// Conductivity map: per-height layer (left/right share same ki), spine uses k5
+real kbase = k5;
+func real inFinL1(real xx, real yy) { return (xx >= xLeftTip && xx <= xl && yy >= yL1 && yy <= yL1+tf) ? 1.0 : 0.0; }
+func real inFinR1(real xx, real yy) { return (xx >= xr && xx <= xRightTip && yy >= yL1 && yy <= yL1+tf) ? 1.0 : 0.0; }
+func real inFinL2(real xx, real yy) { return (xx >= xLeftTip && xx <= xl && yy >= yL2 && yy <= yL2+tf) ? 1.0 : 0.0; }
+func real inFinR2(real xx, real yy) { return (xx >= xr && xx <= xRightTip && yy >= yL2 && yy <= yL2+tf) ? 1.0 : 0.0; }
+func real inFinL3(real xx, real yy) { return (xx >= xLeftTip && xx <= xl && yy >= yL3 && yy <= yL3+tf) ? 1.0 : 0.0; }
+func real inFinR3(real xx, real yy) { return (xx >= xr && xx <= xRightTip && yy >= yL3 && yy <= yL3+tf) ? 1.0 : 0.0; }
+func real inFinL4(real xx, real yy) { return (xx >= xLeftTip && xx <= xl && yy >= yL4 && yy <= yL4+tf) ? 1.0 : 0.0; }
+func real inFinR4(real xx, real yy) { return (xx >= xr && xx <= xRightTip && yy >= yL4 && yy <= yL4+tf) ? 1.0 : 0.0; }
+func real inFinL5(real xx, real yy) { return (xx >= xLeftTip && xx <= xl && yy >= yL5 && yy <= yL5+tf) ? 1.0 : 0.0; }
+func real inFinR5(real xx, real yy) { return (xx >= xr && xx <= xRightTip && yy >= yL5 && yy <= yL5+tf) ? 1.0 : 0.0; }
+
+// Layer masks (combined left+right for each y-level)
+// func real m1(real xx, real yy) { return inFinL1(xx,yy) + inFinR1(xx,yy); }
+// func real m2(real xx, real yy) { return inFinL2(xx,yy) + inFinR2(xx,yy); }
+// func real m3(real xx, real yy) { return inFinL3(xx,yy) + inFinR3(xx,yy); }
+// func real m4(real xx, real yy) { return inFinL4(xx,yy) + inFinR4(xx,yy); }
+// func real m5(real xx, real yy) { return inFinL5(xx,yy) + inFinR5(xx,yy); }
+func real kappa(real xx, real yy) {
+    if (inFinL1(xx,yy) || inFinR1(xx,yy)) return k1;
+    else if (inFinL2(xx,yy) || inFinR2(xx,yy)) return k2;
+    else if (inFinL3(xx,yy) || inFinR3(xx,yy)) return k3;
+    else if (inFinL4(xx,yy) || inFinR4(xx,yy)) return k4;
+    else if (inFinL5(xx,yy) || inFinR5(xx,yy)) return k5;
+    else return kbase;
+}
+
+// 区域分类：0=脊柱/基座(仅中间矩形), 1..5=各水平面鳍片(左右同色)
+func real inSpine(real xx, real yy) {
+    // 脊柱区域：中间矩形 xl <= x <= xr, 0 <= y <= H
+    return (xx >= xl && xx <= xr) ? 1.0 : 0.0;
+}
+fespace W0(Th, P0);
+W0 layer;
+// 先检查是否在鳍片区域，再检查是否在脊柱区域
+layer = 1*(inFinL1(x,y)+inFinR1(x,y)) + 2*(inFinL2(x,y)+inFinR2(x,y)) 
+      + 3*(inFinL3(x,y)+inFinR3(x,y)) + 4*(inFinL4(x,y)+inFinR4(x,y)) 
+      + 5*(inFinL5(x,y)+inFinR5(x,y));
+// 如果不在任何鳍片区域且在脊柱区域，则为0
+layer = (layer > 0.5) ? layer : (inSpine(x,y) > 0.5 ? 0 : -1);
+
+// FE space
+fespace Vh(Th, P1);
+Vh T, v;
+
+// Steady conduction with convective boundary on external surfaces
+problem HeatTransfer(T, v, solver=sparsesolver, eps=1e-5) =
+    int2d(Th)(kappa(x,y) * (dx(T) * dx(v) + dy(T) * dy(v)))
+    + int1d(Th, labelFin)(Bi * T * v)
+    + on(labelBase, T = 1.0);
+
+HeatTransfer;
+
+Vh qx = -kappa(x,y) * dx(T);
+Vh qy = -kappa(x,y) * dy(T);
+Vh qmag = sqrt(qx^2 + qy^2);
+
+// Metrics per fin layer
+// Use pre-computed 'layer' field (P0) to identify regions instead of re-evaluating functions
+real area1 = int2d(Th)( (abs(layer - 1.0) < 0.1) );
+real area2 = int2d(Th)( (abs(layer - 2.0) < 0.1) );
+real area3 = int2d(Th)( (abs(layer - 3.0) < 0.1) );
+real area4 = int2d(Th)( (abs(layer - 4.0) < 0.1) );
+real area5 = int2d(Th)( (abs(layer - 5.0) < 0.1) );
+
+real T1 = (area1 > 0) ? int2d(Th)(T * (abs(layer - 1.0) < 0.1)) / area1 : 0.0;
+real T2 = (area2 > 0) ? int2d(Th)(T * (abs(layer - 2.0) < 0.1)) / area2 : 0.0;
+real T3 = (area3 > 0) ? int2d(Th)(T * (abs(layer - 3.0) < 0.1)) / area3 : 0.0;
+real T4 = (area4 > 0) ? int2d(Th)(T * (abs(layer - 4.0) < 0.1)) / area4 : 0.0;
+real T5 = (area5 > 0) ? int2d(Th)(T * (abs(layer - 5.0) < 0.1)) / area5 : 0.0;
+
+// Global metrics (match historical outputs: totalheatflux ≈ Bi * efficiency)
+real boundaryLengthFin = int1d(Th, labelFin)(1);
+real efficiency = (boundaryLengthFin > 0) ? int1d(Th, labelFin)(T) / boundaryLengthFin : 0.0;
+real totalheatflux = Bi * efficiency;
+
+real maxtemp    = T[].max;
+real mintemp    = T[].min;
+real domainArea = int2d(Th)(1);
+real meantemp   = int2d(Th)(T) / domainArea;
+real tempvar    = int2d(Th)((T - meantemp)^2) / domainArea;
+real tempuniformity = meantemp - sqrt(tempvar);
+
+// Output
+ofstream output(outputFilePath);
+output << "efficiency=" << efficiency << endl;
+output << "totalheatflux=" << totalheatflux << endl;
+output << "tempuniformity=" << tempuniformity << endl;
+output << "maxtemp=" << maxtemp << endl;
+output << "meantemp=" << meantemp << endl;
+output << "mintemp=" << mintemp << endl;
+output << "qmagmin=" << qmag[].min << endl;
+output << "qmagmax=" << qmag[].max << endl;
+output << "T1=" << T1 << endl;
+output << "T2=" << T2 << endl;
+output << "T3=" << T3 << endl;
+output << "T4=" << T4 << endl;
+output << "T5=" << T5 << endl;
+output << "area1=" << area1 << endl;
+output << "area2=" << area2 << endl;
+output << "area3=" << area3 << endl;
+output << "area4=" << area4 << endl;
+output << "area5=" << area5 << endl;
+output << "layermin=" << layer[].min << endl;
+output << "layermax=" << layer[].max << endl;
+
+load "iovtk"
+// 输出温度场伪彩色图（带等值线）
+// plot(T, 
+//      fill=true, 
+//      value=true, 
+//      nbiso=20, 
+//      ps="thmf_temperature.eps", 
+//      cmm="Temperature field (Bi convective on fins, base T=1)");
+// plot(Th, wait=true, fill=false, cmm="Thermal fins geometry (spine + horizontal fins)");
+// plot(Th, ps="thmf_geometry.eps", fill=true);
+// savevtk("thmf_geometry.vtu", Th);
+
+// Geometry and parameter summary
+output << "L=" << L << endl;
+output << "H=" << H << endl;
+output << "ws=" << ws << endl;
+output << "tf=" << tf << endl;
+output << "xl=" << xl << endl;
+output << "xr=" << xr << endl;
+output << "xLeftTip=" << xLeftTip << endl;
+output << "xRightTip=" << xRightTip << endl;
+output << "yL1=" << yL1 << endl;
+output << "yL2=" << yL2 << endl;
+output << "yL3=" << yL3 << endl;
+output << "yL4=" << yL4 << endl;
+output << "yL5=" << yL5 << endl;
+output << "fincount=" << 10 << endl; // left 5 + right 5
+output << "leftfinspan=" << (xl - xLeftTip) << endl;
+output << "rightfinspan=" << (xRightTip - xr) << endl;
+output << "spinearea=" << (ws * H) << endl;
+
+real boundaryLengthTotal = int1d(Th)(1);
+output << "boundarylengthtotal=" << boundaryLengthTotal << endl;
+output << "boundarylengthfin=" << boundaryLengthFin << endl;
+output << "domainarea=" << domainArea << endl;
+
+// 简化鳍片总面积计算
+real finsareatotal = area1 + area2 + area3 + area4 + area5;
+output << "finsareatotal=" << finsareatotal << endl;
+
+// Material and Biot parameters
+output << "k1=" << k1 << endl;
+output << "k2=" << k2 << endl;
+output << "k3=" << k3 << endl;
+output << "k4=" << k4 << endl;
+output << "k5=" << k5 << endl;
+output << "Bi=" << Bi << endl;
+
+// 分区域涂色（P0 分类场），EPS 与 VTK
+// plot(layer, 
+//      fill=true, 
+//      value=false, 
+//      ps="thmf_regions.eps", 
+//      cmm="Regions: 0=spine, 1-5=fin layers (left+right same)");
+// savevtk("thmf_regions.vtu", Th, layer);
+
+if (figPrefix != "") {
+    if (tZmax > tZmin) {
+        real[int] tViso(21);
+        for (int i = 0; i < tViso.n; i++) {
+            tViso[i] = tZmin + (tZmax - tZmin) * i / (tViso.n - 1);
+        }
+        plot(T,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             viso=tViso,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_temp.eps",
+             cmm="");
+    } else {
+        plot(T,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_temp.eps",
+             cmm="");
+    }
+
+    if (qZmax > qZmin) {
+        real[int] qViso(21);
+        for (int i = 0; i < qViso.n; i++) {
+            qViso[i] = qZmin + (qZmax - qZmin) * i / (qViso.n - 1);
+        }
+        plot(qmag,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             viso=qViso,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_qmag.eps",
+             cmm="");
+    } else {
+        plot(qmag,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_qmag.eps",
+             cmm="");
+    }
+}

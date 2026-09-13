@@ -1,0 +1,62 @@
+load "UMFPACK64";
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "");
+string outputFilePath = getARGV("-output", "");
+string figPrefix = getARGV("-figprefix", "");
+
+ifstream inputFile(inputFilePath);
+
+func real readParam(string paramName, real defaultValue) {
+    if (inputFilePath == "") {
+        return defaultValue;
+    }
+    inputFile.seekg(0);
+    string line;
+    real value = defaultValue;
+    getline(inputFile, line);
+    while (inputFile.good()) {
+        if (line.find(paramName + "=") == 0) {
+            int eqPos = line.find("=");
+            string valStr = line(eqPos + 1 : line.length - 1);
+            if (valStr.length > 0) {
+                value = strtod(valStr);
+                break;
+            }
+        }
+        getline(inputFile, line);
+    }
+    return value;
+}
+
+real zmin = readParam("zmin", 0.0);
+real zmax = readParam("zmax", 1.0);
+
+int Ny = 160;
+int Nx = 8;
+real H = 10.0;
+real W = 1.0;
+
+mesh Th = square(Nx, Ny, [W*x, H*y]);
+fespace Vh(Th, P1);
+Vh u = zmin + (zmax - zmin) * (y / H);
+
+if (figPrefix != "") {
+    plot(u,
+         wait=false,
+         fill=true,
+         value=false,
+         nbiso=20,
+         NbColors=64,
+         NbColorTicks=6,
+         ColorScheme=1,
+         ShowAxes=false,
+         ps=figPrefix + ".eps",
+         cmm="");
+}
+
+ofstream output(outputFilePath);
+output << "success=1" << endl;
+output << "zmin=" << zmin << endl;
+output << "zmax=" << zmax << endl;
+

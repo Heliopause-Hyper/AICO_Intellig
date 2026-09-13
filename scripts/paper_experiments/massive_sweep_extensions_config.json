@@ -1,0 +1,16 @@
+{
+  "auto": true,
+  "auto_mode": "manual",
+  "auto_problem_types": ["corca_evol", "corca_xenon"],
+  "auto_max_total_instances": 1000,
+  "auto_per_problem_instances": 50,
+  "stable_instance_ids": true,
+  "resume": true,
+  "budget": {
+    "max_iterations": 30,
+    "time_limit_s": 300
+  },
+  "seeds": [0, 1, 2],
+  "instances_sample_clean": 0,
+  "instances_sample_hard": 0
+}

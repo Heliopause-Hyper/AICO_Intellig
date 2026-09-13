@@ -1,0 +1,117 @@
+{
+  "canonical_paths": {
+    "bucket_summary.json": [],
+    "config_used.json": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/config_used.json"
+    ],
+    "dataset.jsonl": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/dataset.jsonl"
+    ],
+    "filter_summary.json": [],
+    "full_sweep_config.json": [],
+    "invalid_instances.jsonl": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_00/invalid_instances.jsonl",
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_01/invalid_instances.jsonl"
+    ],
+    "iteration_event.jsonl": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_00/iteration_event.jsonl",
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_01/iteration_event.jsonl"
+    ],
+    "merge_summary.json": [],
+    "optimization_history.db": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_00/optimization_history.db",
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_01/optimization_history.db"
+    ],
+    "optimizer_run.jsonl": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_00/optimizer_run.jsonl",
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_01/optimizer_run.jsonl"
+    ],
+    "problem_instance.jsonl": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_00/problem_instance.jsonl",
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_01/problem_instance.jsonl"
+    ],
+    "run_checkpoint.jsonl": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_00/run_checkpoint.jsonl",
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_01/run_checkpoint.jsonl"
+    ],
+    "run_summary.json": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/run_summary.json"
+    ],
+    "run_summary.jsonl": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_00/run_summary.jsonl",
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_01/run_summary.jsonl"
+    ],
+    "runs.jsonl": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/runs.jsonl"
+    ],
+    "stats.json": [
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_00/stats.json",
+      "results/expansion_20260826/ex_heat_time_v1_pool9_r3/shard_01/stats.json"
+    ]
+  },
+  "canonical_sources": {
+    "bucket_summary.json": "missing",
+    "config_used.json": "root",
+    "dataset.jsonl": "root",
+    "filter_summary.json": "missing",
+    "full_sweep_config.json": "missing",
+    "invalid_instances.jsonl": "shard_aggregate",
+    "iteration_event.jsonl": "shard_aggregate",
+    "merge_summary.json": "missing",
+    "optimization_history.db": "shard_aggregate",
+    "optimizer_run.jsonl": "shard_aggregate",
+    "problem_instance.jsonl": "shard_aggregate",
+    "run_checkpoint.jsonl": "shard_aggregate",
+    "run_summary.json": "root",
+    "run_summary.jsonl": "shard_aggregate",
+    "runs.jsonl": "root",
+    "stats.json": "shard_aggregate"
+  },
+  "canonical_strategy": "root_merged_core__shard_rich_tables",
+  "classification": "sharded_experiment",
+  "config": {
+    "max_iterations": 40,
+    "optimizer_total_config": null,
+    "seed_count": 3,
+    "source_path": "results/expansion_20260826/ex_heat_time_v1_pool9_r3/config_used.json",
+    "source_script": null,
+    "time_limit_s": 120.0
+  },
+  "generated_at": "2026-09-05T07:30:53+00:00",
+  "is_sharded": true,
+  "manifest_version": 1,
+  "name": "ex_heat_time_v1_pool9_r3",
+  "notes": [
+    "Root keeps merged dataset/runs while richer tables remain in shard directories."
+  ],
+  "path": "results/expansion_20260826/ex_heat_time_v1_pool9_r3",
+  "record_counts": {
+    "bucket_summary.json": 0,
+    "config_used.json": 1,
+    "dataset.jsonl": 44,
+    "filter_summary.json": 0,
+    "full_sweep_config.json": 0,
+    "invalid_instances.jsonl": 0,
+    "iteration_event.jsonl": 50095,
+    "merge_summary.json": 0,
+    "optimization_history.db": 2,
+    "optimizer_run.jsonl": 1188,
+    "problem_instance.jsonl": 44,
+    "run_checkpoint.jsonl": 22572,
+    "run_summary.json": 1,
+    "run_summary.jsonl": 1188,
+    "runs.jsonl": 1188,
+    "stats.json": 2
+  },
+  "root_files": [
+    "config_used.json",
+    "dataset.jsonl",
+    "run_summary.json",
+    "runs.jsonl"
+  ],
+  "shard_count": 2,
+  "shard_dirs": [
+    "shard_00",
+    "shard_01"
+  ]
+}

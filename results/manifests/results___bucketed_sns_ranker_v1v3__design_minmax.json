@@ -1,0 +1,88 @@
+{
+  "canonical_paths": {
+    "bucket_summary.json": [],
+    "config_used.json": [],
+    "dataset.jsonl": [
+      "results/_bucketed_sns_ranker_v1v3/design_minmax/dataset.jsonl"
+    ],
+    "filter_summary.json": [],
+    "full_sweep_config.json": [],
+    "invalid_instances.jsonl": [],
+    "iteration_event.jsonl": [],
+    "merge_summary.json": [],
+    "optimization_history.db": [],
+    "optimizer_run.jsonl": [],
+    "problem_instance.jsonl": [
+      "results/_bucketed_sns_ranker_v1v3/design_minmax/problem_instance.jsonl"
+    ],
+    "run_checkpoint.jsonl": [
+      "results/_bucketed_sns_ranker_v1v3/design_minmax/run_checkpoint.jsonl"
+    ],
+    "run_summary.json": [],
+    "run_summary.jsonl": [],
+    "runs.jsonl": [
+      "results/_bucketed_sns_ranker_v1v3/design_minmax/runs.jsonl"
+    ],
+    "stats.json": []
+  },
+  "canonical_sources": {
+    "bucket_summary.json": "missing",
+    "config_used.json": "missing",
+    "dataset.jsonl": "root",
+    "filter_summary.json": "missing",
+    "full_sweep_config.json": "missing",
+    "invalid_instances.jsonl": "missing",
+    "iteration_event.jsonl": "missing",
+    "merge_summary.json": "missing",
+    "optimization_history.db": "missing",
+    "optimizer_run.jsonl": "missing",
+    "problem_instance.jsonl": "root",
+    "run_checkpoint.jsonl": "root",
+    "run_summary.json": "missing",
+    "run_summary.jsonl": "missing",
+    "runs.jsonl": "root",
+    "stats.json": "missing"
+  },
+  "canonical_strategy": "single_dir",
+  "classification": "raw_experiment",
+  "config": {
+    "max_iterations": null,
+    "optimizer_total_config": null,
+    "seed_count": null,
+    "source_path": null,
+    "source_script": null,
+    "time_limit_s": null
+  },
+  "generated_at": "2026-09-05T07:30:48+00:00",
+  "is_sharded": false,
+  "manifest_version": 1,
+  "name": "design_minmax",
+  "notes": [],
+  "path": "results/_bucketed_sns_ranker_v1v3/design_minmax",
+  "record_counts": {
+    "bucket_summary.json": 0,
+    "config_used.json": 0,
+    "dataset.jsonl": 39,
+    "filter_summary.json": 0,
+    "full_sweep_config.json": 0,
+    "invalid_instances.jsonl": 0,
+    "iteration_event.jsonl": 0,
+    "merge_summary.json": 0,
+    "optimization_history.db": 0,
+    "optimizer_run.jsonl": 0,
+    "problem_instance.jsonl": 39,
+    "run_checkpoint.jsonl": 40014,
+    "run_summary.json": 0,
+    "run_summary.jsonl": 0,
+    "runs.jsonl": 2106,
+    "stats.json": 0
+  },
+  "root_files": [
+    "dataset.jsonl",
+    "problem_instance.jsonl",
+    "run_checkpoint.jsonl",
+    "runs.jsonl"
+  ],
+  "shard_count": 0,
+  "shard_dirs": []
+}

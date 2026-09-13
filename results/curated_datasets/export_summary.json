@@ -1,0 +1,88 @@
+{
+  "bad_rows": {
+    "count": 9,
+    "examples": [
+      {
+        "error": "Expecting value: line 1 column 1 (char 0)",
+        "file": "results/sns_v3_full_240_m30_t90_r3_more1/shard_00/run_summary.jsonl",
+        "line": 1459,
+        "preview": "_144846_313013b0\", \"instance_id\": \"inst_sns_flow_family_v3_ebbe19c70e91babc\", \"optimizer_name\": \"TPE\", \"best_objective\": 739.737, \"best_feasible_objective\": 739.737, \"best_loss\": 739.737, \"final_feasi"
+      },
+      {
+        "error": "Expecting value: line 1 column 1 (char 0)",
+        "file": "results/sns_v3_full_240_m30_t90_r3_more1/shard_01/run_summary.jsonl",
+        "line": 1558,
+        "preview": "id\": \"run_20260522_150516_852810eb\", \"instance_id\": \"inst_sns_flow_family_v3_127a4cdab6f9d70f\", \"optimizer_name\": \"CMA\", \"best_objective\": 110.911, \"best_feasible_objective\": 110.911, \"best_loss\": 110"
+      },
+      {
+        "error": "Expecting value: line 1 column 1 (char 0)",
+        "file": "results/sns_v3_full_240_m30_t90_r3_more1/shard_02/run_summary.jsonl",
+        "line": 1234,
+        "preview": "thod\": \"PSO\", \"seed\": 1}"
+      },
+      {
+        "error": "Expecting value: line 1 column 1 (char 0)",
+        "file": "results/sns_v3_full_240_m30_t90_r3_more1/shard_00/runs.jsonl",
+        "line": 1469,
+        "preview": "_family_v3_ebbe19c70e91babc\", \"run_id\": \"run_20260522_145553_2148abdb\", \"seed\": 2, \"problem_type\": \"sns_flow_family_v3\", \"optimizer\": \"Hyperopt\", \"method\": \"AdaptiveTPE\", \"success\": true, \"best_value\""
+      },
+      {
+        "error": "Expecting value: line 1 column 1 (char 0)",
+        "file": "results/sns_v3_full_240_m30_t90_r3_more1/shard_01/runs.jsonl",
+        "line": 1561,
+        "preview": "e\": 26.21642231941223}"
+      },
+      {
+        "error": "Extra data: line 1 column 17 (char 16)",
+        "file": "results/sns_v3_full_240_m30_t90_r3_more1/shard_02/runs.jsonl",
+        "line": 1230,
+        "preview": "\"execution_time\": 24.06863784790039}"
+      },
+      {
+        "error": "Extra data: line 1 column 5 (char 4)",
+        "file": "results/sns_v3_full_240_m30_t90_r3_more1/shard_00/run_checkpoint.jsonl",
+        "line": 27893,
+        "preview": "null, \"local_lipschitz_estimate\": null, \"incumbent_age\": -1}"
+      },
+      {
+        "error": "Expecting value: line 1 column 1 (char 0)",
+        "file": "results/sns_v3_full_240_m30_t90_r3_more1/shard_01/run_checkpoint.jsonl",
+        "line": 29945,
+        "preview": "n_20260522_153021_e0e99f1a\", \"instance_id\": \"inst_sns_flow_family_v3_f10b5097cafa882e\", \"checkpoint_type\": \"ratio\", \"checkpoint_ratio\": 90, \"eval_index\": 27, \"objective_raw\": 431.19916045646676, \"cons"
+      },
+      {
+        "error": "Expecting value: line 1 column 1 (char 0)",
+        "file": "results/sns_v3_full_240_m30_t90_r3_more1/shard_02/run_checkpoint.jsonl",
+        "line": 23865,
+        "preview": "ective_raw\": 14.4244, \"constraint_violation_total\": 0.0, \"feasible_flag\": true, \"best_loss\": 14.4244, \"best_feasible_loss\": 14.4244, \"solver_status\": \"ok\", \"recent_improvement_rate\": 1.132400000000000"
+      }
+    ]
+  },
+  "generated_at": "2026-09-05T07:33:19+00:00",
+  "included_classes": {
+    "lightweight_dataset": 3,
+    "raw_experiment": 26,
+    "sharded_experiment": 18
+  },
+  "manifest_count": 47,
+  "outputs": {
+    "checkpoints": {
+      "rows": 3528045,
+      "unique_keys": 3528045
+    },
+    "instances": {
+      "dataset_fallback_rows": 210,
+      "problem_instance_rows": 6482,
+      "rows": 6692,
+      "unique_keys": 6692
+    },
+    "run_summaries": {
+      "rows": 123416,
+      "unique_keys": 123416
+    },
+    "runs_light": {
+      "rows": 185685,
+      "unique_keys": 185685
+    }
+  }
+}

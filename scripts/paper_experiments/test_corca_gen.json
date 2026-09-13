@@ -1,0 +1,11 @@
+{
+  "auto": true,
+  "auto_include_problem_types": ["corca_state"],
+  "auto_instances_per_problem": 1,
+  "auto_opt_param_sizes": [3],
+  "auto_include_corca": true,
+  "auto_max_total_instances": 1,
+  "algo_pool": "all",
+  "num_trajectories": 1,
+  "max_evals": 10
+}

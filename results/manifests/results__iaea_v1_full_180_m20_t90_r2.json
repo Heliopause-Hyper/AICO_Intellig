@@ -1,0 +1,127 @@
+{
+  "canonical_paths": {
+    "bucket_summary.json": [],
+    "config_used.json": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/config_used.json",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/config_used.json",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/config_used.json"
+    ],
+    "dataset.jsonl": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/dataset.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/dataset.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/dataset.jsonl"
+    ],
+    "filter_summary.json": [],
+    "full_sweep_config.json": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/full_sweep_config.json",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/full_sweep_config.json",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/full_sweep_config.json"
+    ],
+    "invalid_instances.jsonl": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/invalid_instances.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/invalid_instances.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/invalid_instances.jsonl"
+    ],
+    "iteration_event.jsonl": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/iteration_event.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/iteration_event.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/iteration_event.jsonl"
+    ],
+    "merge_summary.json": [],
+    "optimization_history.db": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/optimization_history.db",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/optimization_history.db",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/optimization_history.db"
+    ],
+    "optimizer_run.jsonl": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/optimizer_run.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/optimizer_run.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/optimizer_run.jsonl"
+    ],
+    "problem_instance.jsonl": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/problem_instance.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/problem_instance.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/problem_instance.jsonl"
+    ],
+    "run_checkpoint.jsonl": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/run_checkpoint.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/run_checkpoint.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/run_checkpoint.jsonl"
+    ],
+    "run_summary.json": [],
+    "run_summary.jsonl": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/run_summary.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/run_summary.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/run_summary.jsonl"
+    ],
+    "runs.jsonl": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/runs.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/runs.jsonl",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/runs.jsonl"
+    ],
+    "stats.json": [
+      "results/iaea_v1_full_180_m20_t90_r2/shard_00/stats.json",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_01/stats.json",
+      "results/iaea_v1_full_180_m20_t90_r2/shard_02/stats.json"
+    ]
+  },
+  "canonical_sources": {
+    "bucket_summary.json": "missing",
+    "config_used.json": "shard_aggregate",
+    "dataset.jsonl": "shard_aggregate",
+    "filter_summary.json": "missing",
+    "full_sweep_config.json": "shard_aggregate",
+    "invalid_instances.jsonl": "shard_aggregate",
+    "iteration_event.jsonl": "shard_aggregate",
+    "merge_summary.json": "missing",
+    "optimization_history.db": "shard_aggregate",
+    "optimizer_run.jsonl": "shard_aggregate",
+    "problem_instance.jsonl": "shard_aggregate",
+    "run_checkpoint.jsonl": "shard_aggregate",
+    "run_summary.json": "missing",
+    "run_summary.jsonl": "shard_aggregate",
+    "runs.jsonl": "shard_aggregate",
+    "stats.json": "shard_aggregate"
+  },
+  "canonical_strategy": "shard_only",
+  "classification": "sharded_experiment",
+  "config": {
+    "max_iterations": 20,
+    "optimizer_total_config": 18,
+    "seed_count": 3,
+    "source_path": "results/iaea_v1_full_180_m20_t90_r2/shard_00/config_used.json",
+    "source_script": "run_sns_family_full_sweep.py",
+    "time_limit_s": 90.0
+  },
+  "generated_at": "2026-09-05T07:30:54+00:00",
+  "is_sharded": true,
+  "manifest_version": 1,
+  "name": "iaea_v1_full_180_m20_t90_r2",
+  "notes": [],
+  "path": "results/iaea_v1_full_180_m20_t90_r2",
+  "record_counts": {
+    "bucket_summary.json": 0,
+    "config_used.json": 3,
+    "dataset.jsonl": 180,
+    "filter_summary.json": 0,
+    "full_sweep_config.json": 3,
+    "invalid_instances.jsonl": 0,
+    "iteration_event.jsonl": 267509,
+    "merge_summary.json": 0,
+    "optimization_history.db": 3,
+    "optimizer_run.jsonl": 9720,
+    "problem_instance.jsonl": 180,
+    "run_checkpoint.jsonl": 184680,
+    "run_summary.json": 0,
+    "run_summary.jsonl": 9720,
+    "runs.jsonl": 9720,
+    "stats.json": 3
+  },
+  "root_files": [],
+  "shard_count": 3,
+  "shard_dirs": [
+    "shard_00",
+    "shard_01",
+    "shard_02"
+  ]
+}

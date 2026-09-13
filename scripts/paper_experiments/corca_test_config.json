@@ -1,0 +1,19 @@
+{
+  "auto": true,
+  "auto_mode": "auto",
+  "auto_include_problem_types": ["corca_state"],
+  "auto_include_corca": true,
+  "auto_max_total_instances": 2,
+  "auto_per_problem_instances": 2,
+  "stable_instance_ids": true,
+  "resume": false,
+  "budget": {
+    "max_iterations": 15,
+    "time_limit_s": 60
+  },
+  "seeds": [0],
+  "candidates": [
+    {"optimizer": "SciPy", "method": "Nelder-Mead"},
+    {"optimizer": "Nevergrad", "method": "NGOpt"}
+  ]
+}

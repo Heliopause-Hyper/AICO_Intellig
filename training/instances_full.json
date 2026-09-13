@@ -1,0 +1,64 @@
+{
+  "budget": {
+    "max_iterations": 25,
+    "time_limit_s": 90
+  },
+  "seeds": [0, 1],
+  "candidates": [
+    {"optimizer": "SciPy", "method": "Powell"},
+    {"optimizer": "SciPy", "method": "Nelder-Mead"},
+    {"optimizer": "SciPy", "method": "DE"},
+    {"optimizer": "Optuna", "method": "TPE"},
+    {"optimizer": "Optuna", "method": "Random"},
+    {"optimizer": "Hyperopt", "method": "TPE"},
+    {"optimizer": "Hyperopt", "method": "Random"},
+    {"optimizer": "Nevergrad", "method": "NGOpt"}
+  ],
+  "instances": [
+    {
+      "problem_type": "iaea",
+      "opt_params": ["D11", "Sigmaa21", "musigmaf21"],
+      "objective_expression": "abs(result.get('keff', 1e10) - 1.02)"
+    },
+    {
+      "problem_type": "thmf",
+      "opt_params": ["k1", "k3", "Bi"],
+      "objective_expression": "-result.get('efficiency', -1e10)"
+    },
+    {
+      "problem_type": "sns",
+      "opt_params": ["uMax", "Mu", "R"],
+      "objective_expression": "result.get('pressuredrop', 1e10)"
+    },
+    {
+      "problem_type": "ex_heat_time",
+      "opt_params": ["dt", "kf", "ue"],
+      "objective_expression": "result.get('cpu', 1e10) + 0.001*abs(result.get('u_mean', 0.0) - 12.0)"
+    },
+    {
+      "problem_type": "ex_blackscholes2d",
+      "opt_params": ["sigma1", "rho"],
+      "objective_expression": "-result.get('u_mean', -1e10)"
+    },
+    {
+      "problem_type": "ex_lapeigen",
+      "opt_params": ["n", "sigma"],
+      "objective_expression": "abs(result.get('ev0', 1e10) - 2.0)"
+    },
+    {
+      "problem_type": "ex_optimcontrol_inverse",
+      "opt_params": ["z0", "z1", "z2"],
+      "objective_expression": "result.get('J', 1e10)"
+    },
+    {
+      "problem_type": "ex_vi_obstacle",
+      "opt_params": ["gmax", "c"],
+      "objective_expression": "result.get('active_frac', 1e10) + 0.1*result.get('cpu', 0.0)"
+    },
+    {
+      "problem_type": "ex_poisson_adapt_indicator",
+      "opt_params": ["err0", "nIter"],
+      "objective_expression": "result.get('nv', 1e10) + 1000.0*result.get('rho_mean', 0.0)"
+    }
+  ]
+}

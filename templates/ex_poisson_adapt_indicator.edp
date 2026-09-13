@@ -1,0 +1,87 @@
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "ex_poisson_adapt_indicator_input.txt");
+string outputFilePath = getARGV("-output", "ex_poisson_adapt_indicator_output.txt");
+
+func real readParam(string paramName, real defaultVal) {
+    ifstream file(inputFilePath);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        if (line.find(paramName + "=") == 0) {
+            int startPos = paramName.length + 1;
+            string valueStr = line(startPos : line.length - 1);
+            real value = atof(valueStr);
+            return value;
+        }
+    }
+    return defaultVal;
+}
+
+int n0 = int(readParam("n0", 6.0));
+int nIter = int(readParam("nIter", 4.0));
+real err0 = readParam("err0", 0.01);
+real anisomax = readParam("anisomax", 1.0);
+
+border ba(t=0, 1.0){x=t;   y=0;  label=1;}
+border bb(t=0, 0.5){x=1;   y=t;  label=2;}
+border bc(t=0, 0.5){x=1-t; y=0.5;label=3;}
+border bd(t=0.5, 1){x=0.5; y=t;  label=4;}
+border be(t=0.5, 1){x=1-t; y=1;  label=5;}
+border bf(t=0.0, 1){x=0;   y=1-t;label=6;}
+mesh Th = buildmesh (ba(n0) + bb(max(2,n0/2)) + bc(max(2,n0/2)) + bd(max(2,n0/2)) + be(max(2,n0/2)) + bf(n0));
+
+fespace Vh(Th, P1);
+fespace Nh(Th, P0);
+Vh u, v;
+Nh rho;
+
+func f = (x-y);
+
+problem Poisson (u, v, solver=CG, eps=1.0e-6)
+    = int2d(Th, qforder=5)(
+          u * v * 1.0e-10
+        + dx(u)*dx(v)
+        + dy(u)*dy(v)
+    )
+    + int2d(Th, qforder=5)(-f*v);
+
+varf indicator2 (uu, chiK)
+    = intalledges(Th)(
+          chiK*lenEdge*square(jump(N.x*dx(u) + N.y*dy(u)))
+    )
+    + int2d(Th)(
+          chiK*square(hTriangle*(f + dxx(u) + dyy(u)))
+    );
+
+real cpu0 = clock();
+real error = err0;
+real rhoMax = 0.0;
+real rhoMean = 0.0;
+for (int i = 0; i < nIter; i++) {
+    Poisson;
+    rho[] = indicator2(0, Nh);
+    rho = sqrt(rho);
+    rhoMax = rho[].max;
+    rhoMean = rho[].sum / rho[].n;
+    Th = adaptmesh(Th, u, err=error, anisomax=anisomax);
+    u = u;
+    rho = rho;
+    error = error/2.0;
+}
+real cpuUsed = clock() - cpu0;
+
+real area = int2d(Th)(1.0);
+real uMean = int2d(Th)(u) / area;
+real uMax = u[].max;
+real uMin = u[].min;
+
+ofstream out(outputFilePath);
+out << "nv=" << Th.nv << endl;
+out << "nt=" << Th.nt << endl;
+out << "u_mean=" << uMean << endl;
+out << "u_max=" << uMax << endl;
+out << "u_min=" << uMin << endl;
+out << "rho_max=" << rhoMax << endl;
+out << "rho_mean=" << rhoMean << endl;
+out << "cpu=" << cpuUsed << endl;

@@ -1,0 +1,26 @@
+{
+  "assignments_path": "results/curated_datasets/universes/assignments.csv",
+  "bad_experiments": [
+    "results/sns_v3_full_240_m30_t90_r3_more1"
+  ],
+  "generated_at": "2026-09-05T07:41:33+00:00",
+  "universes": {
+    "full_archive": {
+      "experiments": 47
+    },
+    "paper": {
+      "checkpoints": 2214709,
+      "experiments": 18,
+      "instances": 2614,
+      "run_summaries": 116420,
+      "runs_light": 116526
+    },
+    "training": {
+      "checkpoints": 3526943,
+      "experiments": 27,
+      "instances": 4077,
+      "run_summaries": 123358,
+      "runs_light": 185547
+    }
+  }
+}

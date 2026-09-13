@@ -1,0 +1,108 @@
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "ex_vi_obstacle_input.txt");
+string outputFilePath = getARGV("-output", "ex_vi_obstacle_output.txt");
+
+func real readParam(string paramName, real defaultVal) {
+    ifstream file(inputFilePath);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        if (line.find(paramName + "=") == 0) {
+            int startPos = paramName.length + 1;
+            string valueStr = line(startPos : line.length - 1);
+            real value = atof(valueStr);
+            return value;
+        }
+    }
+    return defaultVal;
+}
+
+int nxy = int(readParam("nxy", 20.0));
+real epsTol = readParam("eps", 1e-6);
+real cc = readParam("c", 10.0);
+real gmax = readParam("gmax", 0.05);
+real fval = readParam("f", 1.0);
+int maxIter = int(readParam("maxIter", 80.0));
+
+mesh Th = square(nxy, nxy);
+fespace Vh(Th, P1);
+int ndof = Vh.ndof;
+
+Vh uh, uhp;
+Vh Ik = 0;
+Vh g = gmax;
+Vh lambda = 0;
+
+func f = fval;
+func fd = 0;
+
+real tgv = 1e30;
+varf a(uh,vh) =
+    int2d(Th)(dx(uh)*dx(vh) + dy(uh)*dy(vh))
+  - int2d(Th)(f*vh)
+  + on(1,2,3,4,uh=fd);
+
+matrix A = a(Vh,Vh,tgv=tgv,solver=CG);
+matrix AA = a(Vh,Vh);
+varf vM(uh,vh) = int2d(Th)(uh*vh);
+matrix M = vM(Vh,Vh);
+
+real[int] rhs(ndof);
+rhs = a(0,Vh,tgv=tgv);
+
+real[int] Aii(ndof), Aiin(ndof);
+Aii = A.diag;
+
+uhp = 0;
+int iters = 0;
+real err = 1e30;
+real cpu0 = clock();
+for (int iter = 0; iter < maxIter; ++iter) {
+    iters = iter + 1;
+    real[int] b(ndof);
+    b = rhs;
+
+    real[int] Ak(ndof);
+    Ak = 1.0;
+    Ak -= Ik[];
+
+    b = Ik[] .* g[];
+    b *= tgv;
+    b -= Ak .* rhs;
+
+    Aiin = Ik[] * tgv;
+    Aiin += Ak .* Aii;
+    A.diag = Aiin;
+    set(A, solver=CG);
+
+    uh[] = A^-1 * b;
+
+    lambda[] = AA * uh[];
+    lambda[] += rhs;
+
+    Ik = (lambda + cc*(g - uh)) < 0.0;
+
+    real[int] diff(ndof), Mdiff(ndof);
+    diff = uh[] - uhp[];
+    Mdiff = M * diff;
+    err = sqrt(Mdiff' * diff);
+    if (err < epsTol) break;
+    uhp[] = uh[];
+}
+real cpuUsed = clock() - cpu0;
+
+real area = int2d(Th)(1.0);
+real uMean = int2d(Th)(uh) / area;
+real uMax = uh[].max;
+real uMin = uh[].min;
+real activeFrac = (Ik[].sum) / ndof;
+
+ofstream out(outputFilePath);
+out << "iters=" << iters << endl;
+out << "err=" << err << endl;
+out << "active_frac=" << activeFrac << endl;
+out << "u_mean=" << uMean << endl;
+out << "u_max=" << uMax << endl;
+out << "u_min=" << uMin << endl;
+out << "cpu=" << cpuUsed << endl;

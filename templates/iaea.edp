@@ -1,0 +1,634 @@
+load "UMFPACK64";
+include "getARGV.idp";
+
+string inputFilePath = getARGV("-input", "iaea_input.txt");
+string outputFilePath = getARGV("-output", "iaea_output.txt");
+string figPrefix = getARGV("-figprefix", "");
+real pZmin = getARGV("-pZmin", -1.0);
+real pZmax = getARGV("-pZmax", -1.0);
+real fZmin = getARGV("-fZmin", -1.0);
+real fZmax = getARGV("-fZmax", -1.0);
+
+// Function to read parameters from file
+func real readParam(string paramName, real defaultVal) {
+    // cout << "Attempting to open file: " << inputFilePath << endl;
+    ifstream file(inputFilePath);
+    string line;
+    while (file.good()) {
+        getline(file, line);
+        if (line.find(paramName) == 0) {
+            int startPos = paramName.length + 1;
+            string valueStr = line(startPos : line.length - 1);
+            real value = atof(valueStr);
+            return value;
+        }
+    }
+    return defaultVal;
+}
+
+//! mesh41 square 
+//! $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//! $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//! $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//! $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+//! $$$$$$$$$$$$$$$$$$$$$$$$$$$
+//! Generate a uniform square mesh  1/4 core
+//! Used for 2D IAEA problem
+
+int mmp;
+
+//！ @@@@@@@@@@@@@@@@@@@@@@@@
+//！ parameter
+real Bg = 0.00008;
+real bou = 0.4692; //! see Argonne Code Center: Benchmark problem book. 
+//real bou = 0.5;
+//! d phi_g / d n = - bou/D_g phi_g
+
+real D11 = readParam("D11", 1.5);
+real Sigmaa11 = readParam("Sigmaa11", 0.01 + 1.5 * Bg);
+real musigmaf11=readParam("musigmaf11", 0.0);
+real chi11=readParam("chi11", 1);
+real Sigmas121=readParam("Sigmas121", 0.02);
+real D21 = readParam("D21", 0.4);
+real Sigmaa21 = readParam("Sigmaa21", 0.08 + 0.4*Bg);
+real musigmaf21=readParam("musigmaf21", 0.135);
+real chi21=readParam("chi21", 0.0);
+
+real D12 = readParam("D12", 1.5);
+real Sigmaa12 = readParam("Sigmaa12", 0.01 + 1.5 * Bg);
+real musigmaf12=readParam("musigmaf12", 0.0);
+real chi12=readParam("chi12", 1.0);
+real Sigmas122=readParam("Sigmas122", 0.02);
+real D22 = readParam("D22", 0.4);
+real Sigmaa22 = readParam("Sigmaa22", 0.085 + 0.4*Bg);
+real musigmaf22=readParam("musigmaf22", 0.135);
+real chi22=readParam("chi22", 0.0);
+
+real D13 = readParam("D13", 1.5);
+real Sigmaa13 = readParam("Sigmaa13", 0.01 + 1.5 * Bg);
+real musigmaf13=readParam("musigmaf13", 0.0);
+real chi13=readParam("chi13", 1.0);
+real Sigmas123=readParam("Sigmas123", 0.02);
+real D23 = readParam("D23", 0.4);
+real Sigmaa23 = readParam("Sigmaa23", 0.130 + 0.4 * Bg);
+real musigmaf23=readParam("musigmaf23", 0.135);
+real chi23=readParam("chi23", 0.0);
+
+real D14=readParam("D14", 2.0);
+real Sigmaa14=readParam("Sigmaa14", 0.0+2.0*Bg);
+real musigmaf14=readParam("musigmaf14", 0.0);
+real chi14=readParam("chi14", 1.0);
+real Sigmas124=readParam("Sigmas124", 0.04);
+real D24=readParam("D24", 0.3);
+real Sigmaa24=readParam("Sigmaa24", 0.01+0.3*Bg);
+real musigmaf24=readParam("musigmaf24", 0.0);
+real chi24=readParam("chi24", 0.0);
+
+
+//! geometry
+
+int debug = 1;
+
+int GS = 8;
+// boundary label
+int labelNeumann = 0;
+int labelOut = 1;
+int labelMid = 2;
+
+// 定义边界
+border B1(t = 0, 170)
+{
+    x = t;
+    y = 0;
+    label = labelNeumann;
+}
+
+border B2(t = 0, 170)
+{
+    x = 170;
+    y = t;
+    label = labelOut;
+}
+
+border B3(t = 170, 0)
+{
+    x = t;
+    y = 170;
+    label = labelOut;
+}
+
+border B4(t = 170, 0)
+{
+    x = 0;
+    y = t;
+    label = labelNeumann;
+}
+
+border i3s1(t = 0, 10)
+{
+    x = 10;
+    y = t;
+    label = labelMid;
+}
+border i3s2(t = 10, 0)
+{
+    x = t;
+    y = 10;
+    label = labelMid;
+}
+
+
+border i3c1(t = 0, 10)
+{
+    x = 90;
+    y = t;
+    label = labelMid;
+}
+border i3c2(t = 90, 70)
+{
+    x = t;
+    y = 10;
+    label = labelMid;
+}
+border i3c3(t = 10, 0)
+{
+    x = 70;
+    y = t;
+    label = labelMid;
+}
+
+
+border i3d1(t = 70, 90)
+{
+    x = 90;
+    y = t;
+    label = labelMid;
+}
+border i3d2(t = 90, 70)
+{
+    x = t;
+    y = 90;
+    label = labelMid;
+}
+
+
+border i3e1(t = 0, 10)
+{
+    x = t;
+    y = 70;
+    label = labelMid;
+}
+border i3e2(t = 70, 90)
+{
+    x = 10;
+    y = t;
+    label = labelMid;
+}
+border i3e3(t = 10, 0)
+{
+    x = t;
+    y = 90;
+    label = labelMid;
+}
+
+//! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//! 
+border f1a1(t = 0, 30)
+{
+    x = t;
+    y = 130;
+    label = labelMid;
+}
+
+border f1a2(t = 130, 110)
+{
+    x = 30;
+    y = t;
+    label = labelMid;
+}
+border f1a3(t = 30, 70)
+{
+    x = t;
+    y = 110;
+    label = labelMid;
+}
+
+border f1a4(t = 110, 70)
+{
+    x = 70;
+    y = t;
+    label = labelMid;
+}
+
+border f1a5(t = 70, 110)
+{
+    x = t;
+    y = 70;
+    label = labelMid;
+}
+border f1a6(t = 70, 30)
+{
+    x = 110;
+    y = t;
+    label = labelMid;
+}
+border f1a7(t = 110, 130)
+{
+    x = t;
+    y = 30;
+    label = labelMid;
+}
+border f1a8(t = 30, 0)
+{
+    x = 130;
+    y = t;
+    label = labelMid;
+}
+
+//! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//! 
+border f2a1(t = 0, 50)
+{
+    x = t;
+    y = 150;
+    label = labelMid;
+}
+
+border f2a2(t = 150, 130)
+{
+    x = 50;
+    y = t;
+    label = labelMid;
+}
+border f2a3(t = 50, 90)
+{
+    x = t;
+    y = 130;
+    label = labelMid;
+}
+
+border f2a4(t = 130, 110)
+{
+    x = 90;
+    y = t;
+    label = labelMid;
+}
+
+border f2a5(t = 90, 110)
+{
+    x = t;
+    y = 110;
+    label = labelMid;
+}
+border f2a6(t = 110, 90) 
+{
+    x = 110;
+    y = t;
+    label = labelMid;
+}
+border f2a7(t = 110, 130)
+{
+    x = t;
+    y = 90;
+    label = labelMid;
+}
+border f2a8(t = 90, 50)
+{
+    x = 130;
+    y = t;
+    label = labelMid;
+}
+border f2a9(t = 130, 150)
+{
+    x = t;
+    y = 50;
+    label = labelMid;
+}
+border f2a10(t = 50, 00)
+{
+    x = 150;
+    y = t;
+    label = labelMid;
+}
+
+
+//! 
+
+mesh Th = buildmesh(
+                     B1(GS*17) + B2(GS*17) + B3(GS*17) + B4(GS*17) 
+                     + i3s1(GS*1) + i3s2(GS*1)
+                     + i3c1(GS*1) + i3c2(GS*2) + i3c3(GS*1)
+                     + i3d1(GS*2) + i3d2(GS*2)
+                     + i3e1(GS*1) + i3e2(GS*2) + i3e3(GS*1)
+                     + f1a1(-GS*3) + f1a2(-GS*2) + f1a3(-GS*4) + f1a4(-GS*4)  + f1a5(-GS*4) 
+                     + f1a6(-GS*4) + f1a7(-GS*2) + f1a8(-GS*3)
+                     + f2a1(-GS*5) + f2a2(-GS*2) + f2a3(-GS*4) + f2a4(-GS*2)  + f2a5(-GS*2)
+                     + f2a6(-GS*2) + f2a7(-GS*2) + f2a8(-GS*4) + f2a9(-GS*2)  + f2a10(-GS*5)
+          );
+
+int cr1 = Th(5, 5).region;
+int cr2 = Th(80, 5).region;
+int cr3 = Th(80, 80).region;
+int cr4 = Th(5, 80).region;
+int fuel2 = Th(20, 20).region;
+int fuel1 = Th(100, 100).region;
+int ref = Th(120, 120).region;
+
+//plot(Th, wait=debug);\\n//savemesh(Th,\\\"output/IAEA2d.msh\\\");// save mesh
+
+fespace Vh(Th,[P1,P1]);
+Vh [phi1,phi2], [v1,v2], [uni1,uni2];
+Vh [adjophi1,adjophi2];
+
+fespace Vvh(Th,P1);
+Vvh powerf,fluxf,apowerf;
+
+/*
+    int ntextcase = 1;\\n    ofstream outphi1(\\\"DeepFreeFEM-ZOpt/output/phione\\\" + ntextcase + \\\".txt\\\");\\n    ofstream outphi2(\\\"DeepFreeFEM-ZOpt/output/phitwo\\\" + ntextcase + \\\".txt\\\");\\n    ofstream outpower(\\\"DeepFreeFEM-ZOpt/output/power\\\" + ntextcase + \\\".txt\\\");\\n    ofstream outaphi1(\\\"DeepFreeFEM-ZOpt/output/aphione\\\" + ntextcase + \\\".txt\\\");\\n    ofstream outaphi2(\\\"DeepFreeFEM-ZOpt/output/aphitwo\\\" + ntextcase + \\\".txt\\\");\\n    ofstream outapower(\\\"DeepFreeFEM-ZOpt/outputt/apower\\\" + ntextcase + \\\".txt\\\");\\n    ofstream outkeff(\\\"DeepFreeFEM-ZOpt/output/keff\\\" + ntextcase + \\\".txt\\\");
+
+
+    func string tphi1(int num,string r2){\\n\\t    //string r2 = \\\".eps\\\";\\n\\t    string r1 = \\\"DeepFreeFEM-ZOpt/output/phione\\\";\\n\\t    return r1 + num + r2;\\n    }\\n    func string tphi2(int num,string r2){\\n\\t    //string r2 = \\\".eps\\\";\\n\\t    string r1 = \\\"DeepFreeFEM-ZOpt/output/phitwo\\\";\\n\\t    return r1 + num + r2;\\n    }\\n    func string tpo(int num,string r2){\\n\\t    //string r2 = \\\".eps\\\";\\n\\t    string r1 = \\\"DeepFreeFEM-ZOpt/output/power\\\";\\n\\t    return r1 + num + r2;\\n    }\\n\\n    func string taphi1(int num,string r2){\\n\\t    //string r2 = \\\".eps\\\";\\n\\t    string r1 = \\\"DeepFreeFEM-ZOpt/output/aphione\\\";\\n\\t    return r1 + num + r2;\\n    }\\n    func string taphi2(int num,string r2){\\n\\t    //string r2 = \\\".eps\\\";\\n\\t    string r1 = \\\"DeepFreeFEM-ZOpt/output/aphitwo\\\";\\n\\t    return r1 + num + r2;\\n    }\\n    func string tapo(int num,string r2){\\n\\t    //string r2 = \\\".eps\\\";\\n\\t    string r1 = \\\"DeepFreeFEM-ZOpt/output/apower\\\";\\n\\t    return r1 + num + r2;\\n    }\\n*/
+
+
+
+fespace W0(Th, P0);
+
+
+
+
+W0 D1 = D11*(region == fuel1) + D12*(region == fuel2) + D14*(region == ref)
+        + D13*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+        
+W0 Sigmaa1 = Sigmaa11*(region == fuel1) + Sigmaa12*(region == fuel2) + Sigmaa14*(region == ref)
+        + Sigmaa13*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+
+W0 musigmaf1 = musigmaf11*(region == fuel1) + musigmaf12*(region == fuel2) + musigmaf14*(region == ref)
+        + musigmaf13*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+
+W0 chi1 = chi11*(region == fuel1) + chi12*(region == fuel2) + chi14*(region == ref)
+        + chi13*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+
+W0 Sigmas12 = Sigmas121*(region == fuel1) + Sigmas122*(region == fuel2) + Sigmas124*(region == ref)
+        + Sigmas123*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+
+W0 D2 =  D21*(region == fuel1) + D22*(region == fuel2) + D24*(region == ref)
+        + D23*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+
+W0 Sigmaa2 =  Sigmaa21*(region == fuel1) + Sigmaa22*(region == fuel2) + Sigmaa24*(region == ref)
+        + Sigmaa23*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+
+W0 musigmaf2 =  musigmaf21*(region == fuel1) + musigmaf22*(region == fuel2) + musigmaf24*(region == ref)
+        + musigmaf23*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+
+W0 chi2 =  chi21*(region == fuel1) + chi22*(region == fuel2) + chi24*(region == ref)
+        + chi23*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+
+//plot(Th,Sigmaa2); cin >> mmp;
+//savemesh(Th,\\\"output/IAEA2d.msh\\\");// save mesh
+
+int count1 = 5, count2 = 5, count3 = 5;
+real p1min = -0.005, p1max = 0.005, dp1 = (p1max - p1min)/count1, pv1;
+real p2min = 0, p2max = 1, dp2 = (p2max - p2min)/count2, pv2;
+real p3min = 0, p3max = 1, dp3 = (p3max - p3min)/count3, pv3;
+
+int nmesh = Th.nv;
+int icount = 0;
+real[int,int] tpadj1(nmesh,2);
+real[int] tp1(nmesh),p2(nmesh),tp0(nmesh);
+Vvh t1,t2;
+real keff = 1.029;
+real maxpower, meanpower, FQ;
+real adjokeff = 1.029;
+
+    int  nx = 171, ny = 171;
+    real GridSize = 170;
+    real hx = GridSize/(nx-1);
+    real hy = GridSize/(ny-1);
+    real x, y;
+
+
+real Sigmaa220,Sigmaa230,musigmaf210,musigmaf220,musigmaf230;
+
+// 从命令行获取pv1,pv2,pv3
+pv1 = readParam("pv1", 0.0);
+pv2 = readParam("pv2", 0.0);
+pv3 = readParam("pv3", 0.0);
+
+// 计算相关参数
+musigmaf210 = musigmaf21 * (1 + pv1);
+musigmaf220 = musigmaf22 * (1 + pv1);
+musigmaf230 = musigmaf23 * (1 + pv1);
+musigmaf2 = musigmaf210*(region == fuel1) + musigmaf220*(region == fuel2) + musigmaf24*(region == ref)
+    + musigmaf230*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+
+Sigmaa230 = Sigmaa22*pv2 + Sigmaa23*(1-pv2);
+Sigmaa220 = Sigmaa21*pv3 + Sigmaa22*(1-pv3);
+Sigmaa2 = Sigmaa21*(region == fuel1) + Sigmaa220*(region == fuel2) + Sigmaa24*(region == ref)
+    + Sigmaa230*(region == cr1 || region == cr2 || region == cr3 || region == cr4);
+
+phi1[]=1;
+uni1[]=1;
+
+
+  //int iii=1; //! solve the diffusion problem
+  //if (iii)
+  {
+    real sigma = 1.01;
+
+    //! forward problem
+    varf op([phi1,phi2],[v1,v2])=
+    int2d(Th)(D1*(dx(phi1)*dx(v1)+dy(phi1)*dy(v1))) 
+    + int2d(Th)((Sigmaa1+Sigmas12)*phi1*v1)
+    - int2d(Th)(Sigmas12*phi1*v2) 
+    + int2d(Th)(D2*(dx(phi2)*dx(v2)+dy(phi2)*dy(v2))) 
+    + int2d(Th)(Sigmaa2*phi2*v2)
+    - int2d(Th)(sigma*chi1*(musigmaf1*phi1*v1+musigmaf2*phi2*v1)) 
+    - int2d(Th)(sigma*chi2*(musigmaf1*phi1*v2+musigmaf2*phi2*v2))
+    + int1d(Th,labelOut)(bou*phi1*v1)
+    + int1d(Th,labelOut)(bou*phi2*v2);//
+
+    varf b([phi1,phi2],[v1,v2]) = 
+    int2d(Th)(chi1*(musigmaf1*phi1*v1+musigmaf2*phi2*v1)) 
+    + int2d(Th)(chi2*(musigmaf1*phi1*v2+musigmaf2*phi2*v2));
+
+    matrix OP= op(Vh,Vh,solver=sparsesolver,eps=1e-12);  // 使用sparsesolver替代UMFPACK
+    matrix B=b(Vh,Vh,solver=GMRES,eps=1e-16);        //GMRES,eps=1e-20
+    
+    
+     //! adjoint equations
+     varf opT([phi1,phi2],[v1,v2])=
+     int2d(Th)(D1*(dx(phi1)*dx(v1)+dy(phi1)*dy(v1))) 
+     + int2d(Th)((Sigmaa1+Sigmas12)*phi1*v1)
+     - int2d(Th)(Sigmas12*phi2*v1) 
+     + int2d(Th)(D2*(dx(phi2)*dx(v2)+dy(phi2)*dy(v2))) 
+     + int2d(Th)(Sigmaa2*phi2*v2)
+     - int2d(Th)(sigma*musigmaf1*(chi1*phi1*v1+chi2*phi2*v1)) 
+     - int2d(Th)(sigma*musigmaf2*(chi1*phi1*v2+chi2*phi2*v2))
+     + int1d(Th,labelOut)(bou*phi1*v1)
+     + int1d(Th,labelOut)(bou*phi2*v2);//
+
+     varf bT([phi1,phi2],[v1,v2]) = 
+     int2d(Th)(musigmaf1*(chi1*phi1*v1+chi2*phi2*v1)) 
+     + int2d(Th)(musigmaf2*(chi1*phi1*v2+chi2*phi2*v2));
+    
+     matrix OPT= opT(Vh,Vh,solver=UMFPACK,eps=1e-16);        //,factorize=1  sparsesolver  Crout UMFPACK
+     matrix BT=bT(Vh,Vh,solver=GMRES,eps=1e-16);            //GMRES,eps=1e-20
+
+    //matrix OPT = OP\';
+    //matrix BT= B\';
+
+    int ntemp=5;
+    int Nev = 10,adjoNev = 10;
+    real[int] ev(Nev),adjoev(adjoNev);
+    Vh[int] [eV1,eV2](Nev), [adjoeV1,adjoeV2](adjoNev);
+    
+    //! solve forward problem
+    //！only when selecting sym=false, the forward and adjoint keff agree well.
+    int k=EigenValue(OP,B,sym=false,sigma=sigma,value=ev,vector=eV1,tol=1e-8,maxit=1000,ncv=0,nev=Nev);  // 降低容差到1e-8
+    ntemp = ev.imin; 
+    keff = 1.0/ev[ntemp]; //cout << "keff_forward: " << keff << endl; //cin >> mmp;
+    phi1[] = eV1[ntemp][];
+
+    //! solve adjoint problem
+    //! adjoint: Three-dimensional solution of the forward and adjoint neutron diffusion equation using the generalized least squares finite element method
+    //! Farahnaz Saadatian-Derakhshandeh
+    //sigma= 0.8;//1.0/keff;
+    int adjok=EigenValue(OPT,BT,sym=false,sigma=sigma,value=adjoev,vector=adjoeV1,tol=1e-8,maxit=1000,ncv=0,nev=adjoNev);  // 降低容差到1e-8
+    ntemp = adjoev.imin; 
+    adjokeff = 1.0/adjoev[ntemp]; //cout << "keff_adjoint: "  << adjokeff << endl; //cin >> mmp;
+    adjophi1[] = adjoeV1[ntemp][];
+    
+    //! 
+    real int1 = int2d(Th,qforder=1)(musigmaf1*phi1 + musigmaf2*phi2);//int2d(Th,qforder=1)((1.0-p4)*musigmaf1*phi1+musigmaf2*phi2)
+    real squ= int2d(Th,qforder=1)(uni1);//!
+    
+    //! normalize the flux
+    phi1[] = phi1[]/(int1/squ);
+    
+    //! normalize the adjoint flux
+    adjophi1[] = adjophi1[]/(int1/squ);
+    //adjophi1 = abs(adjophi1);
+
+    if(1)
+    {
+    tpadj1 = phi1[];
+    tp0 = tpadj1(:,0);
+    t1[] = tp0;
+    t1 = abs(t1);
+    tp0 = tpadj1(:,1);
+    t2[] = tp0;
+    t2 = abs(t2);
+    tpadj1(:,0) = t1[];
+    tpadj1(:,1) = t2[];
+    phi1[] = tpadj1;
+
+    tpadj1 = adjophi1[];
+    tp0 = tpadj1(:,0);
+    t1[] = tp0;
+    t1 = abs(t1);
+    tp0 = tpadj1(:,1);
+    t2[] = tp0;
+    t2 = abs(t2);
+    tpadj1(:,0) = t1[];
+    tpadj1(:,1) = t2[];
+    adjophi1[] = tpadj1;
+    }
+
+
+    //! for checking the normalization
+    //! int1 = int2d(Th,qforder=1)(musigmaf1*phi1+musigmaf2*phi2);
+    //! int1 = int1/squ;//!
+    
+    //! calculate the power
+    powerf = musigmaf1*phi1+musigmaf2*phi2;
+    fluxf = phi1 + phi2;
+    //cout << "keff=" << keff << endl;
+    apowerf = musigmaf1*adjophi1+musigmaf2*adjophi2;
+
+    //! calculate F_Q = max(powerf) / mean(powerf)
+    maxpower = powerf[].max;
+    meanpower = powerf[].sum / powerf[].n;
+    FQ = maxpower / meanpower;
+    //cout << "FQ=" << FQ << endl;
+
+    ofstream output(outputFilePath);
+    output << "keff=" << keff << endl;
+    output << "FQ=" << FQ << endl;
+    output << "powermin=" << powerf[].min << endl;
+    output << "powermax=" << powerf[].max << endl;
+    output << "fluxmin=" << fluxf[].min << endl;
+    output << "fluxmax=" << fluxf[].max << endl;
+
+  }
+load "iovtk"
+// 绘制与导出 IAEA 几何
+// plot(Th, wait=true, fill=false, cmm="IAEA geometry");
+// plot(Th, ps="iaea_geometry.eps", fill=true);
+// savevtk("iaea_geometry.vtu", Th);
+
+if (figPrefix != "") {
+    if (pZmin >= 0.0 && pZmax > pZmin) {
+        real[int] pViso(21);
+        for (int i = 0; i < pViso.n; i++) {
+            pViso[i] = pZmin + (pZmax - pZmin) * i / (pViso.n - 1);
+        }
+        plot(powerf,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             viso=pViso,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_power.eps");
+    } else {
+        plot(powerf,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_power.eps");
+    }
+
+    if (fZmin >= 0.0 && fZmax > fZmin) {
+        real[int] fViso(21);
+        for (int i = 0; i < fViso.n; i++) {
+            fViso[i] = fZmin + (fZmax - fZmin) * i / (fViso.n - 1);
+        }
+        plot(fluxf,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             viso=fViso,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_flux.eps");
+    } else {
+        plot(fluxf,
+             wait=false,
+             fill=true,
+             value=false,
+             nbiso=20,
+             NbColors=64,
+             NbColorTicks=6,
+             ColorScheme=1,
+             ShowAxes=false,
+             ps=figPrefix + "_flux.eps");
+    }
+}
+
+
+
+
+
+
