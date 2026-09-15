@@ -24,6 +24,7 @@ class RidgeResidualTask:
 
     @property
     def d(self) -> int:
+        return int(self.basis.shape[0])
 
     @property
     def k(self) -> int:
