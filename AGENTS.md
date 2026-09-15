@@ -3,6 +3,17 @@
 This file is the operating interface for Codex and other code agents working on
 `AICO-Intellig`.
 
+## Current Priority
+
+- The main active project is `AICO-Intellig`.
+- Treat `AICO1` as the stable framework baseline unless a task explicitly
+  requires cross-repository coordination.
+- Prefer work that improves dataset consistency, analysis interfaces, curated
+  exports, backend selection, sequential stopping, risk-sensitive routing, or
+  temporal generalization.
+- Before proposing large refactors, first ask whether the task can be solved by
+  extending the current curated/manifests/universe interface.
+
 ## Mission
 
 - Continue development on the AICO-Intellig layer.
@@ -26,6 +37,11 @@ Then move into the code:
 7. `scripts/`
 8. `training/`
 9. `tests/` and top-level `test_*.py`
+
+## Working Default
+
+Unless the task explicitly says otherwise, assume the work should happen inside
+`AICO-Intellig`, not `AICO1`.
 
 ## Preferred Data Interfaces
 

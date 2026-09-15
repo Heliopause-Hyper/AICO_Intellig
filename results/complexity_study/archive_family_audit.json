@@ -1,0 +1,1089 @@
+{
+  "instances_path": "/home/ycl/AICO-Intellig/results/curated_datasets/instances.jsonl",
+  "run_summaries_path": "/home/ycl/AICO-Intellig/results/curated_datasets/run_summaries.jsonl",
+  "n_families": 18,
+  "recommended_families": [],
+  "manual_followup_families": [
+    "sns_flow_family",
+    "advection_v1",
+    "blackscholes_v1",
+    "heat_time_v1",
+    "sns_v3"
+  ],
+  "families": [
+    {
+      "family": "sns_flow_family",
+      "n_instances": 1314,
+      "n_runs": 20512,
+      "decision_dim": {
+        "min": 1,
+        "median": 1.0,
+        "max": 1,
+        "unique": [
+          1
+        ]
+      },
+      "budget_eval_median": 15.0,
+      "budget_walltime_sec_median": 60.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 40.0,
+        "max": 102
+      },
+      "dominant_variable_signature": "uMax",
+      "dominant_variable_signature_share": 1.0,
+      "unique_variable_signatures": 1,
+      "top_variable_signatures": [
+        {
+          "signature": "uMax",
+          "count": 1314
+        }
+      ],
+      "objective_types": {
+        "target_matching": 1314
+      },
+      "task_types": {
+        "calibration": 1314
+      },
+      "pde_types": {
+        "elliptic": 1314
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.0,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 3,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": true
+    },
+    {
+      "family": "advection_v1",
+      "n_instances": 780,
+      "n_runs": 3600,
+      "decision_dim": {
+        "min": 2,
+        "median": 3.0,
+        "max": 3,
+        "unique": [
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 100.0,
+      "budget_walltime_sec_median": 3600.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 100.0,
+        "max": 1589
+      },
+      "dominant_variable_signature": "dt|b|amp",
+      "dominant_variable_signature_share": 0.02564102564102564,
+      "unique_variable_signatures": 111,
+      "top_variable_signatures": [
+        {
+          "signature": "dt|b|amp",
+          "count": 20
+        },
+        {
+          "signature": "sigma|amp|a",
+          "count": 19
+        },
+        {
+          "signature": "dt|a|amp",
+          "count": 16
+        },
+        {
+          "signature": "amp|b",
+          "count": 16
+        },
+        {
+          "signature": "sigma|amp|b",
+          "count": 16
+        }
+      ],
+      "objective_types": {
+        "target_matching": 639,
+        "min": 141
+      },
+      "task_types": {
+        "calibration": 639,
+        "design_optimization": 141
+      },
+      "pde_types": {
+        "hyperbolic": 780
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.0077777777777777776,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 3,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": true
+    },
+    {
+      "family": "blackscholes_v1",
+      "n_instances": 780,
+      "n_runs": 3600,
+      "decision_dim": {
+        "min": 3,
+        "median": 3.0,
+        "max": 4,
+        "unique": [
+          3,
+          4
+        ]
+      },
+      "budget_eval_median": 100.0,
+      "budget_walltime_sec_median": 3600.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 100.0,
+        "max": 1006
+      },
+      "dominant_variable_signature": "rho|T|K",
+      "dominant_variable_signature_share": 0.015384615384615385,
+      "unique_variable_signatures": 163,
+      "top_variable_signatures": [
+        {
+          "signature": "rho|T|K",
+          "count": 12
+        },
+        {
+          "signature": "sigma2|K|sigma1",
+          "count": 12
+        },
+        {
+          "signature": "dt|rho|sigma1",
+          "count": 12
+        },
+        {
+          "signature": "K|T|sigma2",
+          "count": 12
+        },
+        {
+          "signature": "K|sigma2|r",
+          "count": 12
+        }
+      ],
+      "objective_types": {
+        "target_matching": 570,
+        "min": 210
+      },
+      "task_types": {
+        "calibration": 570,
+        "design_optimization": 210
+      },
+      "pde_types": {
+        "parabolic": 780
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.016666666666666666,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 3,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": true
+    },
+    {
+      "family": "heat_time_v1",
+      "n_instances": 780,
+      "n_runs": 3600,
+      "decision_dim": {
+        "min": 2,
+        "median": 3.0,
+        "max": 3,
+        "unique": [
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 100.0,
+      "budget_walltime_sec_median": 3600.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 100.0,
+        "max": 1295
+      },
+      "dominant_variable_signature": "dt|ue|k_lo",
+      "dominant_variable_signature_share": 0.020512820512820513,
+      "unique_variable_signatures": 112,
+      "top_variable_signatures": [
+        {
+          "signature": "dt|ue|k_lo",
+          "count": 16
+        },
+        {
+          "signature": "T|dt|k_lo",
+          "count": 15
+        },
+        {
+          "signature": "k_hi|dt",
+          "count": 15
+        },
+        {
+          "signature": "T|dt|kf",
+          "count": 15
+        },
+        {
+          "signature": "kf|k_hi|T",
+          "count": 15
+        }
+      ],
+      "objective_types": {
+        "target_matching": 655,
+        "min": 125
+      },
+      "task_types": {
+        "calibration": 655,
+        "design_optimization": 125
+      },
+      "pde_types": {
+        "parabolic": 780
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.002777777777777778,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 3,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": true
+    },
+    {
+      "family": "sns_v3",
+      "n_instances": 1177,
+      "n_runs": 31246,
+      "decision_dim": {
+        "min": 1,
+        "median": 2.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 24.0,
+      "budget_walltime_sec_median": 70.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 40.0,
+        "max": 2063
+      },
+      "dominant_variable_signature": "uMax|Mu|R",
+      "dominant_variable_signature_share": 0.4715378079864061,
+      "unique_variable_signatures": 4,
+      "top_variable_signatures": [
+        {
+          "signature": "uMax|Mu|R",
+          "count": 555
+        },
+        {
+          "signature": "uMax|Mu",
+          "count": 309
+        },
+        {
+          "signature": "uMax",
+          "count": 188
+        },
+        {
+          "signature": "uMax|R",
+          "count": 125
+        }
+      ],
+      "objective_types": {
+        "max": 216,
+        "min": 464,
+        "target_matching": 497
+      },
+      "task_types": {
+        "design_optimization": 680,
+        "calibration": 497
+      },
+      "pde_types": {
+        "elliptic": 1177
+      },
+      "run_feasible_rate": 0.9916789349036677,
+      "run_failure_count_mean": 6.724540741214875,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 2,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": true
+    },
+    {
+      "family": "heat_v1",
+      "n_instances": 598,
+      "n_runs": 19440,
+      "decision_dim": {
+        "min": 2,
+        "median": 3.0,
+        "max": 4,
+        "unique": [
+          2,
+          3,
+          4
+        ]
+      },
+      "budget_eval_median": 20.0,
+      "budget_walltime_sec_median": 60.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 16.0,
+        "max": 297
+      },
+      "dominant_variable_signature": "k4|k2|k1",
+      "dominant_variable_signature_share": 0.026755852842809364,
+      "unique_variable_signatures": 131,
+      "top_variable_signatures": [
+        {
+          "signature": "k4|k2|k1",
+          "count": 16
+        },
+        {
+          "signature": "k4|k2|k5",
+          "count": 16
+        },
+        {
+          "signature": "k3|k1",
+          "count": 14
+        },
+        {
+          "signature": "k2|Bi|k1",
+          "count": 12
+        },
+        {
+          "signature": "k4|k5|k3",
+          "count": 12
+        }
+      ],
+      "objective_types": {
+        "max": 304,
+        "min": 294
+      },
+      "task_types": {
+        "design_optimization": 598
+      },
+      "pde_types": {
+        "elliptic": 598
+      },
+      "run_feasible_rate": 0.85,
+      "run_failure_count_mean": 4.89675925925926,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 2,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "iaea_v1",
+      "n_instances": 486,
+      "n_runs": 19440,
+      "decision_dim": {
+        "min": 2,
+        "median": 4.0,
+        "max": 6,
+        "unique": [
+          2,
+          4,
+          6
+        ]
+      },
+      "budget_eval_median": 18.0,
+      "budget_walltime_sec_median": 60.0,
+      "num_constraints_median": 1.0,
+      "num_evals": {
+        "median": 12.0,
+        "max": 1500
+      },
+      "dominant_variable_signature": "musigmaf22|Sigmaa23",
+      "dominant_variable_signature_share": 0.024691358024691357,
+      "unique_variable_signatures": 170,
+      "top_variable_signatures": [
+        {
+          "signature": "musigmaf22|Sigmaa23",
+          "count": 12
+        },
+        {
+          "signature": "D23|Sigmaa22",
+          "count": 8
+        },
+        {
+          "signature": "D22|Sigmaa21",
+          "count": 8
+        },
+        {
+          "signature": "Sigmaa21|D22",
+          "count": 6
+        },
+        {
+          "signature": "musigmaf21|Sigmaa23",
+          "count": 6
+        }
+      ],
+      "objective_types": {
+        "max": 80,
+        "target_matching": 236,
+        "min": 170
+      },
+      "task_types": {
+        "design_optimization": 250,
+        "calibration": 236
+      },
+      "pde_types": {
+        "elliptic": 486
+      },
+      "run_feasible_rate": 0.9643518518518519,
+      "run_failure_count_mean": 5.9223251028806585,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 2,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "ex_advection2d_family_v1",
+      "n_instances": 303,
+      "n_runs": 8181,
+      "decision_dim": {
+        "min": 1,
+        "median": 2.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 40.0,
+      "budget_walltime_sec_median": 120.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 40.0,
+        "max": 244
+      },
+      "dominant_variable_signature": "ny",
+      "dominant_variable_signature_share": 0.026402640264026403,
+      "unique_variable_signatures": 66,
+      "top_variable_signatures": [
+        {
+          "signature": "ny",
+          "count": 8
+        },
+        {
+          "signature": "nx|amp|y0",
+          "count": 8
+        },
+        {
+          "signature": "sigma|ny|nx",
+          "count": 8
+        },
+        {
+          "signature": "nx",
+          "count": 8
+        },
+        {
+          "signature": "ny|nx|amp",
+          "count": 8
+        }
+      ],
+      "objective_types": {
+        "target_matching": 303
+      },
+      "task_types": {
+        "calibration": 303
+      },
+      "pde_types": {
+        "hyperbolic": 303
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.0,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 2,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "thermal_fins_family_v1",
+      "n_instances": 184,
+      "n_runs": 4968,
+      "decision_dim": {
+        "min": 1,
+        "median": 2.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 40.0,
+      "budget_walltime_sec_median": 120.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 21.0,
+        "max": 282
+      },
+      "dominant_variable_signature": "k3|Bi",
+      "dominant_variable_signature_share": 0.20108695652173914,
+      "unique_variable_signatures": 5,
+      "top_variable_signatures": [
+        {
+          "signature": "k3|Bi",
+          "count": 37
+        },
+        {
+          "signature": "k5|k2|k3",
+          "count": 37
+        },
+        {
+          "signature": "Bi",
+          "count": 37
+        },
+        {
+          "signature": "k5",
+          "count": 37
+        },
+        {
+          "signature": "Bi|k1|k4",
+          "count": 36
+        }
+      ],
+      "objective_types": {
+        "target_matching": 184
+      },
+      "task_types": {
+        "calibration": 184
+      },
+      "pde_types": {
+        "elliptic": 184
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.0,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 2,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "ex_blackscholes2d_family_v1",
+      "n_instances": 92,
+      "n_runs": 2484,
+      "decision_dim": {
+        "min": 1,
+        "median": 3.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 40.0,
+      "budget_walltime_sec_median": 120.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 40.0,
+        "max": 336
+      },
+      "dominant_variable_signature": "sigma2",
+      "dominant_variable_signature_share": 0.021739130434782608,
+      "unique_variable_signatures": 49,
+      "top_variable_signatures": [
+        {
+          "signature": "sigma2",
+          "count": 2
+        },
+        {
+          "signature": "r|sigma1|T",
+          "count": 2
+        },
+        {
+          "signature": "LL",
+          "count": 2
+        },
+        {
+          "signature": "T|L",
+          "count": 2
+        },
+        {
+          "signature": "K|m|r",
+          "count": 2
+        }
+      ],
+      "objective_types": {
+        "target_matching": 92
+      },
+      "task_types": {
+        "calibration": 92
+      },
+      "pde_types": {
+        "parabolic": 92
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.0,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 2,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "ex_heat_time_family_v1",
+      "n_instances": 88,
+      "n_runs": 2376,
+      "decision_dim": {
+        "min": 1,
+        "median": 3.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 50.0,
+      "budget_walltime_sec_median": 360.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 58.0,
+        "max": 228
+      },
+      "dominant_variable_signature": "kf",
+      "dominant_variable_signature_share": 0.022727272727272728,
+      "unique_variable_signatures": 44,
+      "top_variable_signatures": [
+        {
+          "signature": "kf",
+          "count": 2
+        },
+        {
+          "signature": "k_lo|nx",
+          "count": 2
+        },
+        {
+          "signature": "nx",
+          "count": 2
+        },
+        {
+          "signature": "ny|dt",
+          "count": 2
+        },
+        {
+          "signature": "T|k_lo|nx",
+          "count": 2
+        }
+      ],
+      "objective_types": {
+        "target_matching": 88
+      },
+      "task_types": {
+        "calibration": 88
+      },
+      "pde_types": {
+        "parabolic": 88
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.0,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 2,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "corca_state",
+      "n_instances": 5,
+      "n_runs": 58,
+      "decision_dim": {
+        "min": 1,
+        "median": 3.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 15.0,
+      "budget_walltime_sec_median": 60.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 15.0,
+        "max": 95
+      },
+      "dominant_variable_signature": "Pp:|Prk:|Tin:",
+      "dominant_variable_signature_share": 0.6,
+      "unique_variable_signatures": 3,
+      "top_variable_signatures": [
+        {
+          "signature": "Pp:|Prk:|Tin:",
+          "count": 3
+        },
+        {
+          "signature": "pos15: R, K 12 ",
+          "count": 1
+        },
+        {
+          "signature": "bore_ppm|pos16: R, F 12 ",
+          "count": 1
+        }
+      ],
+      "objective_types": {
+        "target_matching": 5
+      },
+      "task_types": {
+        "calibration": 5
+      },
+      "pde_types": {
+        "unknown": 5
+      },
+      "run_feasible_rate": 0.0,
+      "run_failure_count_mean": 19.810344827586206,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 2,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "ex_advection2d",
+      "n_instances": 1,
+      "n_runs": 0,
+      "decision_dim": {
+        "min": 3,
+        "median": 3.0,
+        "max": 3,
+        "unique": [
+          3
+        ]
+      },
+      "budget_eval_median": 50.0,
+      "budget_walltime_sec_median": 120.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 0.0,
+        "max": 0
+      },
+      "dominant_variable_signature": "x0|dt|nx",
+      "dominant_variable_signature_share": 1.0,
+      "unique_variable_signatures": 1,
+      "top_variable_signatures": [
+        {
+          "signature": "x0|dt|nx",
+          "count": 1
+        }
+      ],
+      "objective_types": {
+        "target_matching": 1
+      },
+      "task_types": {
+        "calibration": 1
+      },
+      "pde_types": {
+        "hyperbolic": 1
+      },
+      "run_feasible_rate": 0.0,
+      "run_failure_count_mean": 0.0,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 2,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "ex_vi_obstacle_family_v1",
+      "n_instances": 53,
+      "n_runs": 1431,
+      "decision_dim": {
+        "min": 1,
+        "median": 2.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 60.0,
+      "budget_walltime_sec_median": 600.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 60.0,
+        "max": 275
+      },
+      "dominant_variable_signature": "c|gmax|f",
+      "dominant_variable_signature_share": 0.1320754716981132,
+      "unique_variable_signatures": 8,
+      "top_variable_signatures": [
+        {
+          "signature": "c|gmax|f",
+          "count": 7
+        },
+        {
+          "signature": "gmax|f",
+          "count": 7
+        },
+        {
+          "signature": "c|f",
+          "count": 7
+        },
+        {
+          "signature": "gmax|c",
+          "count": 7
+        },
+        {
+          "signature": "c",
+          "count": 7
+        }
+      ],
+      "objective_types": {
+        "target_matching": 53
+      },
+      "task_types": {
+        "calibration": 53
+      },
+      "pde_types": {
+        "elliptic": 53
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.0,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 1,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "neutron_diffusion_family_v1",
+      "n_instances": 22,
+      "n_runs": 594,
+      "decision_dim": {
+        "min": 1,
+        "median": 1.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 40.0,
+      "budget_walltime_sec_median": 150.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 20.0,
+        "max": 90
+      },
+      "dominant_variable_signature": "Sigmaa24",
+      "dominant_variable_signature_share": 0.045454545454545456,
+      "unique_variable_signatures": 22,
+      "top_variable_signatures": [
+        {
+          "signature": "Sigmaa24",
+          "count": 1
+        },
+        {
+          "signature": "chi23|musigmaf13|Sigmaa13",
+          "count": 1
+        },
+        {
+          "signature": "musigmaf24",
+          "count": 1
+        },
+        {
+          "signature": "Sigmaa13|Sigmaa11",
+          "count": 1
+        },
+        {
+          "signature": "chi14|D23|chi11",
+          "count": 1
+        }
+      ],
+      "objective_types": {
+        "target_matching": 22
+      },
+      "task_types": {
+        "calibration": 22
+      },
+      "pde_types": {
+        "elliptic": 22
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.0,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 1,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "ex_optimcontrol_inverse_family_v1",
+      "n_instances": 16,
+      "n_runs": 432,
+      "decision_dim": {
+        "min": 1,
+        "median": 2.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 60.0,
+      "budget_walltime_sec_median": 600.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 60.0,
+        "max": 83
+      },
+      "dominant_variable_signature": "z0",
+      "dominant_variable_signature_share": 0.125,
+      "unique_variable_signatures": 8,
+      "top_variable_signatures": [
+        {
+          "signature": "z0",
+          "count": 2
+        },
+        {
+          "signature": "z0|z1",
+          "count": 2
+        },
+        {
+          "signature": "z0|z2|z1",
+          "count": 2
+        },
+        {
+          "signature": "z2|z0",
+          "count": 2
+        },
+        {
+          "signature": "z1|z0",
+          "count": 2
+        }
+      ],
+      "objective_types": {
+        "target_matching": 16
+      },
+      "task_types": {
+        "calibration": 16
+      },
+      "pde_types": {
+        "elliptic": 16
+      },
+      "run_feasible_rate": 1.0,
+      "run_failure_count_mean": 0.0,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 1,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "corca_evol",
+      "n_instances": 7,
+      "n_runs": 324,
+      "decision_dim": {
+        "min": 1,
+        "median": 2.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 30.0,
+      "budget_walltime_sec_median": 300.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 22.0,
+        "max": 205
+      },
+      "dominant_variable_signature": "rod_2|burnup_steps_2",
+      "dominant_variable_signature_share": 0.2857142857142857,
+      "unique_variable_signatures": 6,
+      "top_variable_signatures": [
+        {
+          "signature": "rod_2|burnup_steps_2",
+          "count": 2
+        },
+        {
+          "signature": "sequence_count",
+          "count": 1
+        },
+        {
+          "signature": "sequence_count|burnup_steps_1|rod_1",
+          "count": 1
+        },
+        {
+          "signature": "burnup_steps_2",
+          "count": 1
+        },
+        {
+          "signature": "burnup_steps_1|rod_2",
+          "count": 1
+        }
+      ],
+      "objective_types": {
+        "target_matching": 7
+      },
+      "task_types": {
+        "calibration": 7
+      },
+      "pde_types": {
+        "unknown": 7
+      },
+      "run_feasible_rate": 0.6358024691358025,
+      "run_failure_count_mean": 18.90740740740741,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 1,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    },
+    {
+      "family": "corca_xenon",
+      "n_instances": 6,
+      "n_runs": 324,
+      "decision_dim": {
+        "min": 1,
+        "median": 2.0,
+        "max": 3,
+        "unique": [
+          1,
+          2,
+          3
+        ]
+      },
+      "budget_eval_median": 30.0,
+      "budget_walltime_sec_median": 300.0,
+      "num_constraints_median": 0.0,
+      "num_evals": {
+        "median": 22.0,
+        "max": 185
+      },
+      "dominant_variable_signature": "rod_1",
+      "dominant_variable_signature_share": 0.3333333333333333,
+      "unique_variable_signatures": 4,
+      "top_variable_signatures": [
+        {
+          "signature": "rod_1",
+          "count": 2
+        },
+        {
+          "signature": "rod_1|xenon_steps|power_1",
+          "count": 2
+        },
+        {
+          "signature": "power_1|rod_1",
+          "count": 1
+        },
+        {
+          "signature": "rod_1|power_1",
+          "count": 1
+        }
+      ],
+      "objective_types": {
+        "target_matching": 6
+      },
+      "task_types": {
+        "calibration": 6
+      },
+      "pde_types": {
+        "unknown": 6
+      },
+      "run_feasible_rate": 0.6666666666666666,
+      "run_failure_count_mean": 12.62962962962963,
+      "run_timeout_count_mean": 0.0,
+      "candidate_score": 1,
+      "recommended_for_shared_structure": false,
+      "manual_followup_candidate": false
+    }
+  ]
+}

@@ -1,0 +1,896 @@
+{
+  "config": {
+    "k": 3,
+    "d_values": [
+      16,
+      32,
+      64,
+      128,
+      256
+    ],
+    "family_seeds": 20,
+    "history_tasks": 8,
+    "test_tasks": 30,
+    "probe_points": 2,
+    "budget": 180,
+    "condition_number": 12.0,
+    "fd_eps": 0.001,
+    "thresholds": [
+      0.5,
+      0.1,
+      0.02,
+      0.005
+    ]
+  },
+  "dimension_sweep": [
+    {
+      "d": 16,
+      "k": 3,
+      "family_seeds": 20,
+      "history_tasks_per_family": 8,
+      "test_tasks_per_family": 30,
+      "probe_points_per_task": 2,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.00039377800520075824,
+      "projector_error_median": 1.8246783402501848e-13,
+      "scratch": {
+        "n": 600,
+        "mean_simple_regret": 0.11790578179273917,
+        "median_simple_regret": 0.011797129304878628,
+        "max_simple_regret": 5.401449097788295,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9433333333333334,
+            "mean_queries_if_hit": 53.58833922261484,
+            "median_queries_if_hit": 34.0
+          },
+          "0.1": {
+            "success_rate": 0.83,
+            "mean_queries_if_hit": 89.53413654618474,
+            "median_queries_if_hit": 100.0
+          },
+          "0.02": {
+            "success_rate": 0.5766666666666667,
+            "mean_queries_if_hit": 112.81502890173411,
+            "median_queries_if_hit": 100.0
+          },
+          "0.005": {
+            "success_rate": 0.37166666666666665,
+            "mean_queries_if_hit": 126.79372197309416,
+            "median_queries_if_hit": 133.0
+          }
+        }
+      },
+      "oracle_subspace": {
+        "n": 600,
+        "mean_simple_regret": 0.004984507339067346,
+        "median_simple_regret": 3.4319064735696336e-09,
+        "max_simple_regret": 0.9429867288762421,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9966666666666667,
+            "mean_queries_if_hit": 14.607023411371237,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9916666666666667,
+            "mean_queries_if_hit": 26.401680672268906,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.98,
+            "mean_queries_if_hit": 39.32312925170068,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.965,
+            "mean_queries_if_hit": 51.241796200345426,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "estimated_subspace": {
+        "n": 600,
+        "mean_simple_regret": 0.004967148552408752,
+        "median_simple_regret": 2.3749410844825617e-08,
+        "max_simple_regret": 0.6829759828757365,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9983333333333333,
+            "mean_queries_if_hit": 15.1669449081803,
+            "median_queries_if_hit": 8.0
+          },
+          "0.1": {
+            "success_rate": 0.9883333333333333,
+            "mean_queries_if_hit": 25.96121416526138,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9833333333333333,
+            "mean_queries_if_hit": 40.55762711864407,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9683333333333334,
+            "mean_queries_if_hit": 53.098106712564544,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    },
+    {
+      "d": 32,
+      "k": 3,
+      "family_seeds": 20,
+      "history_tasks_per_family": 8,
+      "test_tasks_per_family": 30,
+      "probe_points_per_task": 2,
+      "budget": 180,
+      "history_query_cost_mean": 1024.0,
+      "projector_error_mean": 0.006754179406927159,
+      "projector_error_median": 7.318255321192339e-05,
+      "scratch": {
+        "n": 600,
+        "mean_simple_regret": 0.19108370030588573,
+        "median_simple_regret": 0.055479509837500114,
+        "max_simple_regret": 6.008063844593068,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.935,
+            "mean_queries_if_hit": 97.93582887700535,
+            "median_queries_if_hit": 66.0
+          },
+          "0.1": {
+            "success_rate": 0.6216666666666667,
+            "mean_queries_if_hit": 134.00804289544237,
+            "median_queries_if_hit": 131.0
+          },
+          "0.02": {
+            "success_rate": 0.28833333333333333,
+            "mean_queries_if_hit": 159.121387283237,
+            "median_queries_if_hit": 180.0
+          },
+          "0.005": {
+            "success_rate": 0.11833333333333333,
+            "mean_queries_if_hit": 162.26760563380282,
+            "median_queries_if_hit": 180.0
+          }
+        }
+      },
+      "oracle_subspace": {
+        "n": 600,
+        "mean_simple_regret": 0.011917079144303908,
+        "median_simple_regret": 3.4643955866827586e-09,
+        "max_simple_regret": 1.5470086969434798,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9916666666666667,
+            "mean_queries_if_hit": 14.174789915966386,
+            "median_queries_if_hit": 8.0
+          },
+          "0.1": {
+            "success_rate": 0.9833333333333333,
+            "mean_queries_if_hit": 25.8,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9716666666666667,
+            "mean_queries_if_hit": 39.706689536878216,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.955,
+            "mean_queries_if_hit": 50.9022687609075,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "estimated_subspace": {
+        "n": 600,
+        "mean_simple_regret": 0.007854330420606645,
+        "median_simple_regret": 1.6543222901794047e-08,
+        "max_simple_regret": 0.923145777544323,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.995,
+            "mean_queries_if_hit": 14.398659966499162,
+            "median_queries_if_hit": 8.0
+          },
+          "0.1": {
+            "success_rate": 0.9816666666666667,
+            "mean_queries_if_hit": 26.166383701188455,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9666666666666667,
+            "mean_queries_if_hit": 38.94310344827586,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9583333333333334,
+            "mean_queries_if_hit": 51.794782608695655,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 20,
+      "history_tasks_per_family": 8,
+      "test_tasks_per_family": 30,
+      "probe_points_per_task": 2,
+      "budget": 180,
+      "history_query_cost_mean": 2048.0,
+      "projector_error_mean": 0.007789673978764735,
+      "projector_error_median": 0.0008220167558277301,
+      "scratch": {
+        "n": 600,
+        "mean_simple_regret": 1.4003033796216366,
+        "median_simple_regret": 0.5238288454754139,
+        "max_simple_regret": 28.50264485048829,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.485,
+            "mean_queries_if_hit": 103.84536082474227,
+            "median_queries_if_hit": 130.0
+          },
+          "0.1": {
+            "success_rate": 0.125,
+            "mean_queries_if_hit": 112.8,
+            "median_queries_if_hit": 130.0
+          },
+          "0.02": {
+            "success_rate": 0.03,
+            "mean_queries_if_hit": 130.0,
+            "median_queries_if_hit": 130.0
+          },
+          "0.005": {
+            "success_rate": 0.0016666666666666668,
+            "mean_queries_if_hit": 130.0,
+            "median_queries_if_hit": 130.0
+          }
+        }
+      },
+      "oracle_subspace": {
+        "n": 600,
+        "mean_simple_regret": 0.020732786565389676,
+        "median_simple_regret": 3.520916050903084e-09,
+        "max_simple_regret": 2.6116409311424507,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.985,
+            "mean_queries_if_hit": 14.617597292724197,
+            "median_queries_if_hit": 8.0
+          },
+          "0.1": {
+            "success_rate": 0.9666666666666667,
+            "mean_queries_if_hit": 24.43103448275862,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.96,
+            "mean_queries_if_hit": 38.723958333333336,
+            "median_queries_if_hit": 29.0
+          },
+          "0.005": {
+            "success_rate": 0.9466666666666667,
+            "mean_queries_if_hit": 50.88204225352113,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "estimated_subspace": {
+        "n": 600,
+        "mean_simple_regret": 0.021771865312060205,
+        "median_simple_regret": 2.124549201897565e-08,
+        "max_simple_regret": 2.832098888621588,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9883333333333333,
+            "mean_queries_if_hit": 15.706576728499156,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9716666666666667,
+            "mean_queries_if_hit": 26.236706689536877,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9533333333333334,
+            "mean_queries_if_hit": 39.08391608391609,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9416666666666667,
+            "mean_queries_if_hit": 51.38407079646018,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    },
+    {
+      "d": 128,
+      "k": 3,
+      "family_seeds": 20,
+      "history_tasks_per_family": 8,
+      "test_tasks_per_family": 30,
+      "probe_points_per_task": 2,
+      "budget": 180,
+      "history_query_cost_mean": 4096.0,
+      "projector_error_mean": 0.008736209659562014,
+      "projector_error_median": 0.004689094529188576,
+      "scratch": {
+        "n": 600,
+        "mean_simple_regret": 0.6864134168869434,
+        "median_simple_regret": 0.47391742797431774,
+        "max_simple_regret": 7.241906913848346,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.5133333333333333,
+            "mean_queries_if_hit": 152.1038961038961,
+            "median_queries_if_hit": 180.0
+          },
+          "0.1": {
+            "success_rate": 0.09333333333333334,
+            "mean_queries_if_hit": 164.01785714285714,
+            "median_queries_if_hit": 180.0
+          },
+          "0.02": {
+            "success_rate": 0.021666666666666667,
+            "mean_queries_if_hit": 180.0,
+            "median_queries_if_hit": 180.0
+          },
+          "0.005": {
+            "success_rate": 0.0016666666666666668,
+            "mean_queries_if_hit": 180.0,
+            "median_queries_if_hit": 180.0
+          }
+        }
+      },
+      "oracle_subspace": {
+        "n": 600,
+        "mean_simple_regret": 0.011775929033880698,
+        "median_simple_regret": 3.271797126340311e-09,
+        "max_simple_regret": 1.8167735122822448,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9933333333333333,
+            "mean_queries_if_hit": 15.14765100671141,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.98,
+            "mean_queries_if_hit": 26.598639455782312,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.965,
+            "mean_queries_if_hit": 39.1139896373057,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.955,
+            "mean_queries_if_hit": 51.16928446771379,
+            "median_queries_if_hit": 45.0
+          }
+        }
+      },
+      "estimated_subspace": {
+        "n": 600,
+        "mean_simple_regret": 0.00804047680462291,
+        "median_simple_regret": 2.12180477075622e-08,
+        "max_simple_regret": 1.8697367809235936,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9966666666666667,
+            "mean_queries_if_hit": 15.23076923076923,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9833333333333333,
+            "mean_queries_if_hit": 26.730508474576272,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9683333333333334,
+            "mean_queries_if_hit": 39.332185886402755,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9516666666666667,
+            "mean_queries_if_hit": 51.185639229422065,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    },
+    {
+      "d": 256,
+      "k": 3,
+      "family_seeds": 20,
+      "history_tasks_per_family": 8,
+      "test_tasks_per_family": 30,
+      "probe_points_per_task": 2,
+      "budget": 180,
+      "history_query_cost_mean": 8192.0,
+      "projector_error_mean": 0.0063045155039866425,
+      "projector_error_median": 0.005290214690458457,
+      "scratch": {
+        "n": 600,
+        "mean_simple_regret": 1.2986391321173327,
+        "median_simple_regret": 1.0478946347101075,
+        "max_simple_regret": 6.172070965659756,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.24166666666666667,
+            "mean_queries_if_hit": 110.86896551724138,
+            "median_queries_if_hit": 180.0
+          },
+          "0.1": {
+            "success_rate": 0.02666666666666667,
+            "mean_queries_if_hit": 135.25,
+            "median_queries_if_hit": 180.0
+          },
+          "0.02": {
+            "success_rate": 0.0016666666666666668,
+            "mean_queries_if_hit": 180.0,
+            "median_queries_if_hit": 180.0
+          },
+          "0.005": {
+            "success_rate": 0.0,
+            "mean_queries_if_hit": null,
+            "median_queries_if_hit": null
+          }
+        }
+      },
+      "oracle_subspace": {
+        "n": 600,
+        "mean_simple_regret": 0.013004073853018399,
+        "median_simple_regret": 2.8885056838039044e-09,
+        "max_simple_regret": 2.357132003858151,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9916666666666667,
+            "mean_queries_if_hit": 14.302521008403362,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9866666666666667,
+            "mean_queries_if_hit": 25.8597972972973,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.97,
+            "mean_queries_if_hit": 39.08419243986254,
+            "median_queries_if_hit": 35.5
+          },
+          "0.005": {
+            "success_rate": 0.9616666666666667,
+            "mean_queries_if_hit": 51.61178509532063,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "estimated_subspace": {
+        "n": 600,
+        "mean_simple_regret": 0.010409100131498459,
+        "median_simple_regret": 2.0942981686528146e-08,
+        "max_simple_regret": 1.169509163417513,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9933333333333333,
+            "mean_queries_if_hit": 15.082214765100671,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.98,
+            "mean_queries_if_hit": 26.212585034013607,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.975,
+            "mean_queries_if_hit": 40.60683760683761,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9566666666666667,
+            "mean_queries_if_hit": 51.90766550522648,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    }
+  ],
+  "history_sweep_d64": [
+    {
+      "d": 64,
+      "k": 3,
+      "history_tasks_per_family": 2,
+      "probe_points_per_task": 1,
+      "budget": 180,
+      "history_query_cost_mean": 256.0,
+      "projector_error_mean": 1.0,
+      "estimated_subspace": {
+        "n": 300,
+        "mean_simple_regret": 0.38181820055285154,
+        "median_simple_regret": 0.19188983292745426,
+        "max_simple_regret": 3.974608975187035,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.7466666666666667,
+            "mean_queries_if_hit": 10.267857142857142,
+            "median_queries_if_hit": 6.0
+          },
+          "0.1": {
+            "success_rate": 0.3333333333333333,
+            "mean_queries_if_hit": 18.55,
+            "median_queries_if_hit": 16.0
+          },
+          "0.02": {
+            "success_rate": 0.16666666666666666,
+            "mean_queries_if_hit": 26.24,
+            "median_queries_if_hit": 21.0
+          },
+          "0.005": {
+            "success_rate": 0.08333333333333333,
+            "mean_queries_if_hit": 33.0,
+            "median_queries_if_hit": 26.0
+          }
+        }
+      },
+      "amortized_threshold_queries": {
+        "0.5": 27.334523809523805,
+        "0.1": 35.61666666666666,
+        "0.02": 43.30666666666666,
+        "0.005": 50.06666666666666
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "history_tasks_per_family": 2,
+      "probe_points_per_task": 2,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.01749564396392307,
+      "estimated_subspace": {
+        "n": 300,
+        "mean_simple_regret": 0.015691888408000666,
+        "median_simple_regret": 1.781630049252775e-08,
+        "max_simple_regret": 1.759785087997783,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9933333333333333,
+            "mean_queries_if_hit": 17.493288590604028,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9633333333333334,
+            "mean_queries_if_hit": 26.44982698961938,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9533333333333334,
+            "mean_queries_if_hit": 40.01398601398601,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.94,
+            "mean_queries_if_hit": 52.4822695035461,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "amortized_threshold_queries": {
+        "0.5": 51.62662192393736,
+        "0.1": 60.58316032295271,
+        "0.02": 74.14731934731934,
+        "0.005": 86.61560283687943
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "history_tasks_per_family": 2,
+      "probe_points_per_task": 4,
+      "budget": 180,
+      "history_query_cost_mean": 1024.0,
+      "projector_error_mean": 0.0050101660331896645,
+      "estimated_subspace": {
+        "n": 300,
+        "mean_simple_regret": 0.0076463325821170556,
+        "median_simple_regret": 1.6511421591693806e-08,
+        "max_simple_regret": 1.1618644558614892,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9933333333333333,
+            "mean_queries_if_hit": 15.64765100671141,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9866666666666667,
+            "mean_queries_if_hit": 28.175675675675677,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9766666666666667,
+            "mean_queries_if_hit": 41.98634812286689,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9566666666666667,
+            "mean_queries_if_hit": 52.46689895470383,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "amortized_threshold_queries": {
+        "0.5": 83.91431767337806,
+        "0.1": 96.44234234234233,
+        "0.02": 110.25301478953355,
+        "0.005": 120.73356562137047
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 1,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.01713787496703259,
+      "estimated_subspace": {
+        "n": 300,
+        "mean_simple_regret": 0.014820772441479342,
+        "median_simple_regret": 2.9574076339120978e-08,
+        "max_simple_regret": 1.4634524018154607,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.99,
+            "mean_queries_if_hit": 16.24915824915825,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9766666666666667,
+            "mean_queries_if_hit": 27.522184300341298,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9733333333333334,
+            "mean_queries_if_hit": 42.31164383561644,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9533333333333334,
+            "mean_queries_if_hit": 54.00699300699301,
+            "median_queries_if_hit": 50.0
+          }
+        }
+      },
+      "amortized_threshold_queries": {
+        "0.5": 50.382491582491575,
+        "0.1": 61.65551763367463,
+        "0.02": 76.44497716894978,
+        "0.005": 88.14032634032634
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 2,
+      "budget": 180,
+      "history_query_cost_mean": 1024.0,
+      "projector_error_mean": 0.01811952605916568,
+      "estimated_subspace": {
+        "n": 300,
+        "mean_simple_regret": 0.005057807087724432,
+        "median_simple_regret": 1.6145777915982047e-08,
+        "max_simple_regret": 0.8046872773770274,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9966666666666667,
+            "mean_queries_if_hit": 14.451505016722408,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9866666666666667,
+            "mean_queries_if_hit": 25.18581081081081,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.98,
+            "mean_queries_if_hit": 38.87755102040816,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9733333333333334,
+            "mean_queries_if_hit": 52.445205479452056,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "amortized_threshold_queries": {
+        "0.5": 82.71817168338906,
+        "0.1": 93.45247747747747,
+        "0.02": 107.14421768707481,
+        "0.005": 120.71187214611872
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 4,
+      "budget": 180,
+      "history_query_cost_mean": 2048.0,
+      "projector_error_mean": 0.005629554815103197,
+      "estimated_subspace": {
+        "n": 300,
+        "mean_simple_regret": 0.004972061779277752,
+        "median_simple_regret": 1.3295886219166245e-08,
+        "max_simple_regret": 0.3920534168552651,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 1.0,
+            "mean_queries_if_hit": 16.136666666666667,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9866666666666667,
+            "mean_queries_if_hit": 26.675675675675677,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9766666666666667,
+            "mean_queries_if_hit": 40.918088737201366,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.96,
+            "mean_queries_if_hit": 52.864583333333336,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "amortized_threshold_queries": {
+        "0.5": 152.67,
+        "0.1": 163.209009009009,
+        "0.02": 177.45142207053465,
+        "0.005": 189.39791666666665
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "history_tasks_per_family": 8,
+      "probe_points_per_task": 1,
+      "budget": 180,
+      "history_query_cost_mean": 1024.0,
+      "projector_error_mean": 0.007751700395225311,
+      "estimated_subspace": {
+        "n": 300,
+        "mean_simple_regret": 0.008489050243893211,
+        "median_simple_regret": 1.3069782749442219e-08,
+        "max_simple_regret": 1.3063331733212273,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.9933333333333333,
+            "mean_queries_if_hit": 16.446308724832214,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9866666666666667,
+            "mean_queries_if_hit": 27.93581081081081,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9666666666666667,
+            "mean_queries_if_hit": 41.175862068965515,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.95,
+            "mean_queries_if_hit": 52.084210526315786,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "amortized_threshold_queries": {
+        "0.5": 84.71297539149886,
+        "0.1": 96.20247747747746,
+        "0.02": 109.44252873563217,
+        "0.005": 120.35087719298245
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "history_tasks_per_family": 8,
+      "probe_points_per_task": 2,
+      "budget": 180,
+      "history_query_cost_mean": 2048.0,
+      "projector_error_mean": 0.003269433924801374,
+      "estimated_subspace": {
+        "n": 300,
+        "mean_simple_regret": 0.0143985795017151,
+        "median_simple_regret": 1.1370515063006477e-08,
+        "max_simple_regret": 2.323894867932238,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 0.99,
+            "mean_queries_if_hit": 14.464646464646465,
+            "median_queries_if_hit": 8.0
+          },
+          "0.1": {
+            "success_rate": 0.9866666666666667,
+            "mean_queries_if_hit": 27.35810810810811,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9733333333333334,
+            "mean_queries_if_hit": 39.62671232876713,
+            "median_queries_if_hit": 32.5
+          },
+          "0.005": {
+            "success_rate": 0.96,
+            "mean_queries_if_hit": 51.166666666666664,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "amortized_threshold_queries": {
+        "0.5": 150.99797979797978,
+        "0.1": 163.89144144144143,
+        "0.02": 176.16004566210043,
+        "0.005": 187.69999999999996
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "history_tasks_per_family": 8,
+      "probe_points_per_task": 4,
+      "budget": 180,
+      "history_query_cost_mean": 4096.0,
+      "projector_error_mean": 0.003761136989155168,
+      "estimated_subspace": {
+        "n": 300,
+        "mean_simple_regret": 0.0012978815039524187,
+        "median_simple_regret": 2.45475587363889e-08,
+        "max_simple_regret": 0.12286692512042399,
+        "thresholds": {
+          "0.5": {
+            "success_rate": 1.0,
+            "mean_queries_if_hit": 14.3,
+            "median_queries_if_hit": 15.0
+          },
+          "0.1": {
+            "success_rate": 0.9966666666666667,
+            "mean_queries_if_hit": 26.872909698996654,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9766666666666667,
+            "mean_queries_if_hit": 40.20136518771331,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9666666666666667,
+            "mean_queries_if_hit": 52.62068965517241,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      },
+      "amortized_threshold_queries": {
+        "0.5": 287.3666666666667,
+        "0.1": 299.9395763656633,
+        "0.02": 313.26803185437996,
+        "0.005": 325.68735632183905
+      }
+    }
+  ]
+}
