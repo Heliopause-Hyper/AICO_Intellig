@@ -1,0 +1,204 @@
+{
+  "probe_name": "burnup_frontload_focus_v1",
+  "case_count": 9,
+  "records": [
+    {
+      "case_label": "focus_s90_60_r225_222",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 225,
+        "burnup_steps_2": 60,
+        "rod_2": 222
+      },
+      "score": 0.0,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150
+      }
+    },
+    {
+      "case_label": "focus_s95_55_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 95,
+        "rod_1": 225,
+        "burnup_steps_2": 55,
+        "rod_2": 220
+      },
+      "score": 0.0,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150
+      }
+    },
+    {
+      "case_label": "focus_s95_55_r225_222",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 95,
+        "rod_1": 225,
+        "burnup_steps_2": 55,
+        "rod_2": 222
+      },
+      "score": 0.058000000000008003,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.05,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8932,
+        "burnup_deep": 145.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 287.0,
+          "mean": 114.07555555555555
+        }
+      }
+    },
+    {
+      "case_label": "focus_s85_65_r225_218",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 85,
+        "rod_1": 225,
+        "burnup_steps_2": 65,
+        "rod_2": 218
+      },
+      "score": 0.10899999999999235,
+      "score_breakdown": {
+        "keff_error": 0.008999999999992347,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.1,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00009,
+        "FQ": 2.9137,
+        "burnup_deep": 140.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 277.0,
+          "mean": 110.09333333333333
+        }
+      }
+    },
+    {
+      "case_label": "focus_s85_65_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 85,
+        "rod_1": 225,
+        "burnup_steps_2": 65,
+        "rod_2": 220
+      },
+      "score": 1000000000.0,
+      "score_breakdown": {
+        "execution_failure": 1000000000.0
+      },
+      "metrics": {
+        "error": "Traceback (most recent call last):\n  File \"/home/ycl/AICO-Intellig/folderA/preciseFZ/apply/exec_pre_burn\", line 307, in <module>\n    result = extraction(os.path.join(LPD, 'forecast/Burnup/extraction'), os.path.join(LPD, 'forecast/Burnup/exec'), hdf5_name_single)\n  File \"/home/ycl/AICO-Intellig/folderA/preciseFZ/apply/exec_pre_burn\", line 148, in extraction\n    burnup_result[i][j] = s_level_string_list[j].split()[i+1]\n                          ~~~~~~~~~~~~~~~~~~~^^^\nIndexError: list index out of range\n",
+        "success": false
+      }
+    },
+    {
+      "case_label": "focus_s85_65_r225_222",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 85,
+        "rod_1": 225,
+        "burnup_steps_2": 65,
+        "rod_2": 222
+      },
+      "score": 1000000000.0,
+      "score_breakdown": {
+        "execution_failure": 1000000000.0
+      },
+      "metrics": {
+        "error": "Burnup name: forecast\nStart exec CoreBurn,current time:2026-09-15 23:35:40\nError : CoreBurn Execution failed!!!\n",
+        "success": false
+      }
+    },
+    {
+      "case_label": "focus_s90_60_r225_218",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 225,
+        "burnup_steps_2": 60,
+        "rod_2": 218
+      },
+      "score": 1000000000.0,
+      "score_breakdown": {
+        "execution_failure": 1000000000.0
+      },
+      "metrics": {
+        "error": "Burnup name: forecast\nStart exec CoreBurn,current time:2026-09-15 23:35:58\nError : CoreBurn Execution failed!!!\n",
+        "success": false
+      }
+    },
+    {
+      "case_label": "focus_s90_60_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 225,
+        "burnup_steps_2": 60,
+        "rod_2": 220
+      },
+      "score": 1000000000.0,
+      "score_breakdown": {
+        "execution_failure": 1000000000.0
+      },
+      "metrics": {
+        "error": "Burnup name: forecast\nStart exec CoreBurn,current time:2026-09-15 23:36:17\nError : CoreBurn Execution failed!!!\n",
+        "success": false
+      }
+    },
+    {
+      "case_label": "focus_s95_55_r225_218",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 95,
+        "rod_1": 225,
+        "burnup_steps_2": 55,
+        "rod_2": 218
+      },
+      "score": 1000000000.0,
+      "score_breakdown": {
+        "execution_failure": 1000000000.0
+      },
+      "metrics": {
+        "error": "Traceback (most recent call last):\n  File \"/home/ycl/AICO-Intellig/folderA/preciseFZ/apply/exec_pre_burn\", line 307, in <module>\n    result = extraction(os.path.join(LPD, 'forecast/Burnup/extraction'), os.path.join(LPD, 'forecast/Burnup/exec'), hdf5_name_single)\n  File \"/home/ycl/AICO-Intellig/folderA/preciseFZ/apply/exec_pre_burn\", line 115, in extraction\n    core = len(extraction_output_file_lines.split(\"znum\")[1].strip().split()) - 1\n               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^\nIndexError: list index out of range\n",
+        "success": false
+      }
+    }
+  ]
+}

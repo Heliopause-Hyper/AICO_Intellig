@@ -1,0 +1,1273 @@
+{
+  "problem_type": "corca_evol",
+  "probe_name": "burnup_target150_grid_v2",
+  "case_count": 36,
+  "top5": [
+    {
+      "case_id": "corca_evol_probe_grid_30",
+      "case_label": "two_stage_s100_50_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.0,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_31",
+      "case_label": "two_stage_s100_50_r225_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.0,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_32",
+      "case_label": "two_stage_s100_50_r220_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 220,
+        "burnup_steps_2": 50,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.0,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_33",
+      "case_label": "two_stage_s100_50_r225_215",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 215
+      },
+      "success": true,
+      "score": 0.0,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_24",
+      "case_label": "two_stage_s90_60_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 225,
+        "burnup_steps_2": 60,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.108000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.1,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8931,
+        "burnup_deep": 140.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 277.0,
+          "mean": 110.02222222222223
+        }
+      }
+    }
+  ],
+  "records": [
+    {
+      "case_id": "corca_evol_probe_grid_30",
+      "case_label": "two_stage_s100_50_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.0,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_31",
+      "case_label": "two_stage_s100_50_r225_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.0,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_32",
+      "case_label": "two_stage_s100_50_r220_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 220,
+        "burnup_steps_2": 50,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.0,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_33",
+      "case_label": "two_stage_s100_50_r225_215",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 215
+      },
+      "success": true,
+      "score": 0.0,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_24",
+      "case_label": "two_stage_s90_60_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 225,
+        "burnup_steps_2": 60,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.108000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.1,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8931,
+        "burnup_deep": 140.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 277.0,
+          "mean": 110.02222222222223
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_25",
+      "case_label": "two_stage_s90_60_r225_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 225,
+        "burnup_steps_2": 60,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.108000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.1,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8931,
+        "burnup_deep": 140.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 277.0,
+          "mean": 110.02222222222223
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_26",
+      "case_label": "two_stage_s90_60_r220_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 220,
+        "burnup_steps_2": 60,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.10899999999999235,
+      "score_breakdown": {
+        "keff_error": 0.008999999999992347,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.1,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00009,
+        "FQ": 2.9137,
+        "burnup_deep": 140.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 277.0,
+          "mean": 110.09333333333333
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_18",
+      "case_label": "two_stage_s80_70_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 80,
+        "rod_1": 225,
+        "burnup_steps_2": 70,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.20700000000000146,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.2,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.8932,
+        "burnup_deep": 130.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 257.0,
+          "mean": 102.23555555555555
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_19",
+      "case_label": "two_stage_s80_70_r225_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 80,
+        "rod_1": 225,
+        "burnup_steps_2": 70,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.20700000000000146,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.2,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.8932,
+        "burnup_deep": 130.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 257.0,
+          "mean": 102.23555555555555
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_21",
+      "case_label": "two_stage_s80_70_r225_215",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 80,
+        "rod_1": 225,
+        "burnup_steps_2": 70,
+        "rod_2": 215
+      },
+      "success": true,
+      "score": 0.20700000000000146,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.2,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.8932,
+        "burnup_deep": 130.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 257.0,
+          "mean": 102.23555555555555
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_20",
+      "case_label": "two_stage_s80_70_r220_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 80,
+        "rod_1": 220,
+        "burnup_steps_2": 70,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.208000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.2,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.9138,
+        "burnup_deep": 130.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 257.0,
+          "mean": 102.23555555555555
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_22",
+      "case_label": "two_stage_s80_70_r220_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 80,
+        "rod_1": 220,
+        "burnup_steps_2": 70,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.208000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.2,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.9138,
+        "burnup_deep": 130.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 257.0,
+          "mean": 102.23555555555555
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_23",
+      "case_label": "two_stage_s80_70_r222_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 80,
+        "rod_1": 222,
+        "burnup_steps_2": 70,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.208000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.2,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.9068,
+        "burnup_deep": 130.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 257.0,
+          "mean": 102.23555555555555
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_12",
+      "case_label": "two_stage_s70_80_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 70,
+        "rod_1": 225,
+        "burnup_steps_2": 80,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.30700000000000144,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.3,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.894,
+        "burnup_deep": 120.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 237.0,
+          "mean": 94.37333333333333
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_13",
+      "case_label": "two_stage_s70_80_r225_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 70,
+        "rod_1": 225,
+        "burnup_steps_2": 80,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.30700000000000144,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.3,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.894,
+        "burnup_deep": 120.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 237.0,
+          "mean": 94.37333333333333
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_15",
+      "case_label": "two_stage_s70_80_r225_215",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 70,
+        "rod_1": 225,
+        "burnup_steps_2": 80,
+        "rod_2": 215
+      },
+      "success": true,
+      "score": 0.30700000000000144,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.3,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.894,
+        "burnup_deep": 120.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 237.0,
+          "mean": 94.37333333333333
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_14",
+      "case_label": "two_stage_s70_80_r220_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 70,
+        "rod_1": 220,
+        "burnup_steps_2": 80,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.308000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.3,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.9146,
+        "burnup_deep": 120.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 237.0,
+          "mean": 94.37333333333333
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_16",
+      "case_label": "two_stage_s70_80_r220_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 70,
+        "rod_1": 220,
+        "burnup_steps_2": 80,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.308000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.3,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.9146,
+        "burnup_deep": 120.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 237.0,
+          "mean": 94.37333333333333
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_17",
+      "case_label": "two_stage_s70_80_r222_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 70,
+        "rod_1": 222,
+        "burnup_steps_2": 80,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.308000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.3,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.9076,
+        "burnup_deep": 120.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 237.0,
+          "mean": 94.37333333333333
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_06",
+      "case_label": "two_stage_s60_90_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 60,
+        "rod_1": 225,
+        "burnup_steps_2": 90,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.4059999999999949,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.4,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00006,
+        "FQ": 2.8957,
+        "burnup_deep": 110.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 217.0,
+          "mean": 86.55111111111111
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_07",
+      "case_label": "two_stage_s60_90_r225_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 60,
+        "rod_1": 225,
+        "burnup_steps_2": 90,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.4059999999999949,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.4,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00006,
+        "FQ": 2.8957,
+        "burnup_deep": 110.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 217.0,
+          "mean": 86.55111111111111
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_09",
+      "case_label": "two_stage_s60_90_r225_215",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 60,
+        "rod_1": 225,
+        "burnup_steps_2": 90,
+        "rod_2": 215
+      },
+      "success": true,
+      "score": 0.4059999999999949,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.4,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00006,
+        "FQ": 2.8957,
+        "burnup_deep": 110.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 217.0,
+          "mean": 86.55111111111111
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_08",
+      "case_label": "two_stage_s60_90_r220_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 60,
+        "rod_1": 220,
+        "burnup_steps_2": 90,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.40700000000000147,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.4,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.9162,
+        "burnup_deep": 110.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 217.0,
+          "mean": 86.55111111111111
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_10",
+      "case_label": "two_stage_s60_90_r220_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 60,
+        "rod_1": 220,
+        "burnup_steps_2": 90,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.40700000000000147,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.4,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.9162,
+        "burnup_deep": 110.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 217.0,
+          "mean": 86.55111111111111
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_11",
+      "case_label": "two_stage_s60_90_r222_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 60,
+        "rod_1": 222,
+        "burnup_steps_2": 90,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.40700000000000147,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.4,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.9092,
+        "burnup_deep": 110.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 217.0,
+          "mean": 86.55111111111111
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_00",
+      "case_label": "two_stage_s50_100_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 50,
+        "rod_1": 225,
+        "burnup_steps_2": 100,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.5059999999999949,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.5,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00006,
+        "FQ": 2.8984,
+        "burnup_deep": 100.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 197.0,
+          "mean": 78.64
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_01",
+      "case_label": "two_stage_s50_100_r225_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 50,
+        "rod_1": 225,
+        "burnup_steps_2": 100,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.5059999999999949,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.5,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00006,
+        "FQ": 2.8984,
+        "burnup_deep": 100.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 197.0,
+          "mean": 78.64
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_03",
+      "case_label": "two_stage_s50_100_r225_215",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 50,
+        "rod_1": 225,
+        "burnup_steps_2": 100,
+        "rod_2": 215
+      },
+      "success": true,
+      "score": 0.5059999999999949,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.5,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00006,
+        "FQ": 2.8984,
+        "burnup_deep": 100.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 197.0,
+          "mean": 78.64
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_05",
+      "case_label": "two_stage_s50_100_r222_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 50,
+        "rod_1": 222,
+        "burnup_steps_2": 100,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.5059999999999949,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.5,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00006,
+        "FQ": 2.9119,
+        "burnup_deep": 100.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 197.0,
+          "mean": 78.64
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_02",
+      "case_label": "two_stage_s50_100_r220_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 50,
+        "rod_1": 220,
+        "burnup_steps_2": 100,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.5070000000000014,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.5,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.9189,
+        "burnup_deep": 100.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 197.0,
+          "mean": 78.64
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_04",
+      "case_label": "two_stage_s50_100_r220_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 50,
+        "rod_1": 220,
+        "burnup_steps_2": 100,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.5070000000000014,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.5,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.9189,
+        "burnup_deep": 100.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 197.0,
+          "mean": 78.64
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_27",
+      "case_label": "two_stage_s90_60_r225_215",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 225,
+        "burnup_steps_2": 60,
+        "rod_2": 215
+      },
+      "success": false,
+      "score": 1000000000.0,
+      "score_breakdown": {
+        "execution_failure": 1000000000.0
+      },
+      "metrics": {
+        "error": "Burnup name: forecast\nStart exec CoreBurn,current time:2026-09-15 23:34:43\nError : CoreBurn Execution failed!!!\n",
+        "success": false,
+        "burnup_deep": 140.0,
+        "keff": 1.00009,
+        "FQ": 2.9137,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 277.0,
+          "mean": 110.09333333333333
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_28",
+      "case_label": "two_stage_s90_60_r220_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 220,
+        "burnup_steps_2": 60,
+        "rod_2": 220
+      },
+      "success": false,
+      "score": 1000000000.0,
+      "score_breakdown": {
+        "execution_failure": 1000000000.0
+      },
+      "metrics": {
+        "error": "Burnup name: forecast\nStart exec CoreBurn,current time:2026-09-15 23:35:02\nError : CoreBurn Execution failed!!!\n",
+        "success": false,
+        "burnup_deep": 140.0,
+        "keff": 1.00009,
+        "FQ": 2.9137,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 277.0,
+          "mean": 110.09333333333333
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_29",
+      "case_label": "two_stage_s90_60_r222_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 222,
+        "burnup_steps_2": 60,
+        "rod_2": 225
+      },
+      "success": false,
+      "score": 1000000000.0,
+      "score_breakdown": {
+        "execution_failure": 1000000000.0
+      },
+      "metrics": {
+        "error": "Traceback (most recent call last):\n  File \"/home/ycl/AICO-Intellig/folderA/preciseFZ/apply/exec_pre_burn\", line 307, in <module>\n    result = extraction(os.path.join(LPD, 'forecast/Burnup/extraction'), os.path.join(LPD, 'forecast/Burnup/exec'), hdf5_name_single)\n  File \"/home/ycl/AICO-Intellig/folderA/preciseFZ/apply/exec_pre_burn\", line 115, in extraction\n    core = len(extraction_output_file_lines.split(\"znum\")[1].strip().split()) - 1\n               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^\nIndexError: list index out of range\n",
+        "success": false
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_34",
+      "case_label": "two_stage_s100_50_r220_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 220,
+        "burnup_steps_2": 50,
+        "rod_2": 220
+      },
+      "success": false,
+      "score": 1000000000.0,
+      "score_breakdown": {
+        "execution_failure": 1000000000.0
+      },
+      "metrics": {
+        "error": "Traceback (most recent call last):\n  File \"/home/ycl/AICO-Intellig/folderA/preciseFZ/apply/exec_pre_burn\", line 307, in <module>\n    result = extraction(os.path.join(LPD, 'forecast/Burnup/extraction'), os.path.join(LPD, 'forecast/Burnup/exec'), hdf5_name_single)\n  File \"/home/ycl/AICO-Intellig/folderA/preciseFZ/apply/exec_pre_burn\", line 148, in extraction\n    burnup_result[i][j] = s_level_string_list[j].split()[i+1]\n                          ~~~~~~~~~~~~~~~~~~~^^^\nIndexError: list index out of range\n",
+        "success": false
+      }
+    },
+    {
+      "case_id": "corca_evol_probe_grid_35",
+      "case_label": "two_stage_s100_50_r222_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 222,
+        "burnup_steps_2": 50,
+        "rod_2": 225
+      },
+      "success": false,
+      "score": 1000000000.0,
+      "score_breakdown": {
+        "execution_failure": 1000000000.0
+      },
+      "metrics": {
+        "error": "Burnup name: forecast\nStart exec CoreBurn,current time:2026-09-15 23:37:16\nError : CoreBurn Execution failed!!!\n",
+        "success": false
+      }
+    }
+  ]
+}

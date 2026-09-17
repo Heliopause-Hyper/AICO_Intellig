@@ -1,0 +1,262 @@
+{
+  "problem_type": "corca_state",
+  "case_count": 8,
+  "best_case_id": "corca_state_case_07",
+  "best_score": 4.917390878812794,
+  "records": [
+    {
+      "case_id": "corca_state_case_00",
+      "case_label": "nominal__baseline",
+      "problem_type": "corca_state",
+      "params": {
+        "Pp:": 15.5,
+        "Prk:": 50.0,
+        "Tin:": 292.1,
+        "bore_ppm": 1000.0
+      },
+      "success": true,
+      "score": 6.936118377874685,
+      "score_breakdown": {
+        "keff_error": 2.510687629828934,
+        "fq_over": 0.07509033118379804,
+        "fdh_over": 3.7431459289341507,
+        "ao_abs": 0.1675740155105065,
+        "bore_shift": 0.43962047241729557
+      },
+      "metrics": {
+        "keff": 1.0251068762982893,
+        "FQ": 3.0150180662367596,
+        "FDH": 2.24862918578683,
+        "AO": -3.3514803102101296,
+        "deltai": -1.6757401551050648,
+        "bore": 1439.6204724172956,
+        "burnup": 49.99999999999978,
+        "success": true
+      }
+    },
+    {
+      "case_id": "corca_state_case_01",
+      "case_label": "nominal__bank12_pair_mid",
+      "problem_type": "corca_state",
+      "params": {
+        "Pp:": 15.5,
+        "Prk:": 50.0,
+        "Tin:": 292.1,
+        "bore_ppm": 1000.0,
+        "pos15: R, K 12 ": 180.0,
+        "pos16: R, F 12 ": 180.0
+      },
+      "success": true,
+      "score": 7.3019128598324885,
+      "score_breakdown": {
+        "keff_error": 2.484513873995442,
+        "fq_over": 0.2804820825521448,
+        "fdh_over": 3.8604031700428743,
+        "ao_abs": 0.23689326082473205,
+        "bore_shift": 0.43962047241729557
+      },
+      "metrics": {
+        "keff": 1.0248451387399544,
+        "FQ": 3.056096416510429,
+        "FDH": 2.272080634008575,
+        "AO": -4.737865216494641,
+        "deltai": -2.3689326082473205,
+        "bore": 1439.6204724172956,
+        "burnup": 49.99999999999978,
+        "success": true
+      }
+    },
+    {
+      "case_id": "corca_state_case_02",
+      "case_label": "nominal__bank07_pair_mid",
+      "problem_type": "corca_state",
+      "params": {
+        "Pp:": 15.5,
+        "Prk:": 50.0,
+        "Tin:": 292.1,
+        "bore_ppm": 1000.0,
+        "pos7: R, K 07 ": 185.0,
+        "pos8: R, F 07 ": 185.0
+      },
+      "success": true,
+      "score": 7.382993847536341,
+      "score_breakdown": {
+        "keff_error": 2.4702933856071807,
+        "fq_over": 0.4009844488279346,
+        "fdh_over": 3.779635707490905,
+        "ao_abs": 0.29245983319302493,
+        "bore_shift": 0.43962047241729557
+      },
+      "metrics": {
+        "keff": 1.0247029338560718,
+        "FQ": 3.080196889765587,
+        "FDH": 2.255927141498181,
+        "AO": -5.849196663860499,
+        "deltai": -2.9245983319302495,
+        "bore": 1439.6204724172956,
+        "burnup": 49.99999999999978,
+        "success": true
+      }
+    },
+    {
+      "case_id": "corca_state_case_03",
+      "case_label": "nominal__outer_quadrant_soft_pull",
+      "problem_type": "corca_state",
+      "params": {
+        "Pp:": 15.5,
+        "Prk:": 50.0,
+        "Tin:": 292.1,
+        "bore_ppm": 1000.0,
+        "pos1: R, K 04 ": 195.0,
+        "pos2: R, F 04 ": 195.0,
+        "pos15: R, K 12 ": 195.0,
+        "pos16: R, F 12 ": 195.0
+      },
+      "success": true,
+      "score": 7.321647332169028,
+      "score_breakdown": {
+        "keff_error": 2.4847998619546896,
+        "fq_over": 0.3060948892097204,
+        "fdh_over": 3.8172385020520094,
+        "ao_abs": 0.27389360653531264,
+        "bore_shift": 0.43962047241729557
+      },
+      "metrics": {
+        "keff": 1.024847998619547,
+        "FQ": 3.061218977841944,
+        "FDH": 2.263447700410402,
+        "AO": -5.477872130706253,
+        "deltai": -2.7389360653531263,
+        "bore": 1439.6204724172956,
+        "burnup": 49.99999999999978,
+        "success": true
+      }
+    },
+    {
+      "case_id": "corca_state_case_04",
+      "case_label": "cool_low_boron__baseline",
+      "problem_type": "corca_state",
+      "params": {
+        "Pp:": 15.2,
+        "Prk:": 48.0,
+        "Tin:": 290.5,
+        "bore_ppm": 850.0
+      },
+      "success": true,
+      "score": 9.16777221611378,
+      "score_breakdown": {
+        "keff_error": 4.2086659814746685,
+        "fq_over": 0.3753178288157444,
+        "fdh_over": 3.92913961486687,
+        "ao_abs": 0.2150283185392022,
+        "bore_shift": 0.43962047241729557
+      },
+      "metrics": {
+        "keff": 1.0420866598147467,
+        "FQ": 3.075063565763149,
+        "FDH": 2.285827922973374,
+        "AO": -4.300566370784044,
+        "deltai": -2.0642718579763413,
+        "bore": 1439.6204724172956,
+        "burnup": 49.99999999999978,
+        "success": true
+      }
+    },
+    {
+      "case_id": "corca_state_case_05",
+      "case_label": "cool_low_boron__bank12_pair_mid",
+      "problem_type": "corca_state",
+      "params": {
+        "Pp:": 15.2,
+        "Prk:": 48.0,
+        "Tin:": 290.5,
+        "bore_ppm": 850.0,
+        "pos15: R, K 12 ": 180.0,
+        "pos16: R, F 12 ": 180.0
+      },
+      "success": true,
+      "score": 9.564740809847274,
+      "score_breakdown": {
+        "keff_error": 4.179209406231177,
+        "fq_over": 0.601624014700628,
+        "fdh_over": 4.057787966090361,
+        "ao_abs": 0.28649895040781337,
+        "bore_shift": 0.43962047241729557
+      },
+      "metrics": {
+        "keff": 1.0417920940623118,
+        "FQ": 3.1203248029401256,
+        "FDH": 2.311557593218072,
+        "AO": -5.729979008156268,
+        "deltai": -2.7503899239150083,
+        "bore": 1439.6204724172956,
+        "burnup": 49.99999999999978,
+        "success": true
+      }
+    },
+    {
+      "case_id": "corca_state_case_06",
+      "case_label": "cool_low_boron__staggered_bank0712",
+      "problem_type": "corca_state",
+      "params": {
+        "Pp:": 15.2,
+        "Prk:": 48.0,
+        "Tin:": 290.5,
+        "bore_ppm": 850.0,
+        "pos7: R, K 07 ": 205.0,
+        "pos8: R, F 07 ": 165.0,
+        "pos15: R, K 12 ": 205.0,
+        "pos16: R, F 12 ": 165.0
+      },
+      "success": true,
+      "score": 10.087518327437031,
+      "score_breakdown": {
+        "keff_error": 4.128493586638582,
+        "fq_over": 0.993527870289499,
+        "fdh_over": 4.074466203404183,
+        "ao_abs": 0.451410194687472,
+        "bore_shift": 0.43962047241729557
+      },
+      "metrics": {
+        "keff": 1.0412849358663858,
+        "FQ": 3.1987055740579,
+        "FDH": 2.3148932406808367,
+        "AO": -9.02820389374944,
+        "deltai": -4.3335378689997315,
+        "bore": 1439.6204724172956,
+        "burnup": 49.99999999999978,
+        "success": true
+      }
+    },
+    {
+      "case_id": "corca_state_case_07",
+      "case_label": "warm_high_boron__baseline",
+      "problem_type": "corca_state",
+      "params": {
+        "Pp:": 15.8,
+        "Prk:": 55.0,
+        "Tin:": 294.0,
+        "bore_ppm": 1150.0
+      },
+      "success": true,
+      "score": 4.917390878812794,
+      "score_breakdown": {
+        "keff_error": 0.8244952980144493,
+        "fq_over": 0.0,
+        "fdh_over": 3.547410702163305,
+        "ao_abs": 0.1058644062177446,
+        "bore_shift": 0.43962047241729557
+      },
+      "metrics": {
+        "keff": 1.0082449529801445,
+        "FQ": 2.962315559506162,
+        "FDH": 2.209482140432661,
+        "AO": -2.117288124354892,
+        "deltai": -1.1645084683951907,
+        "bore": 1439.6204724172956,
+        "burnup": 49.99999999999978,
+        "success": true
+      }
+    }
+  ]
+}

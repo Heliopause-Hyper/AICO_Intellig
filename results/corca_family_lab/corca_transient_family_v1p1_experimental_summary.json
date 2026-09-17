@@ -1,0 +1,46 @@
+{
+  "family_id": "corca_transient_family_v1p1_experimental",
+  "notes": [
+    "Burnup branch uses serial validation after detecting shared-runtime interference under concurrent probes.",
+    "Xenon branch reuses current pilot best because no new xenon sweep was needed in this turn."
+  ],
+  "problem_summaries": [
+    {
+      "problem_type": "corca_evol",
+      "source_summary": "/home/ycl/AICO-Intellig/results/corca_family_lab/corca_evol_serial_validation_v1.json",
+      "digest": {
+        "case_count": 8,
+        "success_count": 8,
+        "success_rate": 1.0,
+        "best_case_label": "validate_s100_50_r225_220",
+        "best_score": 0.008000000000008,
+        "best_metrics": {
+          "burnup_finished": 150,
+          "burnup_deep": 150.0,
+          "keff": 1.00008,
+          "FQ": 2.8935
+        }
+      }
+    },
+    {
+      "problem_type": "corca_xenon",
+      "source_summary": "/home/ycl/AICO-Intellig/results/corca_family_lab/corca_xenon_pilot_summary.json",
+      "digest": {
+        "case_count": 6,
+        "success_count": 6,
+        "success_rate": 1.0,
+        "best_case_label": "two_step_low_power_hold",
+        "best_score": 0.3112800000000015,
+        "best_metrics": {
+          "AO": 1.18,
+          "DI": 0.36,
+          "keff": 1.00007,
+          "FQ": 0.0,
+          "FDH": 0.0,
+          "boron_concentration": 1242.68
+        }
+      }
+    }
+  ],
+  "best_score_across_family": 0.008000000000008
+}

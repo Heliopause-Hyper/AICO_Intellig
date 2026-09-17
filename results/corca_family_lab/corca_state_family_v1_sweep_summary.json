@@ -1,0 +1,20 @@
+{
+  "family_id": "corca_state_family_v1",
+  "protocol_path": "/home/ycl/AICO-Intellig/results/corca_family_lab/corca_family_protocol_v1.json",
+  "max_cases_per_problem": 8,
+  "problem_summaries": [
+    {
+      "problem_type": "corca_state",
+      "summary_path": "/home/ycl/AICO-Intellig/results/corca_family_lab/corca_state_pilot_summary.json",
+      "digest": {
+        "case_count": 8,
+        "success_count": 8,
+        "success_rate": 1.0,
+        "best_case_id": "corca_state_case_07",
+        "best_score": 4.917390878812794,
+        "mean_score": 7.8350118312029275
+      }
+    }
+  ],
+  "best_score_across_family": 4.917390878812794
+}

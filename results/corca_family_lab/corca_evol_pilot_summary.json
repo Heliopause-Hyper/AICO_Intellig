@@ -1,0 +1,520 @@
+{
+  "problem_type": "corca_evol",
+  "case_count": 14,
+  "best_case_id": "corca_evol_case_09",
+  "best_score": 0.008000000000008,
+  "records": [
+    {
+      "case_id": "corca_evol_case_00",
+      "case_label": "single_long_hold",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 1,
+        "burnup_steps_1": 100,
+        "rod_1": 225
+      },
+      "success": true,
+      "score": 0.508000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.5,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 100,
+        "keff": 1.00008,
+        "FQ": 2.8935,
+        "burnup_deep": 150.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 297.0,
+          "mean": 117.96888888888888
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_01",
+      "case_label": "two_stage_soft_pull",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 60,
+        "rod_1": 200,
+        "burnup_steps_2": 40,
+        "rod_2": 180
+      },
+      "success": true,
+      "score": 1.0475000000000003,
+      "score_breakdown": {
+        "keff_error": 0.0,
+        "fq_over": 0.1475000000000004,
+        "burnup_terminal": 0.5,
+        "burnup_deep": 0.4,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 100,
+        "keff": 1.0,
+        "FQ": 3.0295,
+        "burnup_deep": 110.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 217.0,
+          "mean": 86.51555555555555
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_02",
+      "case_label": "three_stage_gradual_pull",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 3,
+        "burnup_steps_1": 30,
+        "rod_1": 225,
+        "burnup_steps_2": 40,
+        "rod_2": 210,
+        "burnup_steps_3": 30,
+        "rod_3": 195
+      },
+      "success": true,
+      "score": 1.204000000000004,
+      "score_breakdown": {
+        "keff_error": 0.004000000000004,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.5,
+        "burnup_deep": 0.7,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 100,
+        "keff": 1.00004,
+        "FQ": 2.9077,
+        "burnup_deep": 80.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 158.0,
+          "mean": 62.99111111111111
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_03",
+      "case_label": "two_stage_front_loaded",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 80,
+        "rod_1": 215,
+        "burnup_steps_2": 20,
+        "rod_2": 190
+      },
+      "success": true,
+      "score": 0.7089999999999923,
+      "score_breakdown": {
+        "keff_error": 0.008999999999992347,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.5,
+        "burnup_deep": 0.2,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 100,
+        "keff": 1.00009,
+        "FQ": 2.927,
+        "burnup_deep": 130.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 257.0,
+          "mean": 102.2
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_04",
+      "case_label": "three_stage_low_rod_terminal",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 3,
+        "burnup_steps_1": 40,
+        "rod_1": 220,
+        "burnup_steps_2": 35,
+        "rod_2": 205,
+        "burnup_steps_3": 25,
+        "rod_3": 175
+      },
+      "success": true,
+      "score": 1.105999999999995,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.5,
+        "burnup_deep": 0.6,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 100,
+        "keff": 1.00006,
+        "FQ": 2.9228,
+        "burnup_deep": 90.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 178.0,
+          "mean": 70.77777777777777
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_05",
+      "case_label": "three_stage_mid_hold",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 3,
+        "burnup_steps_1": 25,
+        "rod_1": 210,
+        "burnup_steps_2": 50,
+        "rod_2": 210,
+        "burnup_steps_3": 25,
+        "rod_3": 210
+      },
+      "success": true,
+      "score": 1.255999999999995,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.5,
+        "burnup_deep": 0.75,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 100,
+        "keff": 1.00006,
+        "FQ": 2.9792,
+        "burnup_deep": 75.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 148.0,
+          "mean": 59.00888888888889
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_06",
+      "case_label": "two_stage_balanced_150",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 75,
+        "rod_1": 225,
+        "burnup_steps_2": 75,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.25700000000000145,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.25,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.8935,
+        "burnup_deep": 125.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 247.0,
+          "mean": 98.37333333333333
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_07",
+      "case_label": "two_stage_split_pull_150",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 80,
+        "rod_1": 225,
+        "burnup_steps_2": 70,
+        "rod_2": 215
+      },
+      "success": true,
+      "score": 0.20700000000000146,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.2,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00007,
+        "FQ": 2.8932,
+        "burnup_deep": 130.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 257.0,
+          "mean": 102.23555555555555
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_08",
+      "case_label": "two_stage_front_loaded_150",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 225,
+        "burnup_steps_2": 60,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.108000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.1,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8931,
+        "burnup_deep": 140.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 277.0,
+          "mean": 110.02222222222223
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_09",
+      "case_label": "two_stage_anchor_150",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.008000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8935,
+        "burnup_deep": 150.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 297.0,
+          "mean": 117.96888888888888
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_10",
+      "case_label": "two_stage_anchor_150_flat_tail",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.008000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8935,
+        "burnup_deep": 150.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 297.0,
+          "mean": 117.96888888888888
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_11",
+      "case_label": "two_stage_anchor_150_low_tail",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 215
+      },
+      "success": true,
+      "score": 0.008000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8935,
+        "burnup_deep": 150.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 297.0,
+          "mean": 117.96888888888888
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_12",
+      "case_label": "three_stage_flat_150",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 3,
+        "burnup_steps_1": 50,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 225,
+        "burnup_steps_3": 50,
+        "rod_3": 225
+      },
+      "success": true,
+      "score": 0.5059999999999949,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.5,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00006,
+        "FQ": 2.8984,
+        "burnup_deep": 100.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 197.0,
+          "mean": 78.64
+        }
+      }
+    },
+    {
+      "case_id": "corca_evol_case_13",
+      "case_label": "three_stage_soft_pull_150",
+      "problem_type": "corca_evol",
+      "params": {
+        "sequence_count": 3,
+        "burnup_steps_1": 50,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 220,
+        "burnup_steps_3": 50,
+        "rod_3": 215
+      },
+      "success": true,
+      "score": 0.5059999999999949,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.5,
+        "burnup_peak": 0.0
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00006,
+        "FQ": 2.8984,
+        "burnup_deep": 100.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 197.0,
+          "mean": 78.64
+        }
+      }
+    }
+  ]
+}

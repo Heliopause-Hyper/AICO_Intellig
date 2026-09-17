@@ -1,0 +1,278 @@
+{
+  "probe_name": "burnup_serial_validation_v1",
+  "case_count": 8,
+  "records": [
+    {
+      "case_label": "validate_s100_50_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 220
+      },
+      "success": true,
+      "missing_metrics": [],
+      "score": 0.008000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8935,
+        "burnup_deep": 150.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 297.0,
+          "mean": 117.96888888888888
+        }
+      }
+    },
+    {
+      "case_label": "validate_s100_50_r225_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 225
+      },
+      "success": true,
+      "missing_metrics": [],
+      "score": 0.008000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8935,
+        "burnup_deep": 150.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 297.0,
+          "mean": 117.96888888888888
+        }
+      }
+    },
+    {
+      "case_label": "validate_s100_50_r225_215",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 225,
+        "burnup_steps_2": 50,
+        "rod_2": 215
+      },
+      "success": true,
+      "missing_metrics": [],
+      "score": 0.008000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8935,
+        "burnup_deep": 150.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 297.0,
+          "mean": 117.96888888888888
+        }
+      }
+    },
+    {
+      "case_label": "validate_s100_50_r220_225",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 100,
+        "rod_1": 220,
+        "burnup_steps_2": 50,
+        "rod_2": 225
+      },
+      "success": true,
+      "missing_metrics": [],
+      "score": 0.008999999999992347,
+      "score_breakdown": {
+        "keff_error": 0.008999999999992347,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.0,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00009,
+        "FQ": 2.9141,
+        "burnup_deep": 150.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 297.0,
+          "mean": 118.05777777777777
+        }
+      }
+    },
+    {
+      "case_label": "validate_s95_55_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 95,
+        "rod_1": 225,
+        "burnup_steps_2": 55,
+        "rod_2": 220
+      },
+      "success": true,
+      "missing_metrics": [],
+      "score": 0.058000000000008003,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.05,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8932,
+        "burnup_deep": 145.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 287.0,
+          "mean": 114.07555555555555
+        }
+      }
+    },
+    {
+      "case_label": "validate_s95_55_r225_222",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 95,
+        "rod_1": 225,
+        "burnup_steps_2": 55,
+        "rod_2": 222
+      },
+      "success": true,
+      "missing_metrics": [],
+      "score": 0.058000000000008003,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.05,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8932,
+        "burnup_deep": 145.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 287.0,
+          "mean": 114.07555555555555
+        }
+      }
+    },
+    {
+      "case_label": "validate_s90_60_r225_220",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 225,
+        "burnup_steps_2": 60,
+        "rod_2": 220
+      },
+      "success": true,
+      "missing_metrics": [],
+      "score": 0.108000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.1,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8931,
+        "burnup_deep": 140.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 277.0,
+          "mean": 110.02222222222223
+        }
+      }
+    },
+    {
+      "case_label": "validate_s90_60_r225_222",
+      "params": {
+        "sequence_count": 2,
+        "burnup_steps_1": 90,
+        "rod_1": 225,
+        "burnup_steps_2": 60,
+        "rod_2": 222
+      },
+      "success": true,
+      "missing_metrics": [],
+      "score": 0.108000000000008,
+      "score_breakdown": {
+        "keff_error": 0.008000000000008,
+        "fq_over": 0.0,
+        "burnup_terminal": 0.0,
+        "burnup_deep": 0.1,
+        "burnup_peak": 0.0
+      },
+      "metrics": {
+        "success": true,
+        "burnup_finished": 150,
+        "keff": 1.00008,
+        "FQ": 2.8931,
+        "burnup_deep": 140.0,
+        "burnup_2d_stats": {
+          "rows": 15,
+          "cols": 15,
+          "min": 0.0,
+          "max": 277.0,
+          "mean": 110.02222222222223
+        }
+      }
+    }
+  ]
+}

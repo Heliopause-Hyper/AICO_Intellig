@@ -95,10 +95,14 @@ def fd_descent(task: Task, basis: np.ndarray, x0: np.ndarray, budget: int, fd_ep
             dvec = basis[:, j]
             xp = proj_ball(x + fd_eps * dvec, task.radius)
             xn = proj_ball(x - fd_eps * dvec, task.radius)
-            fp, fn = float(task.eval(xp)), float(task.eval(xn))
-            best = min(best, fp, fn)
-            trace.extend([best, best])
-            evals += 2
+            fp = float(task.eval(xp))
+            best = min(best, fp)
+            trace.append(best)
+            evals += 1
+            fn = float(task.eval(xn))
+            best = min(best, fn)
+            trace.append(best)
+            evals += 1
             g[j] = (fp - fn) / (2.0 * fd_eps)
         if evals >= budget:
             break
@@ -129,11 +133,15 @@ def rand_dir_descent(task: Task, x0: np.ndarray, budget: int, fd_eps: float, rng
             break
         xp = proj_ball(x + fd_eps * v, task.radius)
         xn = proj_ball(x - fd_eps * v, task.radius)
-        fp, fn = float(task.eval(xp)), float(task.eval(xn))
+        fp = float(task.eval(xp))
+        best = min(best, fp)
+        trace.append(best)
+        evals += 1
+        fn = float(task.eval(xn))
+        best = min(best, fn)
+        trace.append(best)
+        evals += 1
         g = ((fp - fn) / (2.0 * fd_eps)) * v
-        best = min(best, fp, fn)
-        trace.extend([best, best])
-        evals += 2
         if evals >= budget:
             break
         x_new = proj_ball(x - step * g, task.radius)
@@ -316,7 +324,7 @@ def main():
     ap.add_argument("--fd_eps", type=float, default=1e-3)
     ap.add_argument("--thresholds", nargs="+", type=float, default=[0.1, 0.02, 0.005])
     ap.add_argument("--amortized_m_values", nargs="+", type=int, default=[1, 5, 20])
-    ap.add_argument("--random_direction_steps", nargs="+", type=float, default=[0.05, 0.1, 0.2, 0.4])
+    ap.add_argument("--random_direction_steps", nargs="+", type=float, default=[0.05, 0.1, 0.2, 0.4, 0.8, 1.6])
     args = ap.parse_args()
     out = {"config": vars(args), "suite": run_suite(args)}
     os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)

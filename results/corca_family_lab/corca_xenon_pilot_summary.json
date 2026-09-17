@@ -1,0 +1,470 @@
+{
+  "problem_type": "corca_xenon",
+  "case_count": 11,
+  "best_case_id": "corca_xenon_case_10",
+  "best_score": 0.29949000000000403,
+  "records": [
+    {
+      "case_id": "corca_xenon_case_00",
+      "case_label": "two_step_low_power_hold",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 2,
+        "step_1": 1.0,
+        "change_state_1": "True",
+        "power_1": 0.3,
+        "rod_1": 225,
+        "step_2": 1.0,
+        "change_state_2": "True",
+        "power_2": 0.3,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.3112800000000015,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "ao_abs": 0.0472,
+        "di_abs": 0.0144,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.24268000000000006
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 1.00007,
+        "xenon_finished": 2,
+        "AO": 1.18,
+        "DI": 0.36,
+        "boron_concentration": 1242.68,
+        "rod_position": 225.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    },
+    {
+      "case_id": "corca_xenon_case_01",
+      "case_label": "two_step_gentle_low_hold",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 2,
+        "step_1": 1.0,
+        "change_state_1": "True",
+        "power_1": 0.25,
+        "rod_1": 225,
+        "step_2": 1.0,
+        "change_state_2": "True",
+        "power_2": 0.3,
+        "rod_2": 225
+      },
+      "success": true,
+      "score": 0.32815999999999235,
+      "score_breakdown": {
+        "keff_error": 0.008999999999992347,
+        "ao_abs": 0.0596,
+        "di_abs": 0.0148,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.24475999999999998
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 1.00009,
+        "xenon_finished": 2,
+        "AO": 1.49,
+        "DI": 0.37,
+        "boron_concentration": 1244.76,
+        "rod_position": 225.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    },
+    {
+      "case_id": "corca_xenon_case_02",
+      "case_label": "two_step_low_hold_soft_rod",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 2,
+        "step_1": 1.0,
+        "change_state_1": "True",
+        "power_1": 0.3,
+        "rod_1": 225,
+        "step_2": 1.0,
+        "change_state_2": "True",
+        "power_2": 0.3,
+        "rod_2": 220
+      },
+      "success": true,
+      "score": 0.3112800000000015,
+      "score_breakdown": {
+        "keff_error": 0.0070000000000014495,
+        "ao_abs": 0.0472,
+        "di_abs": 0.0144,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.24268000000000006
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 1.00007,
+        "xenon_finished": 2,
+        "AO": 1.18,
+        "DI": 0.36,
+        "boron_concentration": 1242.68,
+        "rod_position": 225.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    },
+    {
+      "case_id": "corca_xenon_case_03",
+      "case_label": "two_step_ramp_then_hold",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 2,
+        "step_1": 1.0,
+        "change_state_1": "True",
+        "power_1": 0.5,
+        "rod_1": 210,
+        "step_2": 1.0,
+        "change_state_2": "False",
+        "power_2": -1.0,
+        "rod_2": -1.0
+      },
+      "success": true,
+      "score": 0.5797600000000066,
+      "score_breakdown": {
+        "keff_error": 0.0010000000000065512,
+        "ao_abs": 0.2316,
+        "di_abs": 0.11599999999999999,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.2311600000000001
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 1.00001,
+        "xenon_finished": 2,
+        "AO": -5.79,
+        "DI": -2.9,
+        "boron_concentration": 1231.16,
+        "rod_position": 210.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    },
+    {
+      "case_id": "corca_xenon_case_04",
+      "case_label": "three_step_drop_schedule",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 3,
+        "step_1": 1.0,
+        "change_state_1": "True",
+        "power_1": 0.4,
+        "rod_1": 215,
+        "step_2": 1.0,
+        "change_state_2": "True",
+        "power_2": 0.2,
+        "rod_2": 205,
+        "step_3": 1.0,
+        "change_state_3": "False",
+        "power_3": -1.0,
+        "rod_3": -1.0
+      },
+      "success": true,
+      "score": 0.3676000000000039,
+      "score_breakdown": {
+        "keff_error": 0.004000000000004,
+        "ao_abs": 0.0904,
+        "di_abs": 0.0364,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.23679999999999995
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 1.00004,
+        "xenon_finished": 3,
+        "AO": -2.26,
+        "DI": -0.91,
+        "boron_concentration": 1236.8,
+        "rod_position": 215.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    },
+    {
+      "case_id": "corca_xenon_case_05",
+      "case_label": "three_step_low_plateau",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 3,
+        "step_1": 0.5,
+        "change_state_1": "True",
+        "power_1": 0.25,
+        "rod_1": 225,
+        "step_2": 1.0,
+        "change_state_2": "True",
+        "power_2": 0.3,
+        "rod_2": 225,
+        "step_3": 0.5,
+        "change_state_3": "True",
+        "power_3": 0.3,
+        "rod_3": 220
+      },
+      "success": true,
+      "score": 0.31669000000001046,
+      "score_breakdown": {
+        "keff_error": 0.0050000000000105516,
+        "ao_abs": 0.047599999999999996,
+        "di_abs": 0.012,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.2520899999999999
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 1.00005,
+        "xenon_finished": 3,
+        "AO": 1.19,
+        "DI": 0.3,
+        "boron_concentration": 1252.09,
+        "rod_position": 225.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    },
+    {
+      "case_id": "corca_xenon_case_06",
+      "case_label": "three_step_plateau",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 3,
+        "step_1": 0.5,
+        "change_state_1": "True",
+        "power_1": 0.45,
+        "rod_1": 220,
+        "step_2": 1.0,
+        "change_state_2": "True",
+        "power_2": 0.45,
+        "rod_2": 220,
+        "step_3": 0.5,
+        "change_state_3": "False",
+        "power_3": -1.0,
+        "rod_3": -1.0
+      },
+      "success": true,
+      "score": 0.33523000000000647,
+      "score_breakdown": {
+        "keff_error": 0.0010000000000065512,
+        "ao_abs": 0.0664,
+        "di_abs": 0.03,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.23782999999999993
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 1.00001,
+        "xenon_finished": 3,
+        "AO": -1.66,
+        "DI": -0.75,
+        "boron_concentration": 1237.83,
+        "rod_position": 220.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    },
+    {
+      "case_id": "corca_xenon_case_07",
+      "case_label": "four_step_downshift",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 4,
+        "step_1": 0.5,
+        "change_state_1": "True",
+        "power_1": 0.6,
+        "rod_1": 210,
+        "step_2": 0.5,
+        "change_state_2": "True",
+        "power_2": 0.4,
+        "rod_2": 205,
+        "step_3": 0.5,
+        "change_state_3": "True",
+        "power_3": 0.2,
+        "rod_3": 200,
+        "step_4": 0.5,
+        "change_state_4": "False",
+        "power_4": -1.0,
+        "rod_4": -1.0
+      },
+      "success": true,
+      "score": 0.6390699999999954,
+      "score_breakdown": {
+        "keff_error": 0.000999999999995449,
+        "ao_abs": 0.2576,
+        "di_abs": 0.15439999999999998,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.22606999999999994
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 0.99999,
+        "xenon_finished": 4,
+        "AO": -6.44,
+        "DI": -3.86,
+        "boron_concentration": 1226.07,
+        "rod_position": 210.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    },
+    {
+      "case_id": "corca_xenon_case_08",
+      "case_label": "four_step_recovery",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 4,
+        "step_1": 0.5,
+        "change_state_1": "True",
+        "power_1": 0.25,
+        "rod_1": 225,
+        "step_2": 0.5,
+        "change_state_2": "True",
+        "power_2": 0.35,
+        "rod_2": 220,
+        "step_3": 0.5,
+        "change_state_3": "True",
+        "power_3": 0.45,
+        "rod_3": 215,
+        "step_4": 0.5,
+        "change_state_4": "False",
+        "power_4": -1.0,
+        "rod_4": -1.0
+      },
+      "success": true,
+      "score": 0.31669000000001046,
+      "score_breakdown": {
+        "keff_error": 0.0050000000000105516,
+        "ao_abs": 0.047599999999999996,
+        "di_abs": 0.012,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.2520899999999999
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 1.00005,
+        "xenon_finished": 4,
+        "AO": 1.19,
+        "DI": 0.3,
+        "boron_concentration": 1252.09,
+        "rod_position": 225.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    },
+    {
+      "case_id": "corca_xenon_case_09",
+      "case_label": "four_step_low_hold_recovery",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 4,
+        "step_1": 0.5,
+        "change_state_1": "True",
+        "power_1": 0.2,
+        "rod_1": 225,
+        "step_2": 0.5,
+        "change_state_2": "True",
+        "power_2": 0.3,
+        "rod_2": 225,
+        "step_3": 0.5,
+        "change_state_3": "True",
+        "power_3": 0.35,
+        "rod_3": 220,
+        "step_4": 0.5,
+        "change_state_4": "False",
+        "power_4": -1.0,
+        "rod_4": -1.0
+      },
+      "success": true,
+      "score": 0.3315199999999949,
+      "score_breakdown": {
+        "keff_error": 0.005999999999994898,
+        "ao_abs": 0.0584,
+        "di_abs": 0.0116,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.25551999999999997
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 1.00006,
+        "xenon_finished": 4,
+        "AO": 1.46,
+        "DI": 0.29,
+        "boron_concentration": 1255.52,
+        "rod_position": 225.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    },
+    {
+      "case_id": "corca_xenon_case_10",
+      "case_label": "four_step_soft_plateau",
+      "problem_type": "corca_xenon",
+      "params": {
+        "xenon_steps": 4,
+        "step_1": 0.5,
+        "change_state_1": "True",
+        "power_1": 0.3,
+        "rod_1": 225,
+        "step_2": 0.5,
+        "change_state_2": "True",
+        "power_2": 0.3,
+        "rod_2": 225,
+        "step_3": 0.5,
+        "change_state_3": "True",
+        "power_3": 0.35,
+        "rod_3": 220,
+        "step_4": 0.5,
+        "change_state_4": "True",
+        "power_4": 0.35,
+        "rod_4": 220
+      },
+      "success": true,
+      "score": 0.29949000000000403,
+      "score_breakdown": {
+        "keff_error": 0.004000000000004,
+        "ao_abs": 0.036000000000000004,
+        "di_abs": 0.0108,
+        "fq_over": 0.0,
+        "fdh_over": 0.0,
+        "boron_shift": 0.24869000000000005
+      },
+      "missing_metrics": [],
+      "metrics": {
+        "success": true,
+        "keff": 1.00004,
+        "xenon_finished": 4,
+        "AO": 0.9,
+        "DI": 0.27,
+        "boron_concentration": 1248.69,
+        "rod_position": 225.0,
+        "FDH": 0.0,
+        "FQ": 0.0
+      }
+    }
+  ]
+}

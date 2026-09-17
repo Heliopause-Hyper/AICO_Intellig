@@ -1,0 +1,27 @@
+{
+  "burnup": {
+    "source_path": "/home/ycl/AICO-Intellig/folderA/preciseFZ/result/SimuOutBurnup.out",
+    "kind": "burnup",
+    "burnup_deep": 150.0,
+    "keff": 1.00004,
+    "FQ": 2.9152,
+    "burnup_2d_stats": {
+      "rows": 15,
+      "cols": 15,
+      "min": 0.0,
+      "max": 297.0,
+      "mean": 117.94222222222223
+    }
+  },
+  "xenon": {
+    "source_path": "/home/ycl/AICO-Intellig/folderA/preciseFZ/result/SimuOutXenon.out",
+    "kind": "xenon",
+    "AO": -72.75,
+    "DI": -61.84,
+    "boron_concentration": 1152.23,
+    "keff": 0.99991,
+    "rod_position": 112.49999999999999,
+    "FDH": 0.0,
+    "FQ": 0.0
+  }
+}

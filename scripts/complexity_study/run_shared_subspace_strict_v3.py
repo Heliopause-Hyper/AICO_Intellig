@@ -86,10 +86,14 @@ def fd_descent(task: Task, basis: np.ndarray, x0: np.ndarray, budget: int, fd_ep
             dvec = basis[:, j]
             xp = proj_ball(x + fd_eps * dvec, task.radius)
             xn = proj_ball(x - fd_eps * dvec, task.radius)
-            fp, fn = float(task.eval(xp)), float(task.eval(xn))
-            best = min(best, fp, fn)
-            trace.extend([best, best])
-            evals += 2
+            fp = float(task.eval(xp))
+            best = min(best, fp)
+            trace.append(best)
+            evals += 1
+            fn = float(task.eval(xn))
+            best = min(best, fn)
+            trace.append(best)
+            evals += 1
             g[j] = (fp - fn) / (2.0 * fd_eps)
         if evals >= budget:
             break
@@ -119,11 +123,15 @@ def rand_dir_descent(task: Task, x0: np.ndarray, budget: int, fd_eps: float, rng
             break
         xp = proj_ball(x + fd_eps * v, task.radius)
         xn = proj_ball(x - fd_eps * v, task.radius)
-        fp, fn = float(task.eval(xp)), float(task.eval(xn))
+        fp = float(task.eval(xp))
+        best = min(best, fp)
+        trace.append(best)
+        evals += 1
+        fn = float(task.eval(xn))
+        best = min(best, fn)
+        trace.append(best)
+        evals += 1
         g = ((fp - fn) / (2.0 * fd_eps)) * v
-        best = min(best, fp, fn)
-        trace.extend([best, best])
-        evals += 2
         if evals >= budget:
             break
         x_new = proj_ball(x - step * g, task.radius)

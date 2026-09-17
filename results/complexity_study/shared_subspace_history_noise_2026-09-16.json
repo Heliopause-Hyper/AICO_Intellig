@@ -1,0 +1,459 @@
+{
+  "config": {
+    "d": 64,
+    "k": 3,
+    "family_seeds": 30,
+    "history_grid": [
+      {
+        "history_tasks": 2,
+        "probe_points": 2
+      },
+      {
+        "history_tasks": 4,
+        "probe_points": 1
+      },
+      {
+        "history_tasks": 4,
+        "probe_points": 2
+      }
+    ],
+    "noise_grid": [
+      0.0,
+      0.01,
+      0.05,
+      0.1
+    ],
+    "test_tasks": 24,
+    "budget": 180,
+    "condition_number": 12.0,
+    "fd_eps": 0.001,
+    "thresholds": [
+      0.1,
+      0.02,
+      0.005
+    ],
+    "noise_model": "gaussian additive noise on history finite-difference gradients before SVD basis estimation"
+  },
+  "rows": [
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 2,
+      "probe_points_per_task": 2,
+      "noise_std": 0.0,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.008545087700656063,
+      "projector_error_median": 1.431913031602964e-12,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.015324548076806927,
+        "median_simple_regret": 1.4828680360302657e-08,
+        "max_simple_regret": 2.4147401841730454,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9777777777777777,
+            "mean_queries_if_hit": 27.19034090909091,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9569444444444445,
+            "mean_queries_if_hit": 39.632801161103046,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9444444444444444,
+            "mean_queries_if_hit": 51.78823529411765,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 2,
+      "probe_points_per_task": 2,
+      "noise_std": 0.01,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.06116593217090559,
+      "projector_error_median": 0.05714311213026881,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.013876930557033406,
+        "median_simple_regret": 1.4665094446315295e-08,
+        "max_simple_regret": 3.228936020997632,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9861111111111112,
+            "mean_queries_if_hit": 27.283098591549297,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9625,
+            "mean_queries_if_hit": 39.933621933621936,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9458333333333333,
+            "mean_queries_if_hit": 52.34214390602056,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 2,
+      "probe_points_per_task": 2,
+      "noise_std": 0.05,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.3371797166202544,
+      "projector_error_median": 0.24528250998839426,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.014152216546650788,
+        "median_simple_regret": 8.125527362415598e-08,
+        "max_simple_regret": 0.7204594584634769,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9666666666666667,
+            "mean_queries_if_hit": 27.248563218390803,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9388888888888889,
+            "mean_queries_if_hit": 42.366863905325445,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9097222222222222,
+            "mean_queries_if_hit": 55.4030534351145,
+            "median_queries_if_hit": 50.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 2,
+      "probe_points_per_task": 2,
+      "noise_std": 0.1,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.5074380079489833,
+      "projector_error_median": 0.45189503548675525,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.02159008962685737,
+        "median_simple_regret": 1.4161822221572783e-07,
+        "max_simple_regret": 2.3769630563035036,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9486111111111111,
+            "mean_queries_if_hit": 28.73060029282577,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.8986111111111111,
+            "mean_queries_if_hit": 44.20401854714065,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.8555555555555555,
+            "mean_queries_if_hit": 56.246753246753244,
+            "median_queries_if_hit": 50.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 1,
+      "noise_std": 0.0,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.007255581618231807,
+      "projector_error_median": 1.2288637187185708e-12,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.013719933279373745,
+        "median_simple_regret": 2.230156424065758e-08,
+        "max_simple_regret": 1.8147361840054008,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9805555555555555,
+            "mean_queries_if_hit": 27.143059490084987,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9625,
+            "mean_queries_if_hit": 39.24819624819625,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9527777777777777,
+            "mean_queries_if_hit": 51.13556851311953,
+            "median_queries_if_hit": 43.5
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 1,
+      "noise_std": 0.01,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.07549580506552227,
+      "projector_error_median": 0.056768717677930944,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.006255695545085409,
+        "median_simple_regret": 2.351940638335361e-08,
+        "max_simple_regret": 0.824074346888167,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9861111111111112,
+            "mean_queries_if_hit": 27.176056338028168,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9708333333333333,
+            "mean_queries_if_hit": 40.39055793991416,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9597222222222223,
+            "mean_queries_if_hit": 52.59913169319827,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 1,
+      "noise_std": 0.05,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.3213036587994596,
+      "projector_error_median": 0.20500285521299308,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.019254809514407993,
+        "median_simple_regret": 9.074635362571079e-08,
+        "max_simple_regret": 1.7463843344734031,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9541666666666667,
+            "mean_queries_if_hit": 26.85589519650655,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9319444444444445,
+            "mean_queries_if_hit": 41.51415797317436,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9083333333333333,
+            "mean_queries_if_hit": 54.60703363914373,
+            "median_queries_if_hit": 50.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 1,
+      "noise_std": 0.1,
+      "budget": 180,
+      "history_query_cost_mean": 512.0,
+      "projector_error_mean": 0.41248867826538443,
+      "projector_error_median": 0.34997386582873313,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.011956142563715895,
+        "median_simple_regret": 5.9471987500912776e-08,
+        "max_simple_regret": 1.882362704494393,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9791666666666666,
+            "mean_queries_if_hit": 27.492198581560285,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9527777777777777,
+            "mean_queries_if_hit": 42.319241982507286,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.925,
+            "mean_queries_if_hit": 54.77627627627628,
+            "median_queries_if_hit": 50.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 2,
+      "noise_std": 0.0,
+      "budget": 180,
+      "history_query_cost_mean": 1024.0,
+      "projector_error_mean": 0.00545161233625982,
+      "projector_error_median": 1.0427763818973034e-12,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.010523663588477984,
+        "median_simple_regret": 2.0439797111666287e-08,
+        "max_simple_regret": 2.520956121339986,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9805555555555555,
+            "mean_queries_if_hit": 26.413597733711047,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9708333333333333,
+            "mean_queries_if_hit": 40.155937052932764,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9458333333333333,
+            "mean_queries_if_hit": 50.78120411160059,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 2,
+      "noise_std": 0.01,
+      "budget": 180,
+      "history_query_cost_mean": 1024.0,
+      "projector_error_mean": 0.021562282742177568,
+      "projector_error_median": 0.017611248334540676,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.022271567207939214,
+        "median_simple_regret": 1.4055771008455164e-08,
+        "max_simple_regret": 2.129661292268463,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9763888888888889,
+            "mean_queries_if_hit": 26.519203413940257,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9666666666666667,
+            "mean_queries_if_hit": 40.139367816091955,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9472222222222222,
+            "mean_queries_if_hit": 52.13782991202346,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 2,
+      "noise_std": 0.05,
+      "budget": 180,
+      "history_query_cost_mean": 1024.0,
+      "projector_error_mean": 0.10049551116175898,
+      "projector_error_median": 0.08937945825639049,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.00831115372394086,
+        "median_simple_regret": 2.758979915137346e-08,
+        "max_simple_regret": 1.5939999023980496,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9875,
+            "mean_queries_if_hit": 26.38537271448664,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.9666666666666667,
+            "mean_queries_if_hit": 40.20545977011494,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.95,
+            "mean_queries_if_hit": 52.748538011695906,
+            "median_queries_if_hit": 50.0
+          }
+        }
+      }
+    },
+    {
+      "d": 64,
+      "k": 3,
+      "family_seeds": 30,
+      "history_tasks_per_family": 4,
+      "probe_points_per_task": 2,
+      "noise_std": 0.1,
+      "budget": 180,
+      "history_query_cost_mean": 1024.0,
+      "projector_error_mean": 0.1916206323722351,
+      "projector_error_median": 0.18000843208563777,
+      "estimated_subspace": {
+        "n": 720,
+        "mean_simple_regret": 0.0077238519280869705,
+        "median_simple_regret": 2.42859801119517e-08,
+        "max_simple_regret": 0.5523287966730049,
+        "thresholds": {
+          "0.1": {
+            "success_rate": 0.9819444444444444,
+            "mean_queries_if_hit": 28.632248939179632,
+            "median_queries_if_hit": 22.0
+          },
+          "0.02": {
+            "success_rate": 0.95,
+            "mean_queries_if_hit": 39.52046783625731,
+            "median_queries_if_hit": 36.0
+          },
+          "0.005": {
+            "success_rate": 0.9388888888888889,
+            "mean_queries_if_hit": 52.1094674556213,
+            "median_queries_if_hit": 43.0
+          }
+        }
+      }
+    }
+  ]
+}
