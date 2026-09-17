@@ -31,10 +31,9 @@ results/**
 !results/manifests/
 !results/manifests/**
 
-# Keep lab-level README for isolated CORCA experiments.
+# Keep lightweight CORCA summary results.
 !results/corca_family_lab/
-results/corca_family_lab/**
-!results/corca_family_lab/README.md
+!results/corca_family_lab/**
 
 # Keep only curated summaries and small routing metadata.
 !results/curated_datasets/
